@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const src = path.resolve(__dirname, 'src')
 const htdocs = path.resolve(__dirname, 'htdocs')
+const modules = path.resolve(__dirname, 'node_modules')
 const dist = path.resolve(__dirname, 'dist')
 
 module.exports = {
@@ -27,6 +28,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './htdocs/index.ejs'
     }),
+    new CopyWebpackPlugin([{
+      from: path.resolve(modules, 'font-awesome'),
+      to: path.resolve(dist, 'fonts/font-awesome'),
+    }]),
   ],
   module: {
     rules: [

@@ -13,10 +13,15 @@
   min-height: 100vh;
   position: relative;
   text-align: center;
+  z-index: 2;
+
+  .header {
+    background: none;
+  }
 
   h1 {
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 300;
     font-style: italic;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
     letter-spacing: 0.05em;
@@ -33,13 +38,27 @@
       width: 4rem;
     }
   }
-  hr {
-    width: 9em;
-  }
   .inner {
     color: white;
     text-align: center;
     z-index: 1;
+
+    a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.2s;
+      text-shadow: #000 1px 1px 3px;
+      margin-right: 1em;
+      font-size: 1em;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:hover {
+        color: #A7C7C5;
+      }
+    }
   }
   .overlay {
     position: absolute;
@@ -52,7 +71,15 @@
   }
 }
 
-article {
+section {
   padding: 2em;
   background: white;
+}
+
+@media screen and (max-width: 736px) {
+  .banner {
+    h1 {
+      font-size: 1.5em;
+    }
+  }
 }
