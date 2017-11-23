@@ -18,12 +18,12 @@
 
   a {
     color: white;
-    text-decoration: none;
-    transition: color 0.2s;
     text-shadow: #000 1px 1px 3px;
+    font-weight: 400;
 
     &:hover {
       color: #A7C7C5;
+      border: none;
     }
   }
   .title {

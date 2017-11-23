@@ -1,7 +1,20 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
   height: 100%;
-  background: #262626;
+  background: rgb(251, 250, 249);
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+  color: #295949;
+
+  &:hover {
+    border-bottom: 1px solid;
+    color: #295949;
+  }
 }

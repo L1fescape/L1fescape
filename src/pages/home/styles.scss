@@ -42,24 +42,30 @@
     color: white;
     text-align: center;
     z-index: 1;
+  }
+
+  .social-media {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-flow: row wrap;
 
     a {
       color: white;
       text-decoration: none;
+      border: none;
       transition: color 0.2s;
       text-shadow: #000 1px 1px 3px;
-      margin-right: 1em;
+      line-height: 2em;
       font-size: 1em;
-
-      &:last-child {
-        margin-right: 0;
-      }
+      margin: 0 1em;
 
       &:hover {
         color: #A7C7C5;
       }
     }
   }
+
   .overlay {
     position: absolute;
     top: 0;
@@ -71,9 +77,36 @@
   }
 }
 
-section {
+/* fix for react-scroll element position */
+div[name="banner"] {
+  position: absolute;
+  top: 0;
+}
+
+.sections > * {
   padding: 2em;
   background: white;
+  box-sizing: border-box;
+}
+
+.about {
+  padding: 10em 0;
+  display: flex;
+  justify-content: center;
+  transform: skewY(7deg);
+  min-height: 100vh;
+  width: 100%;
+  flex: 1 1 0%;
+  background: rgb(251, 250, 249);
+  align-items: center;
+
+  .inner {
+    transform: skewY(-7deg);
+  }
+
+  p {
+    color: #888888;
+  }
 }
 
 @media screen and (max-width: 736px) {
@@ -81,5 +114,85 @@ section {
     h1 {
       font-size: 1.5em;
     }
+    .inner {
+      width: 400px;
+      a {
+        font-size: 2em;
+      }
+    }
+  }
+}
+
+.headshot {
+  width:300px;
+
+  img {
+    width: 100%;
+    border-radius: 150px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .banner {
+    .inner {
+      width: 300px;
+      a {
+        font-size: 2em;
+      }
+    }
+  }
+  .headshot {
+    width: 200px;
+  }
+}
+
+.bio {
+  text-align: left;
+}
+
+@media all and (max-width: 480px) {
+  .bio {
+    margin-top:32px;
+  }
+  .bio h2 {
+    display:none;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 481px) {
+  .bio {
+    margin-top:32px;
+  }
+  .bio h2 {
+    display:none;
+  }
+}
+
+@media all and (min-width: 769px) {
+  .headshot {
+    display:inline-block;
+  }
+
+  .bio {
+    width: 300px;
+    margin-left: 40px;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.bio {
+  p {
+  	font-size:16px;
+    color: #555;
+  	line-height:24px;
+  }
+}
+
+.projects {
+  background: #A7C7C5;
+  transform: skewY(7deg);
+  .inner {
+    transform: skewY(-7deg);
   }
 }
