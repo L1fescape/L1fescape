@@ -83,14 +83,7 @@ div[name="banner"] {
   top: 0;
 }
 
-.sections > * {
-  padding: 2em;
-  background: white;
-  box-sizing: border-box;
-}
-
 .about {
-  padding: 10em 0;
   display: flex;
   justify-content: center;
   transform: skewY(7deg);
@@ -112,12 +105,14 @@ div[name="banner"] {
 @media screen and (max-width: 736px) {
   .banner {
     h1 {
-      font-size: 1.5em;
+      font-size: 2em;
     }
     .inner {
       width: 400px;
+    }
+    .social-media {
       a {
-        font-size: 2em;
+        font-size: 1.2em;
       }
     }
   }
@@ -134,10 +129,15 @@ div[name="banner"] {
 
 @media all and (max-width: 480px) {
   .banner {
+    h1 {
+      font-size: 1.5em;
+    }
     .inner {
       width: 300px;
+    }
+    .social-media {
       a {
-        font-size: 2em;
+        font-size: 1.6em;
       }
     }
   }
@@ -151,20 +151,22 @@ div[name="banner"] {
 }
 
 @media all and (max-width: 480px) {
+  .about {
+    .inner {
+      padding: 0 2em;
+    }
+  }
+  .headshot {
+    margin: 0 auto;
+  }
   .bio {
     margin-top:32px;
-  }
-  .bio h2 {
-    display:none;
   }
 }
 
 @media all and (max-width: 768px) and (min-width: 481px) {
   .bio {
     margin-top:32px;
-  }
-  .bio h2 {
-    display:none;
   }
 }
 
@@ -192,6 +194,20 @@ div[name="banner"] {
 .projects {
   background: #A7C7C5;
   transform: skewY(7deg);
+  padding: 12vw 2em calc(12vw + 2em) 2em;
+
+  .inner {
+    transform: skewY(-7deg);
+  }
+}
+
+.footer {
+  background: #4B5957;
+  transform: skewY(7deg);
+  padding: 12vw 2em calc(12vw + 2em) 2em;
+  margin-bottom: -12vw;
+  color: white;
+
   .inner {
     transform: skewY(-7deg);
   }

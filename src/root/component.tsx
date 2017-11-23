@@ -11,7 +11,7 @@ export interface Props {}
 export const Root: React.StatelessComponent<Props> = (props: Props) => {
   return (
     <BrowserRouter>
-      <div>
+      <div className="wrapper">
         <Header fixed={true} />
         <Route exact path="/" component={Home} />
         <Route path="/blog" component={Blog} />

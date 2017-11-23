@@ -27,27 +27,37 @@ export class Home extends React.Component<Props> {
           </div>
         </div>
       </div>,
-      <div className="sections" key="sections">
-        <Element className="about" name="about">
-          <div className="inner">
-            <div className="headshot">
-              <img alt="avatar" src="./headshot.jpg" />
-            </div>
-            <div className="bio">
-              <h2>Hi there!</h2>
-              <p>
-                I'm Andrew. I like writing music, skateboarding, and making things with code. During the day I'm a Software Engineer at <a href="https://www.twitch.tv/">Twitch</a>.
-                At night I work on <a href="https://github.com/L1fescape">open source projects</a> and <a href="https://soundcloud.com/L1fescape">make beats</a>.
-              </p>
-            </div>
+      <Element className="about" name="about" key="about">
+        <div className="inner">
+          <div className="headshot">
+            <img alt="avatar" src="./headshot.jpg" />
           </div>
-        </Element>
-        <Element className="projects" name="projects">
-          <div className="inner">
-            <p>stuffffff</p>
+          <div className="bio">
+            <h2>Hi there!</h2>
+            <p>
+              I'm Andrew. I like writing music, skateboarding, and making things with code. During the day I'm a Software Engineer at <a href="https://www.twitch.tv/">Twitch</a>.
+              At night I work on <a href="https://github.com/L1fescape">open source projects</a> and <a href="https://soundcloud.com/L1fescape">make beats</a>.
+            </p>
           </div>
-        </Element>
-      </div>
+        </div>
+      </Element>,
+      <Element className="projects" name="projects" key="projects">
+        <div className="inner">
+          <p>stuffffff</p>
+          <p>stuffffff</p>
+          <p>stuffffff</p>
+          <p>stuffffff</p>
+          <p>stuffffff</p>
+          <p>stuffffff</p>
+          <p>stuffffff</p>
+        </div>
+      </Element>,
+      <Element className="footer" name="footer" key="footer">
+        <div className="inner">
+          <p>stuffffff</p>
+          <p>stuffffff</p>
+        </div>
+      </Element>
     ]
   }
 }
