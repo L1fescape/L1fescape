@@ -43,13 +43,17 @@ export class Home extends React.Component<Props> {
       </Element>,
       <Element className="projects" name="projects" key="projects">
         <div className="inner">
-          <p>stuffffff</p>
-          <p>stuffffff</p>
-          <p>stuffffff</p>
-          <p>stuffffff</p>
-          <p>stuffffff</p>
-          <p>stuffffff</p>
-          <p>stuffffff</p>
+          <div className="card">
+            <h2>Overlay</h2> 
+            <small>January 2017</small>
+            <p>Lots of broadcasters on Twitch showcase most recent subscribers, top donators, sponsors, and other info on top of their stream via an overlay. Most broadcasters use third-party sites to achieve this. My goal with Twitch Overlay is to allow users to create overlay themes and share them with other users. It's also an open source projects, so users can run it locally and modify to suit their needs.</p>
+          </div>
+          <div className="card">
+            Tetris
+          </div>
+          <div className="card">
+            conga
+          </div>
         </div>
       </Element>,
       <Element className="footer" name="footer" key="footer">
