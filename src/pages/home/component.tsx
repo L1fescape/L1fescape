@@ -82,8 +82,8 @@ export class Home extends React.Component<Props, State> {
           <div className="bio">
             <h2>Hi there!</h2>
             <p>
-              I'm Andrew. I like writing music, skateboarding, and making things with code. During the day I'm a Software Engineer at <a href="https://www.twitch.tv/">Twitch</a>.
-              At night I work on <a href="https://github.com/L1fescape">open source projects</a> and <a href="https://soundcloud.com/L1fescape">make beats</a>.
+              I'm Andrew. I like writing music, skateboarding, and making things with code. During the day I'm a Software Engineer at <a target="_blank" href="https://www.twitch.tv/">Twitch</a>.
+              At night I work on <a target="_blank" href="https://github.com/L1fescape">open source projects</a> and <a target="_blank" href="https://soundcloud.com/L1fescape">make beats</a>.
             </p>
           </div>
         </div>

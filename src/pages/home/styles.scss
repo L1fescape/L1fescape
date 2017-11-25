@@ -204,7 +204,7 @@ div[name="banner"] {
 .projects {
   background: #A7C7C5;
   transform: skewY(7deg);
-  padding: 2vw 2em 0;
+  padding: 0 2em;
   position: relative;
   z-index: 1;
 
@@ -278,6 +278,7 @@ div[name="banner"] {
         right: -1em;
         bottom: 0;
         background: url(./tetris.png) bottom no-repeat;
+        background-size: contain;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -340,8 +341,9 @@ div[name="banner"] {
     }
 
     iframe {
-      margin-bottom: 0!important;
+      margin: 0!important;
       border-radius: 0.1em!important;
+      box-sizing: border-box;
     }
   }
 
