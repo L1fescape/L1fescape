@@ -22,6 +22,7 @@ module.exports = {
   devServer: {
     contentBase: src,
     historyApiFallback: true,
+    host: process.env.HOST || 'localhost',
     port: 3000
   },
   plugins: [

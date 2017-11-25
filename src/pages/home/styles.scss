@@ -15,6 +15,13 @@
   text-align: center;
   z-index: 3;
 
+  @media screen and (max-width: 736px) {
+    & {
+      background-attachment: inherit;
+    }
+  }
+
+
   .header {
     background: none;
   }
@@ -161,6 +168,7 @@ div[name="banner"] {
     margin: 0 auto;
   }
   .bio {
+    padding: 0 1em;
     margin-top:32px;
   }
 }
@@ -240,6 +248,11 @@ div[name="banner"] {
       & {
         width: auto;
         margin-right: 0;
+      }
+
+      .meta {
+        width: 100%;
+        margin-top: 0.6em;
       }
     }
 
@@ -330,10 +343,6 @@ div[name="banner"] {
       margin-bottom: 0!important;
       border-radius: 0.1em!important;
     }
-  }
-
-  .tetris {
-
   }
 
   h2 {
