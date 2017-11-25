@@ -18,6 +18,8 @@ $ yarn dev
 
 ## tests
 
+jk there aren't any yet, but if there were you'd run
+
 ```
 $ yarn test
 ```

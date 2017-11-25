@@ -5,18 +5,31 @@ import { Header } from '../../components/header'
 
 import './styles.scss'
 import './headshot.jpg'
+import './tetris.png'
+
+export interface TetrisGame {
+  init(): void
+}
+
+declare var window: {
+  Tetris(options: any): TetrisGame
+}
 
 export interface Props {}
 
-declare var window: {
-  Tetris(options: any): {
-    init(): void
-  }
+export interface State {
+  tetrisStarted: boolean
+  tetris: TetrisGame | void
 }
 
-export class Home extends React.Component<Props> {
+export class Home extends React.Component<Props, State> {
   private tetrisRef: HTMLElement | null
   private scoreRef: HTMLElement | null
+  state: State = {
+    tetrisStarted: false,
+    tetris: undefined,
+  }
+
   componentDidMount() {
     if (this.tetrisRef && this.scoreRef) {
       const game = window.Tetris({ 
@@ -28,9 +41,21 @@ export class Home extends React.Component<Props> {
         height: 30,
         eventListener : document.onkeydown
       })
-      game.init()
+      this.setState({
+        tetris: game,
+      })
     }
   }
+
+  private startTetris = () => {
+    if (!this.state.tetrisStarted && this.state.tetris) {
+      this.setState({
+        tetrisStarted: true,
+      })
+      this.state.tetris.init()
+    }
+  }
+
   render() {
     return [
       <div className="banner" key="banner">
@@ -124,9 +149,15 @@ export class Home extends React.Component<Props> {
               <div className="meta">
                 <a target="_blank" href="https://github.com/L1fescape/tetris"><FontAwesome name="github" />l1fescape/tetris</a>
               </div>
-              <p>I wrote this game and it's real shit glhf</p>
-              <p>Score: <span ref={(ref) => this.scoreRef= ref}></span></p>
-              <canvas ref={(ref) => this.tetrisRef = ref}></canvas>
+              <p>A very minimal version of Tetris with zero dependencies. Use your keyboard arrows to move and rotate pieces. Rotations still need tweaking (I'm not doing matrix rotations correctly) and it needs to be adapted to work on mobile.</p>
+              <p>Fixes coming soon™</p>
+              <div className="tetris-game">
+                <p style={{display: 'none'}}>Score: <span ref={(ref) => this.scoreRef= ref}></span></p>
+                <div style={{opacity: this.state.tetrisStarted ? 0 : 1}} className="tetris-placeholder">
+                  <button onClick={this.startTetris}>Start Game</button>
+                </div>
+                <canvas ref={(ref) => this.tetrisRef = ref}></canvas>
+              </div>
             </div>
           </div>
         </div>

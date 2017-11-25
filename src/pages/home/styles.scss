@@ -39,7 +39,7 @@
     }
   }
   .inner {
-    color: white;
+    color: rgb(251, 250, 249);
     text-align: center;
     z-index: 1;
   }
@@ -154,7 +154,7 @@ div[name="banner"] {
 @media all and (max-width: 480px) {
   .about {
     .inner {
-      padding: 0 2em;
+      padding: 0 1em;
     }
   }
   .headshot {
@@ -245,6 +245,44 @@ div[name="banner"] {
 
     &.tetris {
       background: #3B3833;
+      padding: 1em 1em 0;
+
+      canvas {
+        border-radius: 0.1em;
+        margin: 0 -1em -1em;
+      }
+
+      .tetris-game {
+        position: relative;
+        width: 100%;
+        min-height: 600px;
+      }
+      .tetris-placeholder {
+        position: absolute;
+        top: 0;
+        transition: opacity 1s;
+        left: -1em;
+        right: -1em;
+        bottom: 0;
+        background: url(./tetris.png) bottom no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+          border: none;
+          padding: 1em;
+          background: #6D7D6B; 
+          color: rgb(251, 250, 249);
+          cursor: pointer;
+          margin-top: -10em;
+
+          &:focus {
+            border: none;
+            outline:0;
+          }
+        }
+      }
     }
     &.conga {
       background: #6D7D6B;
@@ -294,6 +332,10 @@ div[name="banner"] {
     }
   }
 
+  .tetris {
+
+  }
+
   h2 {
     margin: 0;
     line-height: 1em;
@@ -307,15 +349,6 @@ div[name="banner"] {
   }
   a, a:hover {
     color: rgba(251, 250, 249, 0.8);
-  }
-}
-
-.card.tetris {
-  padding: 1em 1em 0;
-
-  canvas {
-    border-radius: 0.1em;
-    margin: 1em -1em 0;
   }
 }
 

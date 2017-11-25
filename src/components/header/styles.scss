@@ -53,11 +53,13 @@
     }
   }
 }
+
 .menu-expand {
   display: none;
   cursor: pointer;
 }
 
+/*
 @media screen and (max-width: 736px) {
   .menu-expand {
     display: block;
@@ -66,3 +68,4 @@
     display: none;
   }
 }
+*/
