@@ -168,6 +168,7 @@ div[name="banner"] {
 @media all and (max-width: 768px) and (min-width: 481px) {
   .bio {
     margin-top:32px;
+    width: 450px;
   }
 }
 
@@ -199,21 +200,34 @@ div[name="banner"] {
   position: relative;
   z-index: 1;
 
+  @media all and (max-width: 480px) {
+    & {
+      padding: 2vw 1em 0;
+    }
+  }
+
   .inner {
     max-width: 900px;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
-    align-items: start;
     flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
     transform: skewY(-7deg);
+  }
+
+  .col:last-child {
+    margin-bottom: -1em;
   }
 
   .card {
     padding: 1em;
     width: 400px;
+    box-sizing: border-box;
     background: #4B5957;
     color: #fbfaf9;
+    display: flex;
+    flex-flow: row wrap;
     margin-right: 1em;
     transition: margin 0.2s;
     margin-bottom: 1em;
@@ -222,30 +236,93 @@ div[name="banner"] {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 
-    &:nth-child(2) {
+    @media all and (max-width: 480px) {
+      & {
+        width: auto;
+        margin-right: 0;
+      }
+    }
+
+    &.tetris {
       background: #3B3833;
     }
-    &:nth-child(3) {
+    &.conga {
       background: #6D7D6B;
+    }
+
+    img {
+      width: 100%;
+      display: inline-block;
+      border-radius: 0.1em;
+      box-shadow: 0 4px 6px rgba(50,50,50,.11), 0 1px 3px rgba(0,0,0,.08);
+    }
+
+    .info {
+      flex-grow: 1;
+    }
+
+    .meta {
+      font-size: 0.8em;
+      font-family: monospace;
+
+      .fa {
+        margin-right: 0.4em;
+      }
+      a {
+        color: #fbfaf9;
+        font-weight: 400;
+        opacity: 0.4;
+        display: block;
+        margin-bottom: 1em;
+
+        &:hover {
+          border: none;
+          opacity: 1;
+        }
+        &:last-chile {
+          margin-bottom: 0;
+        }
+      }
+    }
+    p {
+      width: 100%;
+    }
+
+    iframe {
+      margin-bottom: 0!important;
+      border-radius: 0.1em!important;
     }
   }
 
   h2 {
     margin: 0;
+    line-height: 1em;
     opacity: 0.8;
   }
   small {
-    opacity: 0.4;
+    color: rgba(251, 250, 249, 0.4);
   }
   p {
-    opacity: 0.8;
+    color: rgba(251, 250, 249, 0.8);
+  }
+  a, a:hover {
+    color: rgba(251, 250, 249, 0.8);
+  }
+}
+
+.card.tetris {
+  padding: 1em 1em 0;
+
+  canvas {
+    border-radius: 0.1em;
+    margin: 1em -1em 0;
   }
 }
 
 .footer {
   background: #4B5957;
   transform: skewY(7deg);
-  padding: 12vw 2em calc(12vw + 2em) 2em;
+  padding: 12vw 2em calc(6vw);
   margin-bottom: -12vw;
   color: white;
 
