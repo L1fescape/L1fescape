@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as FontAwesome from 'react-fontawesome'
 import { Element } from 'react-scroll'
 import { Header } from '../../components/header'
+import { Banner } from './banner'
 
 import './styles.scss'
 import './headshot.jpg'
@@ -58,22 +59,7 @@ export class Home extends React.Component<Props, State> {
 
   render() {
     return [
-      <div className="banner" key="banner">
-        <Element name="banner" />
-        <Header hideTitle={true} />
-        <div className="overlay"></div>
-        <div className="inner">
-          <h1>Andrew Kennedy</h1>
-          <div className="social-media">
-            <a href="https://twitch.tv/L1fescape" target="_blank"><FontAwesome name="twitch" /></a>
-            <a href="https://twitter.com/L1fescape" target="_blank"><FontAwesome name="twitter" /></a>
-            <a href="https://instagram.com/L1fescape" target="_blank"><FontAwesome name="instagram" /></a>
-            <a href="https://github.com/L1fescape" target="_blank"><FontAwesome name="github" /></a>
-            <a href="https://steamcommunity.com/id/l1fescape" target="_blank"><FontAwesome name="steam" /></a>
-            <a href="https://soundcloud.com/l1fescape" target="_blank"><FontAwesome name="soundcloud" /></a>
-          </div>
-        </div>
-      </div>,
+      <Banner key="banner" />,
       <Element className="about" name="about" key="about">
         <div className="inner">
           <div className="headshot">
@@ -99,9 +85,11 @@ export class Home extends React.Component<Props, State> {
               <div className="meta">
                 <a target="_blank" href="https://github.com/l1fescape/twitch-overlay"><FontAwesome name="github" />l1fescape/twitch-overlay</a>
               </div>
-              <p>Broadcasters on Twitch display their most recent subscribers, top donators, sponsors, current song, and other various bits of info on top of their stream
+              <p>
+                Broadcasters on Twitch display their most recent subscribers, top donators, sponsors, current song, and other various bits of info on top of their stream
                 via an overlay. Most broadcasters use third-party sites to achieve this. My goal with this project is to allow users to create overlay themes and
-                share them with other users. It's also an open source project, so users can run it locally and modify to suit their needs.</p>
+                share them with other users.
+              </p>
               <div>
                 <img src="https://clips-media-assets.twitch.tv/vod-106955238-offset-2188-preview.jpg" />
               </div>

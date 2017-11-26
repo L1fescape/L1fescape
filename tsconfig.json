@@ -10,7 +10,7 @@
     "noImplicitAny": false,
     "baseUrl": "./src",
     "paths": {
-      "l1": ["./src"]
+      "ak": ["./src"]
     },
     "typeRoots": ["./src/types"],
     "experimentalDecorators": true,
