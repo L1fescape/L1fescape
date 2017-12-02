@@ -7,8 +7,7 @@
     "start": "yarn build && yarn server",
     "build": "yarn && webpack",
     "dev": "yarn && webpack-dev-server --hot --inline",
-    "server": "node server.js",
-    "test": "jest"
+    "server": "node server.js"
   },
   "dependencies": {
     "gl-gif": "^3.1.0",
@@ -23,7 +22,6 @@
     "typescript": "^2.5.3"
   },
   "devDependencies": {
-    "@types/jest": "^21.1.7",
     "@types/lodash": "^4.14.80",
     "@types/react": "^16.0.10",
     "@types/react-dom": "^16.0.1",
@@ -40,7 +38,6 @@
     "file-loader": "^1.1.5",
     "font-awesome": "^4.7.0",
     "html-webpack-plugin": "^2.30.1",
-    "jest": "^21.2.1",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.2",
