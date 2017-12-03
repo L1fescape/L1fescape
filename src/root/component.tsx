@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { Header } from '../components/header'
 import { Home } from '../pages/home'
-import { CirclesPage } from '../pages/circles'
+import { Random } from '../pages/random'
 import './styles.scss'
 
 export interface Props {}
@@ -13,7 +13,7 @@ export const Root: React.StatelessComponent<Props> = (props: Props) => {
     <BrowserRouter>
       <div className="wrapper">
         <Route exact path="/" component={Home} />
-        <Route path="/circles" component={CirclesPage} />
+        <Route path="/random" component={Random} />
       </div>
     </BrowserRouter>
   )

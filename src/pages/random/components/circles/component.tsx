@@ -15,6 +15,7 @@ export interface Props {
 }
 
 export interface State {
+  circles: THREE.Mesh[]
   speed: number
   t: number
 }
@@ -26,16 +27,18 @@ function percentageToHsl(percentage, hue0, hue1) {
 
 export class Circles extends React.Component<Props, State> {
   private elem: HTMLElement | null
+  private scene: THREE.Scene
   private camera: THREE.PerspectiveCamera
   private renderer: THREE.WebGLRenderer
   private dimensions: CanvasDimensions
-  public state = {
+  public state: State = {
+    circles: [],
     speed: 0.1,
-    t: 0
+    t: 0,
   }
 
   private initScene = () => {
-    const scene = new THREE.Scene()
+    this.scene = new THREE.Scene()
     this.dimensions = {
       width: window.innerWidth,
       height: window.innerHeight,
@@ -49,7 +52,7 @@ export class Circles extends React.Component<Props, State> {
     this.renderer.setSize(this.dimensions.width, this.dimensions.height)
     this.renderer.setPixelRatio(window.devicePixelRatio)
 
-    const { numCircles, positionRadius, orbitRadius } = this.props
+    const { numCircles } = this.props
 
     const circles = times(numCircles, (i) => (
       new THREE.Mesh(
@@ -57,31 +60,57 @@ export class Circles extends React.Component<Props, State> {
         new THREE.MeshBasicMaterial({ color: percentageToHsl(i/numCircles, 255, 140) })
       )
     ))
-    circles.forEach(circle => scene.add(circle))
+    circles.forEach(circle => this.scene.add(circle))
+    this.setState({
+      circles,
+    })
 
     this.onResize()
-    const render = () => {
-      circles.forEach((circle, i) => {
-        const { t, speed } = this.state
-        const circleAng = (2 * Math.PI * i) / numCircles 
-        const xPhaseOffset = orbitRadius * (1 - Math.cos(t * (i+1) / numCircles))
-        const yPhaseOffset = orbitRadius * Math.sin(t * (i+1) / numCircles)
-        circle.position.x = positionRadius * Math.cos(circleAng) + xPhaseOffset
-        circle.position.y = positionRadius * Math.sin(circleAng) + yPhaseOffset
-        circle.material = new THREE.MeshBasicMaterial({
-          color: percentageToHsl(((1 + Math.sin(t/numCircles)) / 2) * (i / numCircles), 255, 140)
-        })
-      })
+    this.loop()
+  }
 
-      this.setState((state: State, props: Props) => {
-        this.renderer.render(scene, this.camera)
-        requestAnimationFrame(render)
-        return {
-          t: state.t + state.speed
-        }
-      })
+  componentWillReceiveProps(props: Props) {
+    const difCircles = props.numCircles - this.state.circles.length
+    console.log(difCircles)
+    let circles: THREE.Mesh[] = []
+    if (difCircles > 0) {
+      circles = times(difCircles, (i) => (
+        new THREE.Mesh(
+          new THREE.CircleBufferGeometry(1, 32),
+          new THREE.MeshBasicMaterial({ color: percentageToHsl(i/props.numCircles, 255, 140) })
+        )
+      ))
+      circles.forEach(circle => this.scene.add(circle))
+      this.setState({ circles: [...this.state.circles, ...circles] })
+    } else {
+      const circlesToRemove: THREE.Mesh[] = this.state.circles.slice(props.numCircles)
+      circlesToRemove.forEach(circle => this.scene.remove(circle))
+      circles = this.state.circles.slice(0, props.numCircles)
+      this.setState({ circles })
     }
-    render()
+  }
+
+  private loop = () => {
+    const { numCircles, positionRadius, orbitRadius } = this.props
+    this.state.circles.forEach((circle, i) => {
+      const { t, speed } = this.state
+      const circleAng = (2 * Math.PI * i) / numCircles 
+      const xPhaseOffset = orbitRadius * (1 - Math.cos(t * (i+1) / numCircles))
+      const yPhaseOffset = orbitRadius * Math.sin(t * (i+1) / numCircles)
+      circle.position.x = positionRadius * Math.cos(circleAng) + xPhaseOffset
+      circle.position.y = positionRadius * Math.sin(circleAng) + yPhaseOffset
+      circle.material = new THREE.MeshBasicMaterial({
+        color: percentageToHsl(((1 + Math.sin(t/numCircles)) / 2) * (i / numCircles), 255, 140)
+      })
+    })
+
+    this.setState((state: State, props: Props) => {
+      this.renderer.render(this.scene, this.camera)
+      requestAnimationFrame(this.loop)
+      return {
+        t: state.t + state.speed
+      }
+    })
   }
 
   componentDidMount() {
