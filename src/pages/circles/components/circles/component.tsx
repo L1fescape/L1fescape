@@ -26,7 +26,6 @@ function percentageToHsl(percentage, hue0, hue1) {
 
 export class Circles extends React.Component<Props, State> {
   private elem: HTMLElement | null
-  private img: HTMLImageElement | null
   private camera: THREE.PerspectiveCamera
   private renderer: THREE.WebGLRenderer
   private dimensions: CanvasDimensions
@@ -61,11 +60,6 @@ export class Circles extends React.Component<Props, State> {
     circles.forEach(circle => scene.add(circle))
 
     this.onResize()
-    const gif = new GIF(this.renderer.context, {
-      width: this.dimensions.width,
-      height: this.dimensions.height,
-    })
-    let done = false
     const render = () => {
       circles.forEach((circle, i) => {
         const { t, speed } = this.state
@@ -82,18 +76,6 @@ export class Circles extends React.Component<Props, State> {
       this.setState((state: State, props: Props) => {
         this.renderer.render(scene, this.camera)
         requestAnimationFrame(render)
-        console.log(state.t, state.t % (5 * state.speed) === 0)
-        if (state.t % (5 * state.speed) === 0 && state.t < 100) {
-          console.log('tick')
-          gif.tick()
-        } else if (state.t > 100 && this.img && !done) {
-          done = true
-          console.log('done')
-          this.img.width = this.dimensions.width
-          this.img.height = this.dimensions.height
-          this.img.src = gif.done()
-        }
-
         return {
           t: state.t + state.speed
         }
@@ -127,9 +109,8 @@ export class Circles extends React.Component<Props, State> {
 
   render() {
     return (
-      <div>
+      <div className="circles">
         <div ref={el => this.elem = el} />
-        <img ref={el => this.img = el} />
       </div>
     )
   }
