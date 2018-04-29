@@ -25,9 +25,13 @@ export class Random extends React.Component<Props> {
 
   render() {
     return (
-      <div>
-        <input type="number" value={this.state.numCircles} onChange={this.onNumCirclesChange} />
-        <Circles numCircles={this.state.numCircles} orbitRadius={10} positionRadius={2} />
+      <div className="random">
+        <div className="sidebar">
+          <input type="number" value={this.state.numCircles} onChange={this.onNumCirclesChange} />
+        </div>
+        <div className="main">
+          <Circles numCircles={this.state.numCircles} orbitRadius={10} positionRadius={10} />
+        </div>
       </div>
     )
   }

@@ -26,11 +26,11 @@ function percentageToHsl(percentage, hue0, hue1) {
 }
 
 export class Circles extends React.Component<Props, State> {
-  private elem: HTMLElement | null
-  private scene: THREE.Scene
-  private camera: THREE.PerspectiveCamera
-  private renderer: THREE.WebGLRenderer
-  private dimensions: CanvasDimensions
+  private elem: HTMLElement | null = null
+  private scene: THREE.Scene | null = null
+  private camera: THREE.PerspectiveCamera | null = null
+  private renderer: THREE.WebGLRenderer | null = null
+  private dimensions: CanvasDimensions | null = null
   public state: State = {
     circles: [],
     speed: 0.1,
@@ -60,7 +60,7 @@ export class Circles extends React.Component<Props, State> {
         new THREE.MeshBasicMaterial({ color: percentageToHsl(i/numCircles, 255, 140) })
       )
     ))
-    circles.forEach(circle => this.scene.add(circle))
+    circles.forEach(circle => this.scene && this.scene.add(circle))
     this.setState({
       circles,
     })
@@ -71,7 +71,6 @@ export class Circles extends React.Component<Props, State> {
 
   componentWillReceiveProps(props: Props) {
     const difCircles = props.numCircles - this.state.circles.length
-    console.log(difCircles)
     let circles: THREE.Mesh[] = []
     if (difCircles > 0) {
       circles = times(difCircles, (i) => (
@@ -80,17 +79,20 @@ export class Circles extends React.Component<Props, State> {
           new THREE.MeshBasicMaterial({ color: percentageToHsl(i/props.numCircles, 255, 140) })
         )
       ))
-      circles.forEach(circle => this.scene.add(circle))
+      circles.forEach(circle => this.scene && this.scene.add(circle))
       this.setState({ circles: [...this.state.circles, ...circles] })
     } else {
       const circlesToRemove: THREE.Mesh[] = this.state.circles.slice(props.numCircles)
-      circlesToRemove.forEach(circle => this.scene.remove(circle))
+      circlesToRemove.forEach(circle => this.scene && this.scene.remove(circle))
       circles = this.state.circles.slice(0, props.numCircles)
       this.setState({ circles })
     }
   }
 
   private loop = () => {
+    if (!this.renderer || !this.camera) {
+      return
+    }
     const { numCircles, positionRadius, orbitRadius } = this.props
     this.state.circles.forEach((circle, i) => {
       const { t, speed } = this.state
@@ -105,7 +107,9 @@ export class Circles extends React.Component<Props, State> {
     })
 
     this.setState((state: State, props: Props) => {
-      this.renderer.render(this.scene, this.camera)
+      if (this.renderer && this.camera && this.scene) {
+        this.renderer.render(this.scene, this.camera)
+      }
       requestAnimationFrame(this.loop)
       return {
         t: state.t + state.speed
@@ -115,16 +119,19 @@ export class Circles extends React.Component<Props, State> {
 
   componentDidMount() {
     this.initScene()
-    this.elem && this.elem.appendChild(this.renderer.domElement)
+    this.elem && this.renderer && this.elem.appendChild(this.renderer.domElement)
     window.addEventListener('resize', this.onResize)
   }
 
   componentWillUnmount() {
-    this.elem && this.elem.removeChild(this.renderer.domElement)
+    this.elem && this.renderer && this.elem.removeChild(this.renderer.domElement)
     window.removeEventListener('resize', this.onResize)
   }
 
   private onResize = () => {
+    if (!this.renderer || !this.camera) {
+      return
+    }
     if (this.elem) {
       this.dimensions = {
         height: this.elem.clientHeight,

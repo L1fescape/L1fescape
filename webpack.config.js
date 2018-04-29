@@ -15,7 +15,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'ak': src,
+      'ak.gg': src,
     },
     extensions: ['.ts', '.tsx', '.d.ts', '.js', '.json'],
   },
@@ -37,9 +37,10 @@ module.exports = {
   module: {
     rules: [
       { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
-      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
+      { test: /\.js$/, enforce: 'pre', loader: 'source-map-loader' },
       { test: /\.scss$/, use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'sass-loader' }] },
       { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file-loader?name=[name].[ext]' },
-    ]
+      { test: /\.md$/, use: [{ loader: 'html-loader' }] },
+    ],
   }
 }

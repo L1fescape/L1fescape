@@ -10,7 +10,7 @@
     "noImplicitAny": false,
     "baseUrl": "./src",
     "paths": {
-      "ak": ["./src"]
+      "ak.gg/*": ["./*"],
     },
     "typeRoots": ["./src/types"],
     "experimentalDecorators": true,

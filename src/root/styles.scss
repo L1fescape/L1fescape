@@ -2,9 +2,10 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: 'Lato', sans-serif;
   height: 100%;
-  background: rgb(251, 250, 249);
+  background: #2E2724;
+  color: #fff;
 }
 
 a {
@@ -22,4 +23,8 @@ a {
 
 .wrapper {
   overflow: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Do Hyeon', sans-serif;
 }

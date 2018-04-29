@@ -1,35 +1,33 @@
+/*color: #A7C7C5;*/
+
 .header {
   padding: 1em;
   overflow: auto;
   display: flex;
-  position: absolute;
   justify-content: flex-end;
   top: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
   box-sizing: border-box;
-  color: #FFFFFF;
-  text-transform: uppercase;
-  background: #2E2724;
-  z-index: 2;
+  color: #374140;
 
   &.header-fixed {
     position: fixed;
   }
 
-  a {
-    color: white;
-    text-shadow: #000 1px 1px 3px;
-    font-weight: 400;
+  a { 
+    text-decoration: none;
+    font-family: 'Do Hyeon', sans-serif;
+    color: #D9CB9E;
 
     &:hover {
-      color: #A7C7C5;
       border: none;
     }
   }
-  .title {
+  h4 {
     margin: 0;
-    flex-grow: 1;
     letter-spacing: 0.07rem;
+    flex-grow: 1;
   }
 }
 
@@ -47,6 +45,8 @@
     list-style-type: none;
     margin-right: 2em;
     position: relative;
+    text-transform: lowercase;
+    letter-spacing: 0.07rem;
 
     &:last-child {
       margin: 0;
@@ -59,13 +59,36 @@
   cursor: pointer;
 }
 
-/*
-@media screen and (max-width: 736px) {
-  .menu-expand {
-    display: block;
-  }
-  .menu {
-    display: none;
+.code a {
+  color: #A66A7A;
+  &:hover {
+    color: #A68181;
   }
 }
-*/
+
+.music a {
+  color: #3C989E;
+  &:hover {
+    color: #5DB5A4;
+  }
+}
+
+.blog a {
+  color: #2E8B57;
+  &:hover {
+    color: #9dc183;
+  }
+}
+
+.minecraft a {
+  color: #043927;
+  /* drk #043927
+  #2E8B57
+  lgt #9DC183
+  bg #F8F8F0
+  link #CC4D00
+  */
+  &:hover {
+    color: #9dc183;
+  }
+}
