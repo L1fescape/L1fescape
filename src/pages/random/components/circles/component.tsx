@@ -47,8 +47,8 @@ export class Circles extends React.Component<Props, State> {
     this.camera.position.z = 20
     this.camera.lookAt(new THREE.Vector3(0, 0, 0))
 
-    this.renderer = new THREE.WebGLRenderer()
-    this.renderer.setClearColor(0x000000, 1)
+    this.renderer = new THREE.WebGLRenderer({ alpha: true })
+    this.renderer.setClearColor("#2E2724", 0.0)
     this.renderer.setSize(this.dimensions.width, this.dimensions.height)
     this.renderer.setPixelRatio(window.devicePixelRatio)
 

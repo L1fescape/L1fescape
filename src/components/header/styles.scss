@@ -22,6 +22,7 @@
 
     &:hover {
       border: none;
+      color: #F0DFA8;
     }
   }
   h4 {
@@ -34,7 +35,6 @@
 .menu {
   margin: 0;
   padding: 0;
-  font-size: 0.8em;
   display: flex;
   align-items: center;
 
@@ -54,12 +54,7 @@
   }
 }
 
-.menu-expand {
-  display: none;
-  cursor: pointer;
-}
-
-.code a {
+.art a {
   color: #A66A7A;
   &:hover {
     color: #A68181;
@@ -73,7 +68,7 @@
   }
 }
 
-.blog a {
+.posts a {
   color: #2E8B57;
   &:hover {
     color: #9dc183;

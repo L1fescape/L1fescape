@@ -1,12 +1,13 @@
 ---
 title: Heartbleed
+date: 2014-04-08
 ---
 
-The [Heartbleed Bug](http://heartbleed.com/) is making waves. It allows anyone to read the RAM of a vulnerable system, exposing user sessions, cookies, passwords, etc. I setup a fresh new ec2 instance and installed nginx with the intent of exploring and testing this bug.
+The [Heartbleed Bug](http://heartbleed.com/) is making waves. It's a vulnerability in apache and nginx web servers running versions `1.0.1` through `1.0.1f` of OpenSSL, which covers a lot of the internet. The bug allows arbitrary reading of memory on a vulnerable system, exposing user sessions, cookies, passwords, etc. to the open web. I setup a fresh EC2 instance and with nginx to figure out how it worked.
 
 The first thing I did was check which version of OpenSSL I was running. Turns out Ubuntu 12.04 comes with a vulnerable version:
 
-{% highlight bash %}
+```bash
 $ openssl version -a
 OpenSSL 1.0.1 14 Mar 2012
 built on: Wed Jan  8 20:45:51 UTC 2014
@@ -14,22 +15,22 @@ platform: debian-amd64
 options:  bn(64,64) rc4(16x,int) des(idx,cisc,16,int) blowfish(idx)
 compiler: cc -fPIC -DOPENSSL_PIC -DZLIB -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -m64 -DL_ENDIAN -DTERMIO -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Wformat-security -Werror=format-security -D_FORTIFY_SOURCE=2 -Wl,-Bsymbolic-functions -Wl,-z,relro -Wa,--noexecstack -Wall -DOPENSSL_NO_TLS1_2_CLIENT -DOPENSSL_MAX_TLS1_2_CIPHER_LENGTH=50 -DMD32_REG_T=int -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DAES_ASM -DVPAES_ASM -DBSAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM
 OPENSSLDIR: "/usr/lib/ssl"
-{% endhighlight %}
+```
 
 Next I installed nginx and self-signed my own cert:
 
-{% highlight bash %}
+```bash
 $ sudo apt-get install nginx
 $ sudo mkdir -p /etc/nginx/ssl/keys
 $ cd /etc/nginx/ssl/keys
 $ openssl genrsa -des3 -out self-ssl.key 1024
 $ openssl req -new -key self-ssl.key -out self-ssl.csr
 $ openssl x509 -req -days 365 -in self-ssl.csr -signkey self-ssl.key -out self-ssl.crt
-{% endhighlight %}
+```
 
 Then I configured nginx:
 
-{% highlight bash %}
+```bash
 $ sudo vim /etc/nginx/sites-enabled/default
 
 server {
@@ -66,12 +67,11 @@ server {
     proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
   }
 }
-
-{% endhighlight %}
+```
 
 I made a dummy html page with a form for submitting a username/password. I also added a bit of javascript that set a cookie as well. 
 
-{% highlight html %}
+```html
 <form name="input" action="index.html" method="get">
   Username: <input type="text" name="username"> <br />
   Password: <input type="password" name="password"> <br />
@@ -81,13 +81,13 @@ I made a dummy html page with a form for submitting a username/password. I also 
 <script>
   document.cookie="heartbleed='Hi friends!'";
 </script>
-{% endhighlight %}
+```
 
-Then I ran [this script](https://gist.github.com/akenn/10159084) (the one mentioned in [this article](https://www.mattslifebytes.com/?p=533)) against myself. 
+Then I ran [this script](https://gist.github.com/l1fescape/10159084) (the one mentioned in [this article](https://www.mattslifebytes.com/?p=533)) against myself. 
 
 The dump had the most recent request in it including all cookies:
 
-{% highlight bash %}
+```
 ❯ python hb-test.py heartbleed.akenn.org
 
 Connecting...
@@ -143,7 +143,7 @@ Received heartbeat response:
 .....
 
 WARNING: server returned more data than it should - server is vulnerable!
-{% endhighlight %}
+```
 
 As you can see, my most recent request (a `GET` request to the same url with username and password as params) has the cookies I passed along in the request in there. Now imagine doing that to a much larger site and getting someone's sessionID or some equivalent.
 
