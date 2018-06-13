@@ -1,4 +1,22 @@
 /*color: #A7C7C5;*/
+$link-colors: (
+  art: (
+    base: #A66A7A,
+    hover: #A68181,
+  ),
+  music: (
+    base: #3C989E,
+    hover: #5DB5A4,
+  ),
+  posts: (
+    base: #2E8B57,
+    hover: #9dc183,
+  ),
+  code: (
+    base : #C77966,
+    hover: #CE8978,
+  ),
+);
 
 .header {
   padding: 1em;
@@ -9,7 +27,6 @@
   left: 0;
   right: 0;
   box-sizing: border-box;
-  color: #374140;
 
   &.header-fixed {
     position: fixed;
@@ -25,6 +42,18 @@
       color: #F0DFA8;
     }
   }
+
+  @each $color-key, $color-value in $link-colors {
+    .#{$color-key} {
+      a {
+        color: map-get($color-value, "base");
+      }
+      a:hover {
+        color: map-get($color-value, "hover");
+      }
+    }
+  }
+
   h4 {
     margin: 0;
     letter-spacing: 0.07rem;
@@ -43,47 +72,13 @@
     background: none;
     display: inline-block;
     list-style-type: none;
-    margin-right: 2em;
+    margin: 0 1rem;
     position: relative;
     text-transform: lowercase;
     letter-spacing: 0.07rem;
 
     &:last-child {
-      margin: 0;
+      margin-right: 0;
     }
-  }
-}
-
-.art a {
-  color: #A66A7A;
-  &:hover {
-    color: #A68181;
-  }
-}
-
-.music a {
-  color: #3C989E;
-  &:hover {
-    color: #5DB5A4;
-  }
-}
-
-.posts a {
-  color: #2E8B57;
-  &:hover {
-    color: #9dc183;
-  }
-}
-
-.minecraft a {
-  color: #043927;
-  /* drk #043927
-  #2E8B57
-  lgt #9DC183
-  bg #F8F8F0
-  link #CC4D00
-  */
-  &:hover {
-    color: #9dc183;
   }
 }

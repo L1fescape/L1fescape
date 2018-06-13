@@ -14,7 +14,8 @@
     },
     "typeRoots": ["./src/types"],
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "./src/**/*"

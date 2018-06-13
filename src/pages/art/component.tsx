@@ -1,19 +1,19 @@
 import * as React from 'react'
 import { Switch, Route } from 'react-router'
 import { Link } from 'react-router-dom'
-import { Header } from 'ak.gg/components/header'
+import { Page } from 'ak.gg/components/page'
 import { Circles } from './components/circles'
 
 import './styles.scss'
+export const ART_ROOT = '/art'
 
-export interface Props {
-}
+export interface PublicProps { }
 
 export interface State {
   numCircles: number
 }
 
-export class Random extends React.Component<Props> {
+export class Art extends React.Component<PublicProps> {
   state = {
     numCircles: 40,
   }
@@ -26,8 +26,7 @@ export class Random extends React.Component<Props> {
 
   render() {
     return (
-      <div>
-        <Header />
+      <Page>
         <div className="random">
           {/* <div className="sidebar">
             <input type="number" value={this.state.numCircles} onChange={this.onNumCirclesChange} />
@@ -36,7 +35,7 @@ export class Random extends React.Component<Props> {
             <Circles numCircles={this.state.numCircles} orbitRadius={2} positionRadius={10} />
           </div>
         </div>
-      </div>
+      </Page>
     )
   }
 }

@@ -1,55 +1,47 @@
 import * as React from 'react'
 import * as History from 'history'
-import { Link, RouteComponentProps, withRouter, Route, Switch } from 'react-router-dom'
-import { Header } from 'ak.gg/components/header'
-import { getArticleList, Article } from 'ak.gg/utils/posts'
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
+import { Page } from 'ak.gg/components/page'
+import { getArticleList, articleReducer, Article } from './utils/posts'
 import './styles.scss'
 
-export const POSTS_ROOT = '/posts'
+const articles = getArticleList()
 
-export type Props = RouteComponentProps<{
+const ArticlePresentation = (props: { articles: Article[] }) => (
+  <div>
+    <p>
+      Here are some things I've written:
+    </p>
+    {props.articles.map(article => (
+      <div key={article.path} className="post-summary">
+        <h3><Link to={article.path}>{article.title}</Link></h3>
+        <span className="date">{`${article.date}`}</span>
+      </div>
+    ))}
+  </div>
+)
+export const ArticleList = () => <ArticlePresentation articles={articles} />
+
+const Post = (props: { article: Article }) => (
+  <div className="post">
+    <h1>{props.article.title}</h1>
+    <span className="date">{`${props.article.date}`}</span>
+    <div className="body" dangerouslySetInnerHTML={{ __html: props.article.post }} />
+  </div>
+)
+
+export type PublicProps = RouteComponentProps<{
   location: History.Location
 }>
 
-const getPostList = (articles: Article[]) => {
-  return (
-    <div>
-      <p>
-        Here are some things I've written:
-      </p>
-      {articles.sort((a, b) => +b.date - +a.date).map(post => (
-        <div key={post.path}>
-          <h3><Link to={post.path}>{post.title}</Link></h3>
-          <p>{+post.date}</p>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-const getPostPage = (article: Article) => {
-  return (
-    <div className="post">
-      <h2>{article.title}</h2>
-      <span>{`${article.date}`}</span>
-      <div dangerouslySetInnerHTML={{ __html: article.post }} />
-    </div>
-  )
-}
-
-export const PostPresentation: React.StatelessComponent<Props> = (props: Props) => {
+const PostPresentation: React.StatelessComponent<PublicProps> = (props: PublicProps) => {
   const { pathname } = props.location
-  const articles = getArticleList()
-  const articleMap = articles.reduce((acc, a) => {
-    acc[a.path] = a
-    return acc
-  }, {})
+  const article = articles.reduce(articleReducer, {})[pathname]
+  const Layout = article && article.layout || Page
   return (
-    <div>
-      <Header />
-      {articleMap[pathname] ? getPostPage(articleMap[pathname]) : getPostList(articles)}
-    </div>
+    <Layout>
+      {article ? <Post article={article} /> : <ArticleList />}
+    </Layout>
   )
 }
-
 export const Posts = withRouter(props => <PostPresentation {...props} />)

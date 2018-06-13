@@ -18,7 +18,6 @@ const pageEntries = fs.readdirSync(pages).reduce(pageEntriesReducer, {})
 module.exports = {
   entry: {
     index: './src/index.tsx',
-    ...pageEntries,
   },
   output: {
     filename: '[name].bundle.js',
@@ -28,7 +27,7 @@ module.exports = {
     alias: {
       'ak.gg': src,
     },
-    extensions: ['.ts', '.tsx', '.d.ts', '.js', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   devServer: {
     contentBase: src,

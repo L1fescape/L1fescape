@@ -3,9 +3,9 @@ title: Heartbleed
 date: 2014-04-08
 ---
 
-The [Heartbleed Bug](http://heartbleed.com/) is making waves. It's a vulnerability in apache and nginx web servers running versions `1.0.1` through `1.0.1f` of OpenSSL, which covers a lot of the internet. The bug allows arbitrary reading of memory on a vulnerable system, exposing user sessions, cookies, passwords, etc. to the open web. I setup a fresh EC2 instance and with nginx to figure out how it worked.
+The [Heartbleed Bug](http://heartbleed.com/) is making waves. It's a vulnerability targeting apache and nginx web servers running specific versions of OpenSSL (`1.0.1` through `1.0.1f`) that allows arbitrary reading of server memory, which can expose user sessions, cookies, passwords, credit card info, etc. to the open web. This currently affects a large portion of the internet. Let's see how this vulnerability works.
 
-The first thing I did was check which version of OpenSSL I was running. Turns out Ubuntu 12.04 comes with a vulnerable version:
+First check what OpenSSL version is currently installed. 
 
 ```bash
 $ openssl version -a
@@ -17,7 +17,7 @@ compiler: cc -fPIC -DOPENSSL_PIC -DZLIB -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLF
 OPENSSLDIR: "/usr/lib/ssl"
 ```
 
-Next I installed nginx and self-signed my own cert:
+Turns out Ubuntu 12.04 comes with a vulnerable version. Next I installed nginx and self-signed my own cert:
 
 ```bash
 $ sudo apt-get install nginx

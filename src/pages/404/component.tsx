@@ -1,11 +1,10 @@
 import * as React from 'react'
 import * as FontAwesome from 'react-fontawesome'
 import { Link } from 'react-router-dom'
-import { Header } from 'ak.gg/components/header'
+import { Page } from 'ak.gg/components/page'
 
 export const FourOhFour: React.StatelessComponent<{}> = () => (
-  <div>
-    <Header />
+  <Page>
     <div style={{marginTop: '4em', textAlign: 'center'}}>
       <p>
         Woops looks like I didn't make this page
@@ -14,5 +13,5 @@ export const FourOhFour: React.StatelessComponent<{}> = () => (
         ❤️
       </p>
     </div>
-  </div>
+  </Page>
 )

@@ -1,33 +1,51 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
-import * as FontAwesome from 'react-fontawesome'
+import * as History from 'history'
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
 import './styles.scss'
 
-const links: {to: string; title: string; className?: string}[] = [{
+interface SiteLink {
+  to: string;
+  title?: string;
+  className?: string
+}
+
+const homeLink: SiteLink = {
+  to: '/',
+}
+
+export const siteLinks: SiteLink[] = [{
   to: '/art',
   title: 'Art',
   className: 'art',
 }, {
-  to: '/music',
-  title: 'Music',
-  className: 'music',
-}, {
   to: '/posts',
   title: 'Posts',
   className: 'posts',
+}, {
+  to: '/code',
+  title: 'Code',
+  className: 'code',
+}, {
+  to: '/music',
+  title: 'Music',
+  className: 'music',
 }]
 
-function toggleFlyoutMenu() {}
+export type PublicProps = RouteComponentProps<{
+  location: History.Location
+}>
 
-export interface PublicProps {}
-
-export class Header extends React.Component<PublicProps> {
+class HeaderPresentation extends React.Component<PublicProps> {
   render() {
+    const { pathname } = this.props.location
+    const maybePageMatch = pathname.match(/[^\/]*\/[^\/]*/)
+    const currentPage = maybePageMatch ? maybePageMatch[0] : ''
+    const currentPageLink = siteLinks.find(link => link.to === currentPage) || homeLink
     return (
       <div className="header">
-        <h4><Link to="/">ak.gg</Link></h4>
+        <h4 className={currentPageLink.className}><Link to="/">ak.gg</Link></h4>
         <ul className="menu">
-          { links.map(link => (
+          { siteLinks.map(link => (
             <li key={link.to} className={link.className}>
               <Link to={link.to}>{link.title}</Link>
             </li>
@@ -37,3 +55,5 @@ export class Header extends React.Component<PublicProps> {
     )
   }
 }
+
+export const Header = withRouter(props => <HeaderPresentation {...props} />)

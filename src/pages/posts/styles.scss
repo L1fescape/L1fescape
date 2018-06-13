@@ -3,9 +3,22 @@
   margin: 2em auto;
   max-width: 50em;
 
-  h2 {
-    letter-spacing: 0.05em;
-    font-size: 2em;
-    margin-top: 0;
+  h1 {
+    letter-spacing: 0.1rem;
+    line-height: 2rem;
+    margin: 0 0 1rem;
+  }
+
+  .body {
+    margin-top: 3rem;
+  }
+}
+
+.post, .post-summary {
+  .date {
+    background: #2d2d2d;
+    padding: 0.5rem;
+    display: inline-block;
+    border-radius: 2px;
   }
 }

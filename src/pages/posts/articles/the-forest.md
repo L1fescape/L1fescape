@@ -1,5 +1,5 @@
 ---
-title: Running The Forest Dedicated Server
+title: "The Forest: Dedicated Server"
 date: 2018-05-31
 ---
 
@@ -36,6 +36,12 @@ C:\Users\[Account Name]\Desktop\steamcmd\steamcmd.exe +login anonymous +force_in
 #### Corrupted save files
 
 Don't manually run `/save` or `/reboot`. It will corrupt/modify save files such that the server won't load them correctly the next time it boots up. Regularly backup ` C:\Users\Administrator\AppData\LocalLow\SKS\TheForestDedicatedServer\ds\Multiplayer\Slot[1-5]` so that you can revert to a older save if the server can't load your current progress.
+
+#### All buildings gone except rock paths
+
+theories: 
+- creating a steam game server token and adding `serverSteamAccount` setting to `Server.cfg` will allow you to backup you save game data. Occassionally the dedicated server can't connect to steam and will wipe all structures. Rebooting the server will fix this.
+- logging in on steam client, save data stored there
 
 #### Link steam account
 
