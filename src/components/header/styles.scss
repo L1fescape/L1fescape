@@ -1,24 +1,5 @@
-/*color: #A7C7C5;*/
-$link-colors: (
-  art: (
-    base: #A66A7A,
-    hover: #A68181,
-  ),
-  music: (
-    base: #3C989E,
-    hover: #5DB5A4,
-  ),
-  posts: (
-    base: #2E8B57,
-    hover: #9dc183,
-  ),
-  code: (
-    base : #C77966,
-    hover: #CE8978,
-  ),
-);
-
 .header {
+  font-family: 'Do Hyeon', sans-serif;
   padding: 1em;
   overflow: auto;
   display: flex;
@@ -28,57 +9,7 @@ $link-colors: (
   right: 0;
   box-sizing: border-box;
 
-  &.header-fixed {
-    position: fixed;
-  }
-
-  a { 
-    text-decoration: none;
-    font-family: 'Do Hyeon', sans-serif;
-    color: #D9CB9E;
-
-    &:hover {
-      border: none;
-      color: #F0DFA8;
-    }
-  }
-
-  @each $color-key, $color-value in $link-colors {
-    .#{$color-key} {
-      a {
-        color: map-get($color-value, "base");
-      }
-      a:hover {
-        color: map-get($color-value, "hover");
-      }
-    }
-  }
-
   h4 {
-    margin: 0;
-    letter-spacing: 0.07rem;
-    flex-grow: 1;
-  }
-}
-
-.menu {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-
-  li {
-    margin: 0;
-    background: none;
-    display: inline-block;
-    list-style-type: none;
-    margin: 0 1rem;
-    position: relative;
-    text-transform: lowercase;
-    letter-spacing: 0.07rem;
-
-    &:last-child {
-      margin-right: 0;
-    }
+    font-family: 'Do Hyeon', sans-serif;
   }
 }

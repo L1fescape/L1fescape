@@ -17,11 +17,12 @@ const pageEntries = fs.readdirSync(pages).reduce(pageEntriesReducer, {})
 
 module.exports = {
   entry: {
-    index: './src/index.tsx',
+    index: path.resolve(src, 'index.tsx'),
+    // ...pageEntries,
   },
   output: {
     filename: '[name].bundle.js',
-    path: dist
+    path: dist,
   },
   resolve: {
     alias: {
@@ -33,15 +34,18 @@ module.exports = {
     contentBase: src,
     historyApiFallback: true,
     host: process.env.HOST || 'localhost',
-    port: 3000
+    port: 3000,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './htdocs/index.ejs'
+      template: path.resolve(htdocs, 'index.ejs'),
     }),
     new CopyWebpackPlugin([{
       from: path.resolve(modules, 'font-awesome'),
       to: path.resolve(dist, 'fonts/font-awesome'),
+    }, {
+      from: path.resolve(modules, 'highlight.js/styles/tomorrow-night-eighties.css'),
+      to: path.resolve(dist, 'styles/highlight.js.css'),
     }]),
   ],
   module: {
@@ -53,9 +57,9 @@ module.exports = {
       { test: /\.md$/, use: [{ loader: 'html-loader' }] },
     ],
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    },
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all'
+  //   },
+  // },
 }

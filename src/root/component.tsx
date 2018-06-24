@@ -1,32 +1,28 @@
 import * as React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Location } from 'history'
-
+import * as History from 'history'
+import { Router, Route, Switch } from 'react-router'
 import { Home } from 'ak.gg/pages/home'
-import { Posts, POSTS_ROOT } from 'ak.gg/pages/posts'
-import { Music, MUSIC_ROOT } from 'ak.gg/pages/music'
-import { Art, ART_ROOT } from 'ak.gg/pages/art'
+import { Blog } from 'ak.gg/pages/blog'
+import { Music } from 'ak.gg/pages/music'
+import { Art } from 'ak.gg/pages/art'
 import { FourOhFour } from 'ak.gg/pages/404'
+import { preserveScrollPosition } from 'ak.gg/utils/history'
+import { HOME_ROOT, BLOG_ROOT, MUSIC_ROOT, ART_ROOT } from 'ak.gg/constants'
 import './styles.scss'
 
-export interface Props {}
+const history = History.createBrowserHistory()
+history.listen(preserveScrollPosition())
 
-export const Root: React.StatelessComponent<Props> = (props: Props) => (
-  <BrowserRouter>
+export const Root: React.StatelessComponent<{}> = () => (
+  <Router history={history}>
     <div className="wrapper">
       <Switch>
-      {/* <Switch location={{
-        pathname: `${POSTS_ROOT}/heartbleed`,
-        search: '',
-        state: '',
-        hash: '',
-      }}> */}
-        <Route exact path="/" component={Home} />
-        <Route path={POSTS_ROOT} component={Posts} />
+        <Route exact path={HOME_ROOT} component={Home} />
+        <Route path={BLOG_ROOT} component={Blog} />
         <Route path={MUSIC_ROOT} component={Music} />
         <Route path={ART_ROOT} component={Art} />
         <Route component={FourOhFour} />
       </Switch>
     </div>
-  </BrowserRouter>
+  </Router>
 )

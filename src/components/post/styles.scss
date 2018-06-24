@@ -1,0 +1,36 @@
+.post {
+  margin-top: 2em;
+
+  h1 {
+    margin-bottom: 1rem;
+    line-height: 2rem;
+  }
+
+  a {
+    word-wrap: break-word;
+  }
+
+  .body {
+    margin-top: 3rem;
+  }
+
+  .bash-cursor {
+    color: #cc99cc;
+    line-height: 1.2rem;
+    position: relative;
+    // display: inline-flex;
+    // flex-direction: column;
+
+    // &:before {
+    //   content: ' ';
+    //   height: 0.1rem;
+    //   width: 0.1rem;
+    // }
+  }
+
+  .date {
+    background: #2d2d2d;
+    padding: 0.25rem 0.5rem;
+    border-radius: 2px;
+  }
+}

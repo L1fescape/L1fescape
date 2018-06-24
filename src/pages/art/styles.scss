@@ -1,27 +1,8 @@
-.random {
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar {
-  flex-direction: column;
-  height: 100%;
-  display: flex;
-  width: 200px;
-  flex-shrink: 0;
-}
-
-.main {
-  flex-grow: 1;
-  flex-direction: column;
-  height: 100%;
-  display: flex;
-  flex-shrink: 0;
-}
-
-.circles,
-.circles > * {
-  width: 100%;
-  height: 100vh;
-  box-sizing: border-box;
+.art {
+  .circles,
+  .circles > * {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+  }
 }

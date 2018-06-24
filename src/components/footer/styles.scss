@@ -1,0 +1,44 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  border-top: 2px solid rgba(191, 174, 153, 0.2);
+  max-width: 50em;
+
+  & > * {
+    display: inline-block;
+    padding: 2rem;
+
+    &.note {
+      width: 100%;
+      text-align: center;
+      margin-top: 2rem;
+      color: rgba(191, 174, 153, 0.6);
+    }
+    &:not(.note) {
+      flex: 1;
+    }
+  }
+
+  .menu {
+    margin: 1rem 0 2rem;
+  }
+
+  .social-icons {
+    margin-bottom: 1rem;
+    span {
+      padding: 0;
+      width: 2rem;
+      margin-left: -0.5rem;
+      text-align: center;
+    }
+  }
+
+  .title {
+    margin-bottom: 1rem;
+    margin-left: -1rem;
+    background: #212121;
+    padding: 0.5rem 4rem 0.5rem 1rem;
+  }
+}

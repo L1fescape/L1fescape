@@ -3,12 +3,13 @@ title: Heartbleed
 date: 2014-04-08
 ---
 
-The [Heartbleed Bug](http://heartbleed.com/) is making waves. It's a vulnerability targeting apache and nginx web servers running specific versions of OpenSSL (`1.0.1` through `1.0.1f`) that allows arbitrary reading of server memory, which can expose user sessions, cookies, passwords, credit card info, etc. to the open web. This currently affects a large portion of the internet. Let's see how this vulnerability works.
+The [Heartbleed Bug](http://heartbleed.com/) is making waves. It's a vulnerability targeting apache and nginx web servers running specific versions of OpenSSL (`1.0.1` through `1.0.1f`) which allows arbitrary reading of server memory. This can expose sensitive user information such as passwords, credit card info, and session cookies to the open web. The bug currently affects a large portion of the internet. Let's see how it works.
 
 First check what OpenSSL version is currently installed. 
 
-```bash
-$ openssl version -a
+```+wrap
+❯ openssl version -a
+
 OpenSSL 1.0.1 14 Mar 2012
 built on: Wed Jan  8 20:45:51 UTC 2014
 platform: debian-amd64
@@ -17,21 +18,41 @@ compiler: cc -fPIC -DOPENSSL_PIC -DZLIB -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLF
 OPENSSLDIR: "/usr/lib/ssl"
 ```
 
-Turns out Ubuntu 12.04 comes with a vulnerable version. Next I installed nginx and self-signed my own cert:
+Turns out Ubuntu 12.04 comes with a vulnerable version. 
 
-```bash
-$ sudo apt-get install nginx
-$ sudo mkdir -p /etc/nginx/ssl/keys
-$ cd /etc/nginx/ssl/keys
-$ openssl genrsa -des3 -out self-ssl.key 1024
-$ openssl req -new -key self-ssl.key -out self-ssl.csr
-$ openssl x509 -req -days 365 -in self-ssl.csr -signkey self-ssl.key -out self-ssl.crt
+Next [install nginx](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04) and configure it to serve files out of the `/usr/share/nginx/www` directory.
+
+```nginxconf+wrap
+❯ sudo apt-get install nginx
+❯ sudo vim /etc/nginx/sites-enabled/default
+
+server {
+  listen 80;
+  server_name heartbleed;
+
+  root /usr/share/nginx/www;
+  index index.html index.htm;
+}
 ```
 
-Then I configured nginx:
+**Note:** you can optionally [configure nginx to use SSL](#ssl) for all traffic if you'd like to verify the contents we're reading out of the vulnerable system's memory have already been decrypted.
 
-```bash
-$ sudo vim /etc/nginx/sites-enabled/default
+[ssl]
+
+First create a self-signed certificate:
+
+```+wrap
+❯ sudo mkdir -p /etc/nginx/ssl/keys
+❯ cd /etc/nginx/ssl/keys
+❯ openssl genrsa -des3 -out self-ssl.key 1024
+❯ openssl req -new -key self-ssl.key -out self-ssl.csr
+❯ openssl x509 -req -days 365 -in self-ssl.csr -signkey self-ssl.key -out self-ssl.crt
+```
+
+Then configure nginx to use it:
+
+```nginxconf
+❯ sudo vim /etc/nginx/sites-enabled/default
 
 server {
   listen 443;
@@ -69,12 +90,14 @@ server {
 }
 ```
 
+[/ssl]
+
 I made a dummy html page with a form for submitting a username/password. I also added a bit of javascript that set a cookie as well. 
 
 ```html
 <form name="input" action="index.html" method="get">
-  Username: <input type="text" name="username"> <br />
-  Password: <input type="password" name="password"> <br />
+  Username: <input type="text" name="username" /><br />
+  Password: <input type="password" name="password" /><br />
   <input type="submit" value="Submit">
 </form>
 

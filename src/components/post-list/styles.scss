@@ -1,0 +1,27 @@
+.year {
+  margin-bottom: 1rem;
+  overflow: auto;
+}
+
+.post-summary {
+  margin: 1rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  .date {
+    display: none;
+    opacity: 0.6;
+  }
+}
+
+@media only screen and (min-width:600px){
+  .post-summary .date {
+    display: block;
+  }
+}

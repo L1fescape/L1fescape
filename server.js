@@ -3,7 +3,7 @@ var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
 
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3000
 var distRoot = './dist'
 
 app.use(bodyParser.json())

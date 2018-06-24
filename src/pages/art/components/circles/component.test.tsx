@@ -1,0 +1,157 @@
+import * as React from 'react'
+import * as THREE from 'three'
+import * as GIF from 'gl-gif'
+import { times } from 'lodash'
+
+interface CanvasDimensions {
+  width: number
+  height: number
+}
+
+export interface Props {
+  numCircles: number
+  orbitRadius: number
+  positionRadius: number
+}
+
+export interface State {
+  circles: THREE.Mesh[]
+  speed: number
+  t: number
+}
+
+function percentageToHsl(percentage, hue0, hue1) {
+  var hue = (percentage * (hue1 - hue0)) + hue0;
+  return 'hsl(' + hue + ', 100%, 50%)';
+}
+
+export class Circles extends React.Component<Props, State> {
+  private elem: HTMLElement | null = null
+  private scene: THREE.Scene | null = null
+  private camera: THREE.PerspectiveCamera | null = null
+  private renderer: THREE.WebGLRenderer | null = null
+  private dimensions: CanvasDimensions | null = null
+  public state: State = {
+    circles: [],
+    speed: 0.1,
+    t: 0,
+  }
+
+  private initScene = () => {
+    if (!this.elem) {
+      return
+    }
+    this.scene = new THREE.Scene()
+    this.dimensions = {
+      width: this.elem.offsetWidth,
+      height: this.elem.offsetHeight,
+    }
+    this.camera = new THREE.PerspectiveCamera(100, this.dimensions.width / this.dimensions.height, 0.1, 1000)
+    this.camera.position.z = 20
+    this.camera.lookAt(new THREE.Vector3(0, 0, 0))
+
+    this.renderer = new THREE.WebGLRenderer({ alpha: true })
+    this.renderer.setClearColor("#2E2724", 0.0)
+    this.renderer.setSize(this.dimensions.width, this.dimensions.height)
+    this.renderer.setPixelRatio(window.devicePixelRatio)
+
+    const { numCircles } = this.props
+
+    const circles = times(numCircles, (i) => (
+      new THREE.Mesh(
+        new THREE.CircleBufferGeometry(1, 32),
+        new THREE.MeshBasicMaterial({ color: percentageToHsl(i/numCircles, 255, 140) })
+      )
+    ))
+    circles.forEach(circle => this.scene && this.scene.add(circle))
+    this.setState({
+      circles,
+    })
+
+    this.onResize()
+    this.loop()
+  }
+
+  componentWillReceiveProps(props: Props) {
+    const difCircles = props.numCircles - this.state.circles.length
+    let circles: THREE.Mesh[] = []
+    if (difCircles > 0) {
+      circles.concat(times(difCircles, (i) => {
+        const circle = new THREE.Mesh(
+          new THREE.CircleBufferGeometry(1, 32),
+          new THREE.MeshBasicMaterial({
+            color: percentageToHsl((this.state.circles.length - 1 + i)/props.numCircles, 255, 140),
+          })
+        )
+        this.scene && this.scene.add(circle)
+        return circle
+      }))
+    } else {
+      const circlesToRemove: THREE.Mesh[] = this.state.circles.slice(props.numCircles)
+      circlesToRemove.forEach(circle => this.scene && this.scene.remove(circle))
+      circles = this.state.circles.slice(0, props.numCircles)
+    }
+    this.setState({ circles })
+  }
+
+  private loop = () => {
+    if (!this.renderer || !this.camera) {
+      return
+    }
+    const { numCircles, positionRadius, orbitRadius } = this.props
+    this.state.circles.forEach((circle, i) => {
+      const { t, speed } = this.state
+      const offset = Math.abs(this.state.circles.length / 2 - i)
+      const circleAng = (2 * Math.PI * i) / numCircles 
+      const xPhaseOffset = orbitRadius * (1 - Math.cos(t * (offset+1) / numCircles))
+      const yPhaseOffset = orbitRadius * Math.sin(t * (offset+1) / numCircles)
+      circle.position.x = positionRadius * Math.cos(circleAng) + xPhaseOffset
+      circle.position.y = positionRadius * Math.sin(circleAng) + yPhaseOffset
+      circle.material = new THREE.MeshBasicMaterial({
+        color: percentageToHsl(((1 + Math.sin(t/numCircles)) / 2) * (offset / numCircles), 255, 140)
+      })
+    })
+
+    this.setState((state: State, props: Props) => {
+      if (this.renderer && this.camera && this.scene) {
+        this.renderer.render(this.scene, this.camera)
+      }
+      requestAnimationFrame(this.loop)
+      return {
+        t: state.t + state.speed
+      }
+    })
+  }
+
+  componentDidMount() {
+    this.initScene()
+    this.elem && this.renderer && this.elem.appendChild(this.renderer.domElement)
+    window.addEventListener('resize', this.onResize)
+  }
+
+  componentWillUnmount() {
+    this.elem && this.renderer && this.elem.removeChild(this.renderer.domElement)
+    window.removeEventListener('resize', this.onResize)
+  }
+
+  private onResize = () => {
+    if (!this.renderer || !this.camera) {
+      return
+    }
+    if (this.elem) {
+      this.dimensions = {
+        height: this.elem.clientHeight,
+        width: this.elem.clientWidth,
+      }
+      this.camera.aspect = this.dimensions.width / this.dimensions.height
+      this.camera.updateProjectionMatrix()
+      this.renderer.setSize( this.dimensions.width, this.dimensions.height )
+    }
+  }
+
+  render() {
+    return (
+      <div className="circles" ref={el => this.elem = el} />
+    )
+  }
+}

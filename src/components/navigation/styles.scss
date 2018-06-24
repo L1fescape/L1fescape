@@ -1,0 +1,85 @@
+/*color: #A7C7C5;*/
+$link-colors: (
+  art: (
+    base: #A66A7A,
+    hover: #A68181,
+  ),
+  music: (
+    base: #3C989E,
+    hover: #5DB5A4,
+  ),
+  posts: (
+    base: #2E8B57,
+    hover: #9dc183,
+  ),
+  code: (
+    base: #C77966,
+    hover: #CE8978,
+  ),
+);
+
+.home-link {
+  margin: 0 1rem 0 0;
+  letter-spacing: 0.07rem;
+  flex-grow: 1;
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  a { 
+    text-decoration: none;
+    font-family: 'Do Hyeon', sans-serif;
+    color: #D9CB9E;
+    transition: border 0.2s, color 0.2s;
+
+    &:hover {
+      border: none;
+      color: #F0DFA8;
+    }
+  }
+
+  li {
+    margin: 0;
+    background: none;
+    display: inline-block;
+    list-style-type: none;
+    margin: 0 1rem -3px;
+    position: relative;
+    text-transform: lowercase;
+    letter-spacing: 0.07rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @each $color-key, $color-value in $link-colors {
+      &.#{$color-key} {
+        a {
+          color: map-get($color-value, "base");
+          padding-bottom: 3px;
+          border-bottom: 3px solid transparent;
+
+          &:hover {
+            color: map-get($color-value, "hover");
+            border-bottom: 3px solid map-get($color-value, "hover");
+          }
+        }
+        &.active {
+          a {
+            border-bottom: 3px solid map-get($color-value, "base");
+            &:hover {
+              border-bottom: 3px solid map-get($color-value, "hover");
+            }
+          }
+        }
+      }
+    }
+  }
+}

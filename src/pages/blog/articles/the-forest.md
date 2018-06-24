@@ -19,7 +19,7 @@ Install steamcmd
 
 install the forest dedicated server
 
-```
+```+wrap
 C:\Users\[Account Name]\Desktop\steamcmd\steamcmd.exe +login anonymous +force_install_dir "C:\servers\theforest" +app_update 556450 validate +quit
 ```
 

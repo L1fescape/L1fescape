@@ -14,102 +14,96 @@ export interface Props {
   positionRadius: number
 }
 
+interface Scene {
+  scene: THREE.Scene
+  camera: THREE.PerspectiveCamera
+  renderer: THREE.WebGLRenderer
+}
+
 export interface State {
+  scene: Scene | null
   circles: THREE.Mesh[]
   speed: number
   t: number
 }
 
-function percentageToHsl(percentage, hue0, hue1) {
-  var hue = (percentage * (hue1 - hue0)) + hue0;
-  return 'hsl(' + hue + ', 100%, 50%)';
+function createNewScene(width: number, height: number): Scene {
+  const scene = new THREE.Scene()
+  const dimensions = { width, height }
+  const camera = new THREE.PerspectiveCamera(100, dimensions.width / dimensions.height, 0.1, 1000)
+  camera.position.z = 20
+  camera.lookAt(new THREE.Vector3(0, 0, 0))
+  const renderer = new THREE.WebGLRenderer({ alpha: true })
+  renderer.setClearColor(0x000000, 0.0)
+  renderer.setSize(dimensions.width, dimensions.height)
+  renderer.setPixelRatio(window.devicePixelRatio)
+  return { scene, camera, renderer }
+}
+
+const createCircle = (color: string) => (
+  new THREE.Mesh(
+    new THREE.CircleBufferGeometry(1, 32),
+    new THREE.MeshBasicMaterial({ color })
+  )
+)
+
+const percentToHsl = (percentage, hue0, hue1): string => {
+  var hue = (percentage * (hue1 - hue0)) + hue0
+  return 'hsl(' + hue + ', 100%, 50%)'
 }
 
 export class Circles extends React.Component<Props, State> {
   private elem: HTMLElement | null = null
-  private scene: THREE.Scene | null = null
-  private camera: THREE.PerspectiveCamera | null = null
-  private renderer: THREE.WebGLRenderer | null = null
-  private dimensions: CanvasDimensions | null = null
   public state: State = {
+    scene: null,
     circles: [],
     speed: 0.1,
     t: 0,
   }
 
-  private initScene = () => {
-    this.scene = new THREE.Scene()
-    this.dimensions = {
-      width: window.innerWidth,
-      height: window.innerHeight,
-    }
-    this.camera = new THREE.PerspectiveCamera(100, this.dimensions.width / this.dimensions.height, 0.1, 1000)
-    this.camera.position.z = 20
-    this.camera.lookAt(new THREE.Vector3(0, 0, 0))
-
-    this.renderer = new THREE.WebGLRenderer({ alpha: true })
-    this.renderer.setClearColor("#2E2724", 0.0)
-    this.renderer.setSize(this.dimensions.width, this.dimensions.height)
-    this.renderer.setPixelRatio(window.devicePixelRatio)
-
-    const { numCircles } = this.props
-
-    const circles = times(numCircles, (i) => (
-      new THREE.Mesh(
-        new THREE.CircleBufferGeometry(1, 32),
-        new THREE.MeshBasicMaterial({ color: percentageToHsl(i/numCircles, 255, 140) })
-      )
-    ))
-    circles.forEach(circle => this.scene && this.scene.add(circle))
-    this.setState({
-      circles,
-    })
-
-    this.onResize()
-    this.loop()
-  }
-
   componentWillReceiveProps(props: Props) {
-    const difCircles = props.numCircles - this.state.circles.length
-    let circles: THREE.Mesh[] = []
-    if (difCircles > 0) {
-      circles = times(difCircles, (i) => (
-        new THREE.Mesh(
-          new THREE.CircleBufferGeometry(1, 32),
-          new THREE.MeshBasicMaterial({ color: percentageToHsl(i/props.numCircles, 255, 140) })
-        )
-      ))
-      circles.forEach(circle => this.scene && this.scene.add(circle))
-      this.setState({ circles: [...this.state.circles, ...circles] })
-    } else {
-      const circlesToRemove: THREE.Mesh[] = this.state.circles.slice(props.numCircles)
-      circlesToRemove.forEach(circle => this.scene && this.scene.remove(circle))
-      circles = this.state.circles.slice(0, props.numCircles)
-      this.setState({ circles })
+    const { numCircles } = props
+    const { scene, circles } = this.state
+    // todo: remove this check - don't require scene be initialized
+    if (!scene) {
+      return
     }
+    const difCircles = numCircles - circles.length
+    let newCircles: THREE.Mesh[] = []
+    if (difCircles > 0) {
+      newCircles = times(difCircles, (i) => createCircle(percentToHsl(i/numCircles, 255, 140) ))
+      newCircles.forEach(circle => scene.scene.add(circle))
+      newCircles = circles.concat(newCircles)
+    } else {
+      const circlesToRemove: THREE.Mesh[] = circles.slice(numCircles, circles.length)
+      circlesToRemove.forEach(circle => scene.scene.remove(circle))
+      newCircles = circles.slice(0, numCircles)
+    }
+    this.setState({ circles: newCircles })
   }
 
   private loop = () => {
-    if (!this.renderer || !this.camera) {
+    const { numCircles, positionRadius, orbitRadius } = this.props
+    const { scene, circles } = this.state
+    // todo: remove this check - don't require scene be initialized
+    if (!scene || !this.elem) {
       return
     }
-    const { numCircles, positionRadius, orbitRadius } = this.props
-    this.state.circles.forEach((circle, i) => {
+    circles.forEach((circle, i) => {
       const { t, speed } = this.state
+      const offset = Math.abs(circles.length / 2 - i)
       const circleAng = (2 * Math.PI * i) / numCircles 
-      const xPhaseOffset = orbitRadius * (1 - Math.cos(t * (i+1) / numCircles))
-      const yPhaseOffset = orbitRadius * Math.sin(t * (i+1) / numCircles)
+      const xPhaseOffset = orbitRadius * (1 - Math.cos(t * (offset+1) / numCircles))
+      const yPhaseOffset = orbitRadius * Math.sin(t * (offset+1) / numCircles)
       circle.position.x = positionRadius * Math.cos(circleAng) + xPhaseOffset
       circle.position.y = positionRadius * Math.sin(circleAng) + yPhaseOffset
       circle.material = new THREE.MeshBasicMaterial({
-        color: percentageToHsl(((1 + Math.sin(t/numCircles)) / 2) * (i / numCircles), 255, 140)
+        color: percentToHsl(((1 + Math.sin(t/numCircles)) / 2) * (offset / numCircles), 255, 140)
       })
     })
 
     this.setState((state: State, props: Props) => {
-      if (this.renderer && this.camera && this.scene) {
-        this.renderer.render(this.scene, this.camera)
-      }
+      scene.renderer.render(scene.scene, scene.camera)
       requestAnimationFrame(this.loop)
       return {
         t: state.t + state.speed
@@ -118,36 +112,46 @@ export class Circles extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    this.initScene()
-    this.elem && this.renderer && this.elem.appendChild(this.renderer.domElement)
-    window.addEventListener('resize', this.onResize)
+    const { numCircles } = this.props
+    const elem = this.elem
+    if (!elem) {
+      return
+    }
+
+    const scene = createNewScene(elem.offsetWidth, elem.offsetHeight)
+    const circles = times(numCircles, (i) => createCircle(percentToHsl(i/numCircles, 255, 140) ))
+    circles.forEach(circle => scene && scene.scene.add(circle))
+    this.setState({ scene, circles }, () => {
+      this.onResize()
+      elem.appendChild(scene.renderer.domElement)
+      window.addEventListener('resize', this.onResize)
+      this.loop()
+    })
   }
 
   componentWillUnmount() {
-    this.elem && this.renderer && this.elem.removeChild(this.renderer.domElement)
+    const { scene } = this.state
     window.removeEventListener('resize', this.onResize)
+    this.elem && this.state.scene && this.elem.removeChild(this.state.scene.renderer.domElement)
   }
 
   private onResize = () => {
-    if (!this.renderer || !this.camera) {
+    const { scene } = this.state
+    if (!scene || !this.elem) {
       return
     }
-    if (this.elem) {
-      this.dimensions = {
-        height: this.elem.clientHeight,
-        width: this.elem.clientWidth,
-      }
-      this.camera.aspect = this.dimensions.width / this.dimensions.height
-      this.camera.updateProjectionMatrix()
-      this.renderer.setSize( this.dimensions.width, this.dimensions.height )
+    const dimensions = {
+      height: this.elem.offsetHeight,
+      width: this.elem.offsetWidth,
     }
+    scene.camera.aspect = dimensions.width / dimensions.height
+    scene.camera.updateProjectionMatrix()
+    scene.renderer.setSize(dimensions.width, dimensions.height)
   }
 
   render() {
     return (
-      <div className="circles">
-        <div ref={el => this.elem = el} />
-      </div>
+      <div className="circles" ref={el => this.elem = el} />
     )
   }
 }

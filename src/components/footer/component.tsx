@@ -1,40 +1,37 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import * as History from 'history'
 import * as FontAwesome from 'react-fontawesome'
-import { siteLinks } from 'ak.gg/components/header'
+import { RouteComponentProps, withRouter } from 'react-router-dom'
+import { PostList } from 'ak.gg/components/post-list'
+import { parsedPosts as posts } from 'ak.gg/utils/posts'
+import { HomeLink, Navigation } from 'ak.gg/components/navigation'
+import { SocialIcons } from 'ak.gg/components/social-icons'
 import './styles.scss'
 
-export const socialIcons = [
-  ["https://twitch.tv/L1fescape", "twitch"],
-  ["https://twitter.com/L1fescape", "twitter"],
-  ["https://instagram.com/L1fescape", "instagram"],
-  ["https://github.com/L1fescape", "github"],
-  ["https://steamcommunity.com/id/l1fescape", "steam"],
-  ["https://soundcloud.com/l1fescape", "soundcloud"],
-]
+type Props = RouteComponentProps<{
+  location: History.Location
+}>
 
-export interface PublicProps {}
 
-export class Footer extends React.Component<PublicProps> {
-  render() {
-    return (
-      <div className="footer">
-        <h4><Link to="/">ak.gg</Link></h4>
-        <ul className="menu">
-          { siteLinks.map(link => (
-            <li key={link.to} className={link.className}>
-              <Link to={link.to}>{link.title}</Link>
-            </li>
-          ))}
-        </ul>
-      { socialIcons.map((icon) => (
-        <li key={icon[0]}>
-          <a href={icon[0]} target="_blank">
-            <FontAwesome name={icon[1]} /> L1fescape
-          </a>
-        </li>
-      ))}
-      </div>
-    )
-  }
-}
+export const FooterPresentation: React.StatelessComponent<Props> = (props: Props) => (
+  <div className="footer">
+    <div>
+      <HomeLink />
+      <Navigation />
+      <SocialIcons showFull={true} />
+    </div>
+    <div>
+      <span className="title">some more cool stuff</span>
+      <PostList
+        first={5}
+        showLink={true}
+        posts={posts.filter(post => post.path.indexOf(props.location.pathname) === -1)}
+      />
+    </div>
+    <div className="note">
+      <p>If something is broken or you'd like to fix a spelling mistake, feel free to contribute on <a href="https://github.com/L1fescape/ak.gg"><FontAwesome name="github" /> GitHub</a>.</p>
+    </div>
+  </div>
+)
+
+export const Footer = withRouter(props => <FooterPresentation {...props} />)
