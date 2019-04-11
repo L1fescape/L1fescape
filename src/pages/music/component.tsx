@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { Page } from 'ak.gg/components/page'
+import { Link } from 'react-router-dom'
+import { PageRoots } from 'ak/pages'
 
-export const Music: React.StatelessComponent<{}> = () => (
-  <Page>
-    <h3>What I've been listening to:</h3>
-    
-  </Page>
+export const Music = () => (
+  <>
+    <Link to={PageRoots.Home}>home</Link>
+    <p>tuuuunes</p>
+  </>
 )

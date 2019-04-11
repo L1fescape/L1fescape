@@ -1,26 +1,22 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "ak/*": ["src/*"],
+      "web/*": ["web/*"],
+    },
+    "outDir": "build/web",
     "target": "es6",
+    "moduleResolution": "node",
     "module": "commonjs",
     "jsx": "react",
-    "declaration": true,
+    "allowJs": true,
     "sourceMap": true,
-    "outDir": "./js",
-    "strict": true,
-    "noImplicitAny": false,
-    "baseUrl": "./src",
-    "paths": {
-      "ak.gg/*": ["./*"],
-    },
-    "typeRoots": ["./src/types"],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "allowSyntheticDefaultImports": true
+    "noImplicitAny": true,
   },
   "include": [
-    "./src/**/*"
+    "web/index.tsx",
+    "src/**/*",
   ],
-  "exclude": [
-    "./src/**/*.test.tsx"
-  ]
+  "exclude": ["test.ts", "**/*.spec.ts"]
 }

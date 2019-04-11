@@ -10,12 +10,6 @@ install [node](https://nodejs.org/en/download/) and [yarn](https://yarnpkg.com/l
 $ yarn start
 ```
 
-or start a dev server with hot-reloading
-
-```
-$ yarn dev
-```
-
 ## features
 
 ### markdown code snippet custom options 
