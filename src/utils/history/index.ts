@@ -1,5 +1,8 @@
 import * as History from 'history'
 
+export type RouterHistory = History.History<any>
+export const createHistory = History.createBrowserHistory
+
 export const preserveScrollPosition = (getScrollPos: () => number, setScrollPos: (pos: number) => void) => {
   let prevPage: History.Location | null = null
   const pagePositions: {[key: string]: number} = {}

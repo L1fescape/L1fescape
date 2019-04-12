@@ -1,12 +1,20 @@
 import * as React from 'react'
 import { Header } from 'ak/components/header'
+import { useTitleEffect } from 'ak/utils/effects'
 import './styles.scss'
 
-export const Page: React.FC = props => (
-  <>
-    <Header />
-    <div className="page">
-      {props.children}
-    </div>
-  </>
-)
+export interface PublicProps {
+  title?: string
+}
+
+export const Page: React.FC<PublicProps> = props => {
+  useTitleEffect(props.title)
+  return (
+    <>
+      <Header />
+      <div className="page">
+        {props.children}
+      </div>
+    </>
+  )
+}

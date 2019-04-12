@@ -9,3 +9,22 @@
   right: 0;
   box-sizing: border-box;
 }
+
+.header {
+  padding: 1em;
+  overflow: auto;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+
+  .home-link {
+    flex-grow: 1;
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -1,5 +1,5 @@
 import { preserveScrollPosition } from './'
-import { PageRoots } from 'ak/pages';
+import { PageRoots } from 'ak/pages'
 
 test('preserves scroll position of previous pages when navigating back', () => {
   let scrollPos = 0

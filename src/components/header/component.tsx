@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { PageRoots } from 'ak/pages'
+import './styles.scss'
 
 export const Header = () => (
   <div className="header">
