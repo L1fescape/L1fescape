@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Header } from 'ak/components/header'
+import { Footer } from 'ak/components/footer'
 import { useTitleEffect } from 'ak/utils/effects'
 import './styles.scss'
 
@@ -15,6 +16,7 @@ export const Page: React.FC<PublicProps> = props => {
       <div className="page">
         {props.children}
       </div>
+      <Footer />
     </>
   )
 }
