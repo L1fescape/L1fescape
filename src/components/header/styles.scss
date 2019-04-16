@@ -1,23 +1,11 @@
 .header {
   font-family: 'Do Hyeon', sans-serif;
   padding: 1em;
-  overflow: auto;
   display: flex;
-  justify-content: flex-end;
-  top: 0;
-  left: 0;
-  right: 0;
-  box-sizing: border-box;
 }
 
 .header {
   padding: 1em;
-  overflow: auto;
-  display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  box-sizing: border-box;
 
   .home-link {
     flex-grow: 1;
@@ -25,6 +13,21 @@
 
   .navigation {
     display: flex;
-    justify-content: flex-end;
+    a {
+      padding: 0 0.5rem;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }

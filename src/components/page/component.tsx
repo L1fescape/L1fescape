@@ -5,18 +5,23 @@ import { useTitleEffect } from 'ak/utils/effects'
 import './styles.scss'
 
 export interface PublicProps {
+  className?: string
   title?: string
+  noHeader?: boolean
+  noFooter?: boolean
+  fixedHeader?: boolean
 }
 
 export const Page: React.FC<PublicProps> = props => {
-  useTitleEffect(props.title)
+  const { className, title, noHeader, noFooter, fixedHeader, children } = props
+  useTitleEffect(title)
   return (
-    <>
-      <Header />
-      <div className="page">
-        {props.children}
+    <div className={`page ${typeof className !== 'undefined' ? className : ''}`}>
+      { typeof noHeader !== 'undefined' && noHeader ? null : <Header fixed={fixedHeader} /> }
+      <div className="content">
+        {children}
       </div>
-      <Footer />
-    </>
+      { typeof noFooter !== 'undefined' && noFooter ? null : <Footer /> }
+    </div>
   )
 }

@@ -1,0 +1,30 @@
+.woulg-intro {
+  background: #262526;
+}
+
+.intro {
+  .content {
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  p {
+    max-width: 20rem;
+    padding: 2rem;
+    margin: 0 auto;
+    background-color: transparentize(#262625, 0.25);
+  }
+}
+
+
+.posts {
+  .header {
+    background-color: transparentize(#262625, 0.25);
+  }
+  .content {
+    margin-top: 5rem;
+  }
+}

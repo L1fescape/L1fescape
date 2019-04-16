@@ -9,14 +9,12 @@ export interface PublicProps {
 
 export const Router: React.FC<PublicProps> = props => (
   <ReactRouter history={props.history}>
-    <div className="wrapper">
-      <Switch>
-        <Route exact path={PageRoots.Home} component={Home} />
-        <Route path={PageRoots.Music} component={Music} />
-        <Route component={FourOhFour} />
-      </Switch>
-      {props.children}
-    </div>
+    <Switch>
+      <Route exact path={PageRoots.Home} component={Home} />
+      <Route path={PageRoots.Music} component={Music} />
+      <Route component={FourOhFour} />
+    </Switch>
+    {props.children}
   </ReactRouter>
 )
 
