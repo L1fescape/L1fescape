@@ -12,6 +12,7 @@ export function createLines(count: number, colors: string[]): DrawFn[] {
     let speed = Math.random() * 2
     let colorIndex = Math.floor(Math.random() * colors.length)
     let initialized = false
+    const angle = 10
 
     const drawLine = (ctx: CanvasRenderingContext2D, height: number, width: number) => {
       if (!initialized) {
@@ -20,17 +21,18 @@ export function createLines(count: number, colors: string[]): DrawFn[] {
         initialized = true
       }
 
+      const base = height * Math.sin(angle * Math.PI / 180) / Math.sin((90 - angle) * Math.PI / 180)
       ctx.beginPath()
-      ctx.moveTo(x - 60, 0)
-      ctx.lineTo(40 + x, height)
+      ctx.moveTo(x, 0)
+      ctx.lineTo(x + base, height)
       ctx.strokeStyle = colors[colorIndex]
       ctx.lineWidth = speed
       ctx.stroke()
 
       x += dir * speed
-      if (x >= width || x <= 0) {
-        x = Math.min(x, width)
-        x = Math.max(x, 0)
+      if (x >= width + base || x <= 0 - base) {
+        x = Math.min(x, width + base)
+        x = Math.max(x, 0 - base)
         dir = dir * -1
         colorIndex++
         if (colorIndex >= colors.length) {
