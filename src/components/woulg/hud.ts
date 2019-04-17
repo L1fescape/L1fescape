@@ -13,7 +13,8 @@ export function drawHud(ctx: CanvasRenderingContext2D, height: number, width: nu
   ctx.beginPath()
   ctx.moveTo(width - 5, 15)
   ctx.lineTo(width - 130, 10)
-  ctx.lineTo(width - 100, 55)
+  ctx.lineTo(width - 130, 20)
+  ctx.lineTo(width - 110, 55)
   ctx.lineTo(width - 5, 40)
   ctx.fill()
 

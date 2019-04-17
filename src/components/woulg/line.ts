@@ -12,7 +12,7 @@ export function createLines(count: number, colors: string[]): DrawFn[] {
     let speed = Math.random() * 2
     let colorIndex = Math.floor(Math.random() * colors.length)
     let initialized = false
-    const angle = 10
+    const angle = Math.random() * 20
 
     const drawLine = (ctx: CanvasRenderingContext2D, height: number, width: number) => {
       if (!initialized) {

@@ -20,7 +20,7 @@ export interface WoulgOpts {
 export function withWoulg<P>(Component: React.ComponentType<P>, opts: WoulgOpts = {}) {
   const { canvasClassName } = opts
   // config woulg
-  const loop = createLoop({ lineCount: 50, colors, })
+  const loop = createLoop({ lineCount: 200, colors, })
   return (props: P) => {
     const shadowedEl = useRef(null)
     const canvasEl = useRef(null)

@@ -1,5 +1,4 @@
 import { LineOptions, createLines } from './line'
-import { drawHud } from './hud'
 
 export type DrawFn = (ctx: CanvasRenderingContext2D, height: number, width: number) => void
 
@@ -12,6 +11,5 @@ export function createLoop(opts: LineOptions) {
     canvasEl.width = width
     ctx.clearRect(0, 0, width, height)
     lines.map((drawLine: DrawFn) => drawLine(ctx, height, width))
-    drawHud(ctx, height, width)
   }
 }
