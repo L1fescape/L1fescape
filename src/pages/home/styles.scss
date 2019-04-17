@@ -3,6 +3,8 @@
 }
 
 .intro {
+  height: 100vh;
+
   .content {
     display: flex;
     height: 100%;
@@ -16,6 +18,11 @@
     padding: 2rem;
     margin: 0 auto;
     background-color: transparentize(#262625, 0.25);
+  }
+  .hover {
+    p {
+      background: none;
+    }
   }
 }
 

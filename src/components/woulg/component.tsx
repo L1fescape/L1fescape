@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useLoopEffect } from 'ak/utils/effects'
 import { createLoop } from './loop'
 import './styles.scss'
@@ -17,27 +17,31 @@ export interface WoulgOpts {
   canvasClassName?: string
 }
 
+export const Woulg: React.FC<WoulgOpts> = (props) => {
+  const { canvasClassName, children } = props 
+  const shadowedEl = useRef(null)
+  const canvasEl = useRef(null)
+  const [ loop ] = useState(() => createLoop({ lineCount: 200, colors }))
+  useLoopEffect(() => {
+    if (canvasEl && shadowedEl) {
+      const { offsetHeight: height, offsetWidth: width } = shadowedEl.current
+      loop(canvasEl.current, height, width)
+    }
+  })
+  return (
+    <>
+      <canvas ref={canvasEl} className={cn('woulg', canvasClassName)} />
+      <div ref={shadowedEl} className="woulg-content">
+        {children}
+      </div>
+    </>
+  )
+}
+
 export function withWoulg<P>(Component: React.ComponentType<P>, opts: WoulgOpts = {}) {
-  const { canvasClassName } = opts
-  // config woulg
-  const loop = createLoop({ lineCount: 200, colors, })
-  return (props: P) => {
-    const shadowedEl = useRef(null)
-    const canvasEl = useRef(null)
-    // start it
-    useLoopEffect(() => {
-      if (canvasEl && shadowedEl) {
-        const { offsetHeight: height, offsetWidth: width } = shadowedEl.current
-        loop(canvasEl.current, height, width)
-      }
-    })
-    return (
-      <>
-        <canvas ref={canvasEl} className={cn('woulg', canvasClassName)} />
-        <div ref={shadowedEl} className="woulg-content">
-          <Component {...props} />
-        </div>
-      </>
-    )
-  }
+  return (props: P) => (
+    <Woulg {...opts}>
+      <Component {...props} />
+    </Woulg>
+  )
 }
