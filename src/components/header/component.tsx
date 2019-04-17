@@ -10,13 +10,11 @@ export interface PublicProps {
 }
 
 export const Header = (props: PublicProps) => {
-  let { fixed, hideHomeLink } = props
-  fixed = typeof fixed !== 'undefined' && fixed
-  hideHomeLink = typeof hideHomeLink !== 'undefined' && hideHomeLink
+  const { fixed, hideHomeLink } = props
   return (
     <div className={cn('header', fixed && 'fixed')}>
       <div className="home-link">
-        { hideHomeLink ? null : (
+        { typeof hideHomeLink !== 'undefined' && hideHomeLink ? null : (
           <Link to={PageRoots.Home}>ak.gg</Link>
         )}
       </div>
