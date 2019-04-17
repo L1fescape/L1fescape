@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { Router, createHistory, preserveScrollPosition } from 'ak/utils'
+import { Router, createHistory, preserveScrollPosition } from 'ak.gg/utils'
 import './styles.scss'
 
 const history = createHistory()

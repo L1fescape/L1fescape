@@ -54,7 +54,7 @@
       "\\.(ts|tsx)$": "ts-jest"
     },
     "moduleNameMapper": {
-      "^ak(.*)$": "<rootDir>/src$1",
+      "^ak.gg(.*)$": "<rootDir>/src$1",
       "^web(.*)$": "<rootDir>/web$1",
       "\\.(css|scss)$": "identity-obj-proxy"
     }

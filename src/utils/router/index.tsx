@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Router as ReactRouter, Route, Switch } from 'react-router'
-import { RouterHistory } from 'ak/utils'
-import { PageRoots, Home, Music, FourOhFour } from 'ak/pages'
+import { RouterHistory } from 'ak.gg/utils'
+import { PageRoots, Home, Music, Art, FourOhFour } from 'ak.gg/pages'
 
 export interface PublicProps {
   history: RouterHistory
@@ -9,12 +9,14 @@ export interface PublicProps {
 
 export const Router: React.FC<PublicProps> = props => (
   <ReactRouter history={props.history}>
+  {props.children || (
     <Switch>
       <Route exact path={PageRoots.Home} component={Home} />
       <Route path={PageRoots.Music} component={Music} />
+      <Route path={PageRoots.Art} component={Art} />
       <Route component={FourOhFour} />
     </Switch>
-    {props.children}
+  )}
   </ReactRouter>
 )
 

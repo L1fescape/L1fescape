@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "ak/*": ["src/*"],
+      "ak.gg/*": ["src/*"],
       "web/*": ["web/*"],
     },
     "outDir": "build/web",

@@ -19,7 +19,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'ak': src,
+      'ak.gg': src,
       'web': web,
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],

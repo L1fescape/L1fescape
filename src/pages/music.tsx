@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Page } from 'ak/components/page'
+import { Page } from 'ak.gg/components/page'
 
 export const Music = () => (
   <Page title="music">

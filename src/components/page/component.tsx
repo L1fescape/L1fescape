@@ -1,8 +1,8 @@
 import * as React from 'react'
 import * as cn from 'classnames'
-import { Header } from 'ak/components/header'
-import { Footer } from 'ak/components/footer'
-import { useTitleEffect } from 'ak/utils/effects'
+import { Header } from 'ak.gg/components/header'
+import { Footer } from 'ak.gg/components/footer'
+import { useTitleEffect } from 'ak.gg/utils/effects'
 import './styles.scss'
 
 export interface PublicProps {

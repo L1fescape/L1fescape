@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as History from 'history'
 import { Router } from './'
-import { PageRoots, Home, Music, FourOhFour } from 'ak/pages'
+import { PageRoots, Home, Music, FourOhFour } from 'ak.gg/pages'
 import * as TestRenderer from 'react-test-renderer'
 
 test('render correct pages based on route', () => {

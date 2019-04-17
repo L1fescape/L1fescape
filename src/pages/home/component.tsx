@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Page } from 'ak/components/page'
-import { Woulg } from 'ak/components/woulg'
+import { Page } from 'ak.gg/components/page'
+import { Woulg } from 'ak.gg/components/woulg'
 import './styles.scss'
 
 const Intro = () => (
