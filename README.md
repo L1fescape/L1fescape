@@ -10,8 +10,6 @@ install [node](https://nodejs.org/en/download/) and [yarn](https://yarnpkg.com/l
 $ yarn start
 ```
 
-## features
+## issues?
 
-### markdown code snippet custom options 
-
-there are some usecases where wrapping code snippets is useful and others where it makes more sense to just show everything. I wanted a simple way to specify in markdown how the code snippet to be displayed.
+[let's solve 'em!](https://github.com/L1fescape/ak.gg/issues/new)

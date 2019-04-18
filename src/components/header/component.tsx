@@ -21,7 +21,7 @@ export const Header = (props: PublicProps) => {
       <div className="navigation">
         <Link to={PageRoots.Art}>art</Link>
         <Link to={PageRoots.Music}>music</Link>
-        <Link to={PageRoots.Music}>blog</Link>
+        <Link to={PageRoots.Notes}>notes</Link>
       </div>
     </div>
 

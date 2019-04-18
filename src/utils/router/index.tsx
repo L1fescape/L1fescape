@@ -11,7 +11,7 @@ export const Router: React.FC<PublicProps> = props => (
   <ReactRouter history={props.history}>
   {props.children || (
     <Switch>
-      <Route exact path={PageRoots.Home} component={Home} />
+      <Route path={PageRoots.Home} component={Home} />
       <Route path={PageRoots.Music} component={Music} />
       <Route path={PageRoots.Art} component={Art} />
       <Route component={FourOhFour} />
@@ -20,7 +20,7 @@ export const Router: React.FC<PublicProps> = props => (
   </ReactRouter>
 )
 
-export function withRouter<P>(Component: React.ComponentType<P>, history: RouterHistory) {
+export function withRouter<P>(Component: React.ComponentType<P>, history: RouterHistory): React.FC<P> {
   return (props: P) => {
     return (
       <Router history={history}>
