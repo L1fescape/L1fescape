@@ -1,3 +1,4 @@
 export * from './effects'
-export * from './router'
+export * from '.'
 export * from './history'
+export * from './router'

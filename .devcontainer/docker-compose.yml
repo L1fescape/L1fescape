@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      HOST: 0.0.0.0
+    volumes:
+      - ~/.gitconfig:/root/.gitconfig
+      # don't mount the root because the dockerignore will be ignored
+      # https://github.com/docker/compose/issues/1607#issuecomment-448392889
+      - ../src:/workspace/src
+      - ../web:/workspace/web
+      - ../articles:/workspace/articles
+      - ../package.json:/workspace/package.json
+      - ../tsconfig.json:/workspace/tsconfig.json
+      - ../.gitignore:/workspace/.gitignore
+      - ../.devcontainer:/workspace/.devcontainer
+    command: sleep infinity

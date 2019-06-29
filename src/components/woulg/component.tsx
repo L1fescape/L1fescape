@@ -1,16 +1,21 @@
 import * as React from 'react'
 import { useRef, useState } from 'react'
 import { useLoopEffect } from 'ak.gg/utils/effects'
-import { createLoop } from './loop'
+import { createLoop, DrawFn } from './loop'
 import './styles.scss'
 import * as cn from 'classnames'
 
 const colors = [ 
-  '#FF6B53',
-  '#9F6A58',
-  '#565F51',
-  '#194A2F',
-  '#05290E',
+  // '#FF6B53',
+  // '#9F6A58',
+  // '#565F51',
+  // '#194A2F',
+  // '#05290E',
+  '#c6e5df',
+  '#ff5c50',
+  '#5190d9',
+  '#ffcf5a',
+  '#ffffff',
 ]
 
 export type WoulgWrapperComponent = 'div' | 'span'
@@ -20,14 +25,21 @@ export interface WoulgOpts {
   contentClassName?: string
   lineCount?: number
   component?: WoulgWrapperComponent
+  pixelRatio?: number
 }
 
 export const Woulg: React.FC<WoulgOpts> = (props) => {
-  const { canvasClassName, contentClassName, lineCount, children, component } = props 
+  const {
+    canvasClassName,
+    contentClassName,
+    component,
+    lineCount,
+    pixelRatio = window.devicePixelRatio,
+  } = props 
   const Component = component || 'div'
+  const [ loop ] = useState(() => createLoop({ lineCount: lineCount || 20, colors, pixelRatio }))
   const shadowedEl = useRef(null)
   const canvasEl = useRef(null)
-  const [ loop ] = useState(() => createLoop({ lineCount: lineCount || 200, colors }))
   useLoopEffect(() => {
     if (canvasEl && shadowedEl) {
       const { offsetHeight: height, offsetWidth: width } = shadowedEl.current
@@ -38,7 +50,7 @@ export const Woulg: React.FC<WoulgOpts> = (props) => {
     <>
       <canvas ref={canvasEl} className={cn('woulg', canvasClassName)} />
       <Component ref={shadowedEl} className={cn('woulg-content', contentClassName)}>
-        {children}
+        {props.children}
       </Component>
     </>
   )

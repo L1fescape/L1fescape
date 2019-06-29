@@ -3,6 +3,7 @@ import { DrawFn } from './loop'
 export interface LineOptions {
   lineCount: number
   colors: string[]
+  pixelRatio: number
 }
 
 export function createLines(count: number, colors: string[]): DrawFn[] {
@@ -14,7 +15,8 @@ export function createLines(count: number, colors: string[]): DrawFn[] {
     let initialized = false
     const angle = Math.random() * 20
 
-    const drawLine = (ctx: CanvasRenderingContext2D, height: number, width: number) => {
+    const drawLine = (canvasEl: HTMLCanvasElement, height: number, width: number) => {
+      const ctx = canvasEl.getContext('2d')
       if (!initialized) {
         x = Math.random() * width
         dir = Math.random() > 0.5 ? 1 : -1
@@ -26,7 +28,7 @@ export function createLines(count: number, colors: string[]): DrawFn[] {
       ctx.moveTo(x, 0)
       ctx.lineTo(x + base, height)
       ctx.strokeStyle = colors[colorIndex]
-      ctx.lineWidth = speed
+      ctx.lineWidth = 2 + speed * 2
       ctx.stroke()
 
       x += dir * speed

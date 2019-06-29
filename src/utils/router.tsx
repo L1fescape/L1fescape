@@ -1,19 +1,38 @@
 import * as React from 'react'
 import { Router as ReactRouter, Route, Switch } from 'react-router'
 import { RouterHistory } from 'ak.gg/utils'
-import { PageRoots, Home, Music, Art, FourOhFour } from 'ak.gg/pages'
+import { Home, Projects, Blog, FourOhFour } from 'ak.gg/pages'
 
 export interface PublicProps {
   history: RouterHistory
+}
+
+interface Page {
+  component: () => JSX.Element,
+  text: string,
+  path: string,
+}
+
+export const Pages: { [key: string]: Page } = {
+  home: { component: Home, text: 'ak.gg', path: '/', },
+  projects: { component: Projects, text: 'projects', path: '/projects', },
+  blog: { component: Blog, text: 'blog', path: '/blog', },
 }
 
 export const Router: React.FC<PublicProps> = props => (
   <ReactRouter history={props.history}>
   {props.children || (
     <Switch>
-      <Route path={PageRoots.Home} component={Home} />
-      <Route path={PageRoots.Music} component={Music} />
-      <Route path={PageRoots.Art} component={Art} />
+      { Object.keys(Pages).map(name => {
+        const page = Pages[name]
+        return (
+          <Route
+            key={name}
+            path={page.path}
+            component={page.component}
+          />
+        )
+      })}
       <Route component={FourOhFour} />
     </Switch>
   )}

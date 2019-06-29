@@ -19,11 +19,11 @@ export const Page: React.FC<PublicProps> = props => {
   useTitleEffect(title)
   return (
     <div className={cn('page', className)}>
-      { typeof noHeader !== 'undefined' && noHeader ? null : <Header fixed={fixedHeader} hideHomeLink={hideHomeLink} /> }
+      { noHeader ? null : <Header fixed={fixedHeader} hideHomeLink={hideHomeLink} /> }
       <div className="content">
         {children}
       </div>
-      { typeof noFooter !== 'undefined' && noFooter ? null : <Footer /> }
+      { noFooter ? null : <Footer /> }
     </div>
   )
 }

@@ -13,8 +13,8 @@ $ yarn start
 ## docker
 
 ```
-$ docker build -f web/Dockerfile -t www.ak.gg:latest .
-$ docker run -it -p 8000:80 www.ak.gg:latest
+$ docker build -f web/Dockerfile -t ak.gg:latest .
+$ docker run -it -p 8000:80 ak.gg:latest
 ```
 
 ## issues?

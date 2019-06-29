@@ -1,7 +1,3 @@
-.woulg-intro {
-  background: #262526;
-}
-
 .intro {
   height: 100vh;
 
@@ -17,16 +13,30 @@
     max-width: 20rem;
     padding: 2rem;
     margin: 0 auto;
-    background-color: transparentize(#262625, 0.25);
+    background-color: transparentize(#242424, 0.25);
   }
 }
 
 
 .posts {
-  .header {
-    background-color: transparentize(#262625, 0.25);
-  }
   .content {
     margin-top: 5rem;
+  }
+}
+
+.about {
+  border-top: 1rem solid #5190d9;
+  background: #ff5c50;
+  color: #242424;
+  padding: 0;
+
+  .content {
+    padding: 0;
+  }
+
+  section {
+    background: #fcfcfc;
+    margin-top: 1rem;
+    padding: 1rem;
   }
 }

@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 
+const defaultTitle = 'Andrew Kennedy'
+
 export function useTitleEffect(title?: string) {
   useEffect(() => {
-    if (title) {
-      document.title = title
-    }
+    document.title = title ? `${title} | ${defaultTitle}` : defaultTitle
   })
 }

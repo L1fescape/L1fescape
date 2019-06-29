@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 
 export function useLoopEffect(callback: () => void) {
   let running: boolean = false 
@@ -8,12 +8,11 @@ export function useLoopEffect(callback: () => void) {
       requestAnimationFrame(loop)
     }
   }
-  useEffect(() => {
+  useLayoutEffect(() => {
     running = true
     requestAnimationFrame(loop)
     return () => {
       running = false
     }
-  })
+  }, [])
 }
-

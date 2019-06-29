@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Page } from 'ak.gg/components/page'
 
-export const Notes = () => (
-  <Page title="notes">
+export const Blog = () => (
+  <Page title="Blog">
     <p>notes</p>
   </Page>
 )

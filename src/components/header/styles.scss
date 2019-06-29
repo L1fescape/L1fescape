@@ -1,20 +1,29 @@
 .header {
+  padding: 1rem 0;
   font-family: 'Do Hyeon', sans-serif;
-  padding: 1em;
+  font-size: 1rem;
+  letter-spacing: 0.06rem;
   display: flex;
-}
-
-.header {
-  padding: 1em;
 
   .home-link {
     flex-grow: 1;
   }
 
+  a[href="/projects"] {
+    color: #c6e5df;
+  }
+  a[href="/blog"] {
+    color: #5190d9;
+  }
+
   .navigation {
+    padding: 0.5rem 1em;
     display: flex;
+    background-color: transparentize(#242424, 0.25);
+
     a {
-      padding: 0 0.5rem;
+      padding: 0 1rem;
+
       &:first-child {
         padding-left: 0;
       }
