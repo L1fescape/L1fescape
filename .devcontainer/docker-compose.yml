@@ -17,6 +17,7 @@ services:
       - ../articles:/workspace/articles
       - ../package.json:/workspace/package.json
       - ../tsconfig.json:/workspace/tsconfig.json
+      - ../.git:/workspace/.git
       - ../.gitignore:/workspace/.gitignore
       - ../.devcontainer:/workspace/.devcontainer
     command: sleep infinity

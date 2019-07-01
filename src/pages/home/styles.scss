@@ -1,42 +1,38 @@
-.intro {
+@import "ak.gg/styles/variables.scss";
+
+.home {
+  & > section:nth-child(2n - 1) {
+    color: $black;
+    background: $white;
+  }
+}
+
+.hi {
   height: 100vh;
 
-  .content {
-    display: flex;
-    height: 100%;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
-  }
-
-  p {
-    max-width: 20rem;
-    padding: 2rem;
-    margin: 0 auto;
-    background-color: transparentize(#242424, 0.25);
-  }
-}
-
-
-.posts {
-  .content {
-    margin-top: 5rem;
-  }
-}
-
-.about {
-  border-top: 1rem solid #5190d9;
-  background: #ff5c50;
-  color: #242424;
-  padding: 0;
-
-  .content {
-    padding: 0;
+  .header {
+    padding-bottom: 0;
   }
 
   section {
-    background: #fcfcfc;
-    margin-top: 1rem;
-    padding: 1rem;
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
   }
+
+  .intro {
+    max-width: 20rem;
+    padding: 2rem;
+    margin: 0 auto;
+    background-color: transparentize($black, 0.25);
+  }
+
+}
+
+.projects .content {
+  display: flex;
+  padding: 2rem 0;
 }

@@ -4,6 +4,7 @@
     "workspaceFolder": "/workspace",
     "service": "web",
     "appPort": 3000,
+    "runArgs": ["-it"],
     "extensions": [
         "ms-vscode.vscode-typescript-tslint-plugin"
     ],

@@ -1,11 +1,10 @@
 import * as React from 'react'
 import * as cn from 'classnames'
-import { Header } from 'ak.gg/components/header'
-import { Footer } from 'ak.gg/components/footer'
+import { Header, Footer } from 'ak.gg/components/page'
 import { useTitleEffect } from 'ak.gg/utils/effects'
 import './styles.scss'
 
-export interface PublicProps {
+export interface PageProps {
   className?: string
   title?: string
   noHeader?: boolean
@@ -14,7 +13,7 @@ export interface PublicProps {
   hideHomeLink?: boolean
 }
 
-export const Page: React.FC<PublicProps> = props => {
+export const Page: React.FC<PageProps> = props => {
   const { className, title, noHeader, noFooter, fixedHeader, hideHomeLink, children } = props
   useTitleEffect(title)
   return (

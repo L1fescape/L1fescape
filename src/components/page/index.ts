@@ -1,2 +1,3 @@
-export const HOME_ROOT = '/'
 export * from './component'
+export * from './components/header'
+export * from './components/footer'

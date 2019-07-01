@@ -23,7 +23,13 @@ References
         - easy to selectively sync folders
     - cons
         - merge conflicts not fun to fix (?)
-- 
+- cloud storage provider
+    - pros
+        - easy setup
+        - existing solution
+    - cons
+        - different quirks depending on provider
+            - syncs build files
 
 ## Providers
 - iCloud
@@ -33,6 +39,15 @@ References
 - syncthis
 
 These are the ones I have tried because I use them one way or another (paying for iCloud because lots of photos on my iPhone, paying for Google Drive because used it when on Android, One Drive installed on Windows already, used Dropbox in the past, heard syncthis could ignore files better)
+
+### iCloud
+pros
+- already using bc mac and iPhone
+cons
+- no insight into sync process
+- windows client quirky (had to reset application data to get it working correctly)
+- no linux client
+- default syncs trash folder, all documents, and desktop
 
 ### What if I don't want to pay for another cloud storage solution?
 You have two options: be careful about where build files are being stored.

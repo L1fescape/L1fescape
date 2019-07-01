@@ -22,7 +22,7 @@ export type WoulgWrapperComponent = 'div' | 'span'
 
 export interface WoulgOpts {
   canvasClassName?: string
-  contentClassName?: string
+  className?: string
   lineCount?: number
   component?: WoulgWrapperComponent
   pixelRatio?: number
@@ -31,11 +31,12 @@ export interface WoulgOpts {
 export const Woulg: React.FC<WoulgOpts> = (props) => {
   const {
     canvasClassName,
-    contentClassName,
+    className: contentClassName,
     component,
     lineCount,
     pixelRatio = window.devicePixelRatio,
   } = props 
+  console.log("asdfasdf")
   const Component = component || 'div'
   const [ loop ] = useState(() => createLoop({ lineCount: lineCount || 20, colors, pixelRatio }))
   const shadowedEl = useRef(null)

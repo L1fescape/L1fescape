@@ -1,0 +1,81 @@
+@import "ak.gg/styles/variables.scss";
+
+html, body {
+  font-family: 'Open Sans', sans-serif;
+  background: $black;
+  color: $white;
+  line-height: 1.5rem;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+}
+
+.home-link {
+  font-family: 'Do Hyeon', sans-serif;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+  color: #C77966;
+
+  &:hover {
+    color: #CE8978;
+  }
+}
+
+p {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+section {
+  padding: 1rem;
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+.hljs {
+  padding: 1em;
+  line-height: 1rem;
+  margin: 0;
+
+  &.wrap {
+    white-space: pre-wrap;
+  }
+}
+
+code {
+  padding: 0.1rem 0.3rem;
+  margin: 0 0.2rem;
+  background: $black;
+  color: $white;
+}
+
+ul {
+  padding-left: 2rem;
+  margin: 1rem 0 0;
+}

@@ -1,0 +1,58 @@
+@import "ak.gg/styles/variables.scss";
+
+.social {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+
+  li {
+    list-style: none;
+    display: inline-block;
+  }
+
+  svg {
+    display: inline-block;
+    height: 27px;
+    width: 27px;
+    vertical-align: bottom;
+  }
+
+  a {
+    color: $blue;
+    fill: $blue;
+    border-color: $blue;
+  }
+
+  // .twitter {
+  //   color: #007abc;
+  //   fill: #007abc;
+  //   border-color: #007abc;
+  // }
+
+  .instagram {
+    color: $green;
+    fill: $green;
+    border-color: $green;
+  }
+
+  .github {
+    color: $white;
+    fill: $white;
+    border-color: $white;
+  }
+
+  // .linkedin {
+  //   color: #0077b5;
+  //   fill: #0077b5;
+  //   border-color: #0077b5;
+  // }
+
+  .soundcloud {
+    color: $red;
+    fill: $red;
+    border-color: $red;
+  }
+
+
+}
