@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { Router, createHistory, preserveScrollPosition } from 'ak.gg/utils'
+import { App } from 'ak.gg/app'
+import { createHistory, preserveScrollPosition } from './history'
 import './styles.scss'
 
 const history = createHistory()
@@ -9,6 +10,6 @@ const setScrollPosition = (position: number) => window.scrollTo(0, position)
 history.listen(preserveScrollPosition(getScrollPosition, setScrollPosition))
 
 ReactDOM.render(
-  <Router history={history} />,
+  <App history={history} />,
   document.getElementById('root')
 )

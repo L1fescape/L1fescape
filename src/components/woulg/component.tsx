@@ -36,7 +36,6 @@ export const Woulg: React.FC<WoulgOpts> = (props) => {
     lineCount,
     pixelRatio = window.devicePixelRatio,
   } = props 
-  console.log("asdfasdf")
   const Component = component || 'div'
   const [ loop ] = useState(() => createLoop({ lineCount: lineCount || 20, colors, pixelRatio }))
   const shadowedEl = useRef(null)

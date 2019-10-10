@@ -14,7 +14,7 @@ services:
       # https://github.com/docker/compose/issues/1607#issuecomment-448392889
       - ../src:/workspace/src
       - ../web:/workspace/web
-      - ../articles:/workspace/articles
+      - ../blog:/workspace/blog
       - ../package.json:/workspace/package.json
       - ../tsconfig.json:/workspace/tsconfig.json
       - ../.git:/workspace/.git

@@ -1,0 +1,13 @@
+.footer {
+  padding: 1rem;
+  display: flex;
+
+  .social {
+    flex-direction: row;
+
+    a {
+      padding: 1rem 1rem 1rem 0;
+      text-align: left;
+    }
+  }
+}

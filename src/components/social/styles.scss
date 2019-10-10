@@ -6,22 +6,21 @@
   display: flex;
   justify-content: space-around;
 
-  li {
-    list-style: none;
-    display: inline-block;
-  }
-
   svg {
     display: inline-block;
     height: 27px;
     width: 27px;
     vertical-align: bottom;
+    margin-bottom: -2px;
+    margin-right: 2px;
   }
 
   a {
     color: $blue;
     fill: $blue;
     border-color: $blue;
+    flex-grow: 1;
+    text-align: center;
   }
 
   // .twitter {
@@ -52,6 +51,9 @@
     color: $red;
     fill: $red;
     border-color: $red;
+    svg {
+      margin-right: 4px;
+    }
   }
 
 

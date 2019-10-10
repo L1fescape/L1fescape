@@ -8,4 +8,6 @@
     "extensions": [
         "ms-vscode.vscode-typescript-tslint-plugin"
     ],
+    "postCreateCommand": "yarn install",
+    "shutdownAction": "stopCompose"
 }
