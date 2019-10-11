@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { TwitterIcon } from 'ak.gg/components/social'
+import { Accounts, Platforms } from 'ak.gg/components/social'
 
 export interface PostFooterProps {
   title?: string
@@ -9,6 +9,7 @@ export interface PostFooterProps {
 function getShareTwitter(title: string, url: string, twitterHandle: string, twitterUserID: string) {
   const tweetTitle = title.split(" ").join("+")
   const tweetUrl = encodeURIComponent(url)
+  
   return (
     <>
       <h2>Share this post</h2>
@@ -21,6 +22,7 @@ function getShareTwitter(title: string, url: string, twitterHandle: string, twit
 
 export const PostFooter = (props: PostFooterProps) => {
   const { title, url } = props
+
   const sections = [(
     <>
       <h2>Subscribe</h2>
@@ -29,7 +31,8 @@ export const PostFooter = (props: PostFooterProps) => {
   )]
 
   if (title && url) {
-    sections.unshift(getShareTwitter(title, url, TwitterIcon.link, TwitterIcon.userID))
+    const account = Accounts[Platforms.Twitter]
+    sections.unshift(getShareTwitter(title, url, account.username, account.userID))
   }
 
   return (

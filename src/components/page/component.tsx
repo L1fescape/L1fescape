@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { useEffect } from 'react'
 import * as cn from 'classnames'
-import { Footer } from 'ak.gg/components'
-import { HeaderContext } from 'ak.gg/components'
+import { HeaderContext, Footer } from 'ak.gg/components'
 import { useTitleEffect } from 'ak.gg/utils/effects'
 import './styles.scss'
 
@@ -16,11 +15,12 @@ export interface PageProps {
 }
 
 export const Page: React.FC<PageProps> = props => {
-  const { className, title, noFooter, fixedHeader, hideHomeLink, children } = props
-  const { setHeaderFixed, setHeaderHomeLinkVisible } = React.useContext(HeaderContext)
+  const { className, title, noHeader, noFooter, fixedHeader, hideHomeLink, children } = props
+  const { setHeaderFixed, setHeaderHomeLinkVisible, setHeaderHidden } = React.useContext(HeaderContext)
 
   useTitleEffect(title)
   useEffect(() => {
+    setHeaderHidden(noHeader)
     setHeaderFixed(fixedHeader)
     setHeaderHomeLinkVisible(hideHomeLink)
   }, [props])

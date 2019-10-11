@@ -1,72 +1,52 @@
-import {
-  SocialLink,
-  TwitterLink,
-  InstagramLink,
-  GitHubLink,
-  SoundCloudLink,
-  LinkedInLink,
-} from './links'
-import {
-  SocialIcon,
-  TwitterIcon,
-  InstagramIcon,
-  GitHubIcon,
-  SoundCloudIcon,
-  LinkedInIcon,
-} from './icons'
-
-export enum Platform {
-  Twitter = 'Twitter',
-  Instagram = 'Instagram',
-  GitHub = 'GitHub',
-  SoundCloud = 'SoundCloud',
-  LinkedIn = 'LinkedIn',
-}
+import { Links, Link } from './links'
+import { Icons, Icon } from './icons'
+import { Platforms } from './platforms'
 
 export interface Account {
   username?: string
   userID?: string
   title?: string
   url: string
-  link: SocialLink
-  icon: SocialIcon
+  link: Link
+  icon: Icon
 }
 
 export const Accounts: { [key: string]: Account } = {
-  [Platform.Twitter]: {
+  [Platforms.Twitter]: {
     username: 'L1fescape',
     userID: '7319852',
     url: 'https://twitter.com/l1fescape',
-    link: TwitterLink,
-    icon: TwitterIcon,
+    link: Links[Platforms.Twitter],
+    icon: Icons[Platforms.Twitter],
   },
-  [Platform.Instagram]: {
+  [Platforms.Instagram]: {
     username: 'L1fescape',
     url: 'https://www.instagram.com/l1fescape',
-    link: InstagramLink,
-    icon: InstagramIcon,
+    link: Links[Platforms.Instagram],
+    icon: Icons[Platforms.Instagram],
   },
-  [Platform.GitHub]: {
+  [Platforms.GitHub]: {
     username: 'L1fescape',
     url: 'https://github.com/l1fescape',
-    link: GitHubLink,
-    icon: GitHubIcon,
+    link: Links[Platforms.GitHub],
+    icon: Icons[Platforms.GitHub],
   },
-  [Platform.SoundCloud]: {
+  [Platforms.SoundCloud]: {
     username: 'L1fescape',
     url: 'https://soundcloud.com/l1fescape',
-    link: SoundCloudLink,
-    icon: SoundCloudIcon,
+    link: Links[Platforms.SoundCloud],
+    icon: Icons[Platforms.SoundCloud],
   },
-  [Platform.LinkedIn]: {
+  [Platforms.LinkedIn]: {
     username: 'L1fescape',
     url: 'https://www.linkedin.com/in/l1fescape/',
-    link: LinkedInLink,
-    icon: LinkedInIcon,
+    link: Links[Platforms.LinkedIn],
+    icon: Icons[Platforms.LinkedIn],
+  },
+  [Platforms.DevTo]: {
+    username: 'L1fescape',
+    url: 'https://dev.to//l1fescape/',
+    link: Links[Platforms.DevTo],
+    icon: Icons[Platforms.DevTo],
   },
 }
-
-export const AccountsList: Account[] = Object.keys(Accounts).map(key => ({
-  ...Accounts[key as Platform],
-  title: key,
-}))

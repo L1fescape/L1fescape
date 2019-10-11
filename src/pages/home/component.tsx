@@ -2,8 +2,11 @@ import * as React from 'react'
 import { Woulg } from 'ak.gg/components/woulg'
 import { Link } from 'react-router-dom'
 import { Routes } from 'ak.gg/router'
-import { Page, SocialIcons, GitHubLink } from 'ak.gg/components'
+import { Page } from 'ak.gg/components'
+import { SocialIcons, Links, Platforms } from 'ak.gg/components/social'
 import './styles.scss'
+
+const GitHubLink = Links[Platforms.GitHub]
 
 export const Home = () => (
   <Page className="home" hideHomeLink>
@@ -11,7 +14,7 @@ export const Home = () => (
       <section>
         <div className="intro">
           <p><strong>Andrew Kennedy</strong> is a software engineer and musician based in San Francisco, CA</p>
-          <SocialIcons />
+          <SocialIcons hideTitle />
         </div>
       </section>
     </Woulg>

@@ -8,6 +8,7 @@ import './styles.scss'
 interface SetHeaderState {
   setHeaderFixed?(fixed: boolean): void
   setHeaderHomeLinkVisible?(hideHomeLink: boolean): void
+  setHeaderHidden?(headerHidden: boolean): void
 }
 
 interface HeaderProps {
