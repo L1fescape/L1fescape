@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Woulg } from 'ak.gg/components/woulg'
 import { Link } from 'react-router-dom'
 import { Routes } from 'ak.gg/router'
-import { Page, SocialIcons } from 'ak.gg/components'
+import { Page, SocialIcons, GitHubLink } from 'ak.gg/components'
 import './styles.scss'
 
 export const Home = () => (
@@ -15,6 +15,11 @@ export const Home = () => (
         </div>
       </section>
     </Woulg>
+    <section className="about">
+      <h2>Hello! 👋</h2>
+      <h3>Quick Intro</h3>
+      <p>I'm Andrew and I like writing music, skateboarding, and making things with code. During the day I'm a Software Engineer at <a href="https://saucelabs.com" target="_blank" rel="noopener noreferrer">Sauce Labs</a>. At night I work on <GitHubLink>open source projects</GitHubLink> and make beats.</p>
+    </section>
     <section className="projects">
       <h2>Projects</h2>
       <div className="content">
@@ -29,11 +34,6 @@ export const Home = () => (
     </section>
     <section className="blog">
       <h2>Latest from the <Link to={Routes.Blog}>Blog</Link></h2>
-    </section>
-    <section className="about">
-      <h2>Hello! 👋</h2>
-      <h3>Quick Intro</h3>
-      <p>Andrew likes writing music, skateboarding, and making things with code. During the day he's a Software Engineer at Twitch. At night I work on open source projects and make beats.</p>
     </section>
   </Page>
 )

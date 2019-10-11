@@ -1,13 +1,19 @@
 .footer {
   padding: 1rem;
   display: flex;
+  flex-direction: column;
 
   .social {
     flex-direction: row;
 
     a {
-      padding: 1rem 1rem 1rem 0;
       text-align: left;
     }
+  }
+
+  .copyme {
+    margin: 2rem 1rem 1rem;
+    text-align: center;
+    font-size: 0.8rem;
   }
 }

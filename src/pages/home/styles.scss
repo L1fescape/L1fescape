@@ -3,12 +3,12 @@
 .home {
   position: relative;
   z-index: 1;
-  grid-column: 1;
-  grid-row: 1;
 
   &.page .content {
+    margin: 0;
     padding: 0;
   }
+
 
   & > section:nth-child(2n - 1) {
     color: $black;
@@ -25,10 +25,6 @@
   display: flex;
   flex-direction: column;
 
-  .header {
-    padding-bottom: 0;
-  }
-
   section {
     display: flex;
     flex-grow: 1;
@@ -38,8 +34,9 @@
   }
 
   .intro {
-    max-width: 20rem;
     padding: 2rem;
+    margin: 0 4rem;
+    max-width: 24rem;
     background-color: transparentize($black, 0.25);
   }
 

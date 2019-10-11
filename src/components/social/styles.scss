@@ -8,11 +8,11 @@
 
   svg {
     display: inline-block;
-    height: 27px;
-    width: 27px;
+    height: 2rem;
+    width: 2rem;
     vertical-align: bottom;
-    margin-bottom: -2px;
-    margin-right: 2px;
+    margin-bottom: -0.2rem;
+    margin-right: 0.2rem;
   }
 
   a {
@@ -21,6 +21,14 @@
     border-color: $blue;
     flex-grow: 1;
     text-align: center;
+    padding: 1rem;
+
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
   }
 
   // .twitter {
@@ -33,12 +41,18 @@
     color: $green;
     fill: $green;
     border-color: $green;
+    svg {
+      margin-right: 0.4rem;
+    }
   }
 
   .github {
     color: $white;
     fill: $white;
     border-color: $white;
+    svg {
+      margin-right: 0.4rem;
+    }
   }
 
   // .linkedin {
@@ -52,7 +66,7 @@
     fill: $red;
     border-color: $red;
     svg {
-      margin-right: 4px;
+      margin-right: 0.8rem;
     }
   }
 

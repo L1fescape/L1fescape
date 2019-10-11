@@ -1,8 +1,12 @@
 import * as React from 'react'
 import { Page } from 'ak.gg/components/page'
+import { PostFooter } from 'ak.gg/components/blog-post-footer'
 
 export const Blog = () => (
   <Page title="blog">
-    <p>notes</p>
+    <section>
+      <p>notes</p>
+    </section>
+    <PostFooter />
   </Page>
 )

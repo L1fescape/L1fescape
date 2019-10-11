@@ -1,27 +1,17 @@
 import * as React from 'react'
-import { icons } from './icons'
-import './styles.scss'
+import { AccountsList } from './accounts'
 
-
-export interface SocialProps {
-  names?: boolean
+export interface SocialIconsProps {
+  hideTitle?: boolean
 }
 
-export const SocialIcons: React.FC<SocialProps> = props => {
-  return (
-    <div className="social">
-      {icons.map(icon => (
-        <a
-          key={icon.title}
-          title={icon.title}
-          className={icon.title.toLowerCase()}
-          href={icon.title}
-          target="_blank"
-          rel="me">
-          {icon.icon}
-          {props.names && icon.title}
-        </a>
-      ))}
-    </div>
-  )
-}
+export const SocialIcons: React.FC<SocialIconsProps> = props => (
+  <>
+    {AccountsList.map(account => (
+      <account.link>
+        {account.icon}
+        {!props.hideTitle && account.title}
+      </account.link>
+    ))}
+  </>
+)
