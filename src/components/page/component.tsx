@@ -15,8 +15,20 @@ export interface PageProps {
 }
 
 export const Page: React.FC<PageProps> = props => {
-  const { className, title, noHeader, noFooter, fixedHeader, hideHomeLink, children } = props
-  const { setHeaderFixed, setHeaderHomeLinkVisible, setHeaderHidden } = React.useContext(HeaderContext)
+  const {
+    className,
+    title,
+    noHeader,
+    noFooter,
+    fixedHeader,
+    hideHomeLink,
+    children,
+  } = props
+  const {
+    setHeaderFixed,
+    setHeaderHomeLinkVisible,
+    setHeaderHidden,
+  } = React.useContext(HeaderContext)
 
   useTitleEffect(title)
   useEffect(() => {
@@ -27,10 +39,8 @@ export const Page: React.FC<PageProps> = props => {
 
   return (
     <div className={cn('page', className)}>
-      <div className="content">
-        {children}
-      </div>
-      { noFooter ? null : <Footer /> }
+      <div className="content">{children}</div>
+      {noFooter ? null : <Footer />}
     </div>
   )
 }

@@ -7,7 +7,7 @@ export interface LineOptions {
 }
 
 export function createLines(count: number, colors: string[]): DrawFn[] {
-  const initLine = () => { 
+  const initLine = () => {
     let x = 0
     let dir = 1
     let speed = Math.random() * 2
@@ -15,7 +15,11 @@ export function createLines(count: number, colors: string[]): DrawFn[] {
     let initialized = false
     const angle = Math.random() * 20
 
-    const drawLine = (canvasEl: HTMLCanvasElement, height: number, width: number) => {
+    const drawLine = (
+      canvasEl: HTMLCanvasElement,
+      height: number,
+      width: number
+    ) => {
       const ctx = canvasEl.getContext('2d')
       if (!initialized) {
         x = Math.random() * width
@@ -23,7 +27,9 @@ export function createLines(count: number, colors: string[]): DrawFn[] {
         initialized = true
       }
 
-      const base = height * Math.sin(angle * Math.PI / 180) / Math.sin((90 - angle) * Math.PI / 180)
+      const base =
+        (height * Math.sin((angle * Math.PI) / 180)) /
+        Math.sin(((90 - angle) * Math.PI) / 180)
       ctx.beginPath()
       ctx.moveTo(x, 0)
       ctx.lineTo(x + base, height)

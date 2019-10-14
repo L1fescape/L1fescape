@@ -1,7 +1,7 @@
 import { useLayoutEffect } from 'react'
 
 export function useLoopEffect(callback: () => void) {
-  let running: boolean = false 
+  let running: boolean = false
   const loop = () => {
     if (running) {
       callback()

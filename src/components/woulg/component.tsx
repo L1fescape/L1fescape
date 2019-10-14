@@ -5,7 +5,7 @@ import { createLoop, DrawFn } from './loop'
 import './styles.scss'
 import * as cn from 'classnames'
 
-const colors = [ 
+const colors = [
   // '#FF6B53',
   // '#9F6A58',
   // '#565F51',
@@ -28,16 +28,18 @@ export interface WoulgOpts {
   pixelRatio?: number
 }
 
-export const Woulg: React.FC<WoulgOpts> = (props) => {
+export const Woulg: React.FC<WoulgOpts> = props => {
   const {
     canvasClassName,
     className: contentClassName,
     component,
     lineCount,
     pixelRatio = window.devicePixelRatio,
-  } = props 
+  } = props
   const Component = component || 'div'
-  const [ loop ] = useState(() => createLoop({ lineCount: lineCount || 20, colors, pixelRatio }))
+  const [loop] = useState(() =>
+    createLoop({ lineCount: lineCount || 20, colors, pixelRatio })
+  )
   const shadowedEl = useRef(null)
   const canvasEl = useRef(null)
   useLoopEffect(() => {
@@ -49,14 +51,20 @@ export const Woulg: React.FC<WoulgOpts> = (props) => {
   return (
     <>
       <canvas ref={canvasEl} className={cn('woulg', canvasClassName)} />
-      <Component ref={shadowedEl} className={cn('woulg-content', contentClassName)}>
+      <Component
+        ref={shadowedEl}
+        className={cn('woulg-content', contentClassName)}
+      >
         {props.children}
       </Component>
     </>
   )
 }
 
-export function withWoulg<P>(Component: React.ComponentType<P>, opts: WoulgOpts = {}) {
+export function withWoulg<P>(
+  Component: React.ComponentType<P>,
+  opts: WoulgOpts = {}
+) {
   return (props: P) => (
     <Woulg {...opts}>
       <Component {...props} />

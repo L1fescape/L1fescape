@@ -1,5 +1,3 @@
 import * as React from 'react'
 
-export const FourOhFour = () => (
-  <p>shit</p>
-)
+export const FourOhFour = () => <p>shit</p>

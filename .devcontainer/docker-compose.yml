@@ -5,13 +5,13 @@ services:
       context: ..
       dockerfile: .devcontainer/Dockerfile
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       HOST: 0.0.0.0
     volumes:
       - ~/.gitconfig:/root/.gitconfig
-      # don't mount the root because the dockerignore will be ignored
-      # https://github.com/docker/compose/issues/1607#issuecomment-448392889
+      - ../.devcontainer:/workspace/.devcontainer
+      - ../.vscode:/workspace/.vscode
       - ../src:/workspace/src
       - ../web:/workspace/web
       - ../blog:/workspace/blog
@@ -19,5 +19,4 @@ services:
       - ../tsconfig.json:/workspace/tsconfig.json
       - ../.git:/workspace/.git
       - ../.gitignore:/workspace/.gitignore
-      - ../.devcontainer:/workspace/.devcontainer
     command: sleep infinity

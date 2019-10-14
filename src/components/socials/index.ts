@@ -1,5 +1,5 @@
 export * from './component'
 export * from './accounts'
-export * from './platforms'
 export * from './icons'
+export * from './platforms'
 export * from './links'

@@ -8,12 +8,9 @@ export interface BlogPostProps {
   url: string
 }
 
-export const BlogPost = (props: BlogPostProps) => (
+export const BlogPost: React.FC<BlogPostProps> = props => (
   <Page title={`blog / ${props.title}`}>
     {props.content}
-    <PostFooter
-      title={props.title}
-      url={props.url}
-    />
+    <PostFooter title={props.title} url={props.url} />
   </Page>
 )

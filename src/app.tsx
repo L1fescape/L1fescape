@@ -9,14 +9,18 @@ export interface AppProps {
 }
 
 export const App = (props: AppProps) => {
-  const [ headerFixed, setHeaderFixed ]  = useState(false)
-  const [ hideHomeLink, setHeaderHomeLinkVisible ] = useState(false)
-  const [ noHeader, setHeaderHidden] = useState(false)
+  const [headerFixed, setHeaderFixed] = useState(false)
+  const [hideHomeLink, setHeaderHomeLinkVisible] = useState(false)
+  const [noHeader, setHeaderHidden] = useState(false)
 
   return (
-    <HeaderContext.Provider value={{ setHeaderFixed, setHeaderHomeLinkVisible, setHeaderHidden }}>
+    <HeaderContext.Provider
+      value={{ setHeaderFixed, setHeaderHomeLinkVisible, setHeaderHidden }}
+    >
       <Router history={props.history}>
-        {noHeader ? null : <Header hideHomeLink={hideHomeLink} fixed={headerFixed} /> }
+        {noHeader ? null : (
+          <Header hideHomeLink={hideHomeLink} fixed={headerFixed} />
+        )}
       </Router>
     </HeaderContext.Provider>
   )

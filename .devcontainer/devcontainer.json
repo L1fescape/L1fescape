@@ -1,13 +1,12 @@
 {
-    "name": "ak.gg",
-    "dockerComposeFile": "docker-compose.yml",
-    "workspaceFolder": "/workspace",
-    "service": "web",
-    "appPort": 3000,
-    "runArgs": ["-it"],
-    "extensions": [
-        "ms-vscode.vscode-typescript-tslint-plugin"
-    ],
-    "postCreateCommand": "yarn install",
-    "shutdownAction": "stopCompose"
+  "name": "ak.gg",
+  "dockerComposeFile": "docker-compose.yml",
+  "workspaceFolder": "/workspace",
+  "service": "web",
+  "appPort": 3000,
+  "runArgs": ["-it"],
+  "extensions": [
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "esbenp.prettier-vscode"
+  ]
 }

@@ -9,7 +9,8 @@
     "build:web": "cross-env NODE_ENV=production webpack --config web/webpack.config.js",
     "dev": "yarn && yarn dev:web",
     "dev:web": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --config web/webpack.config.js",
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -35,6 +36,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.7.1",
     "node-sass": "^4.11.0",
+    "prettier": "^1.18.2",
     "react-test-renderer": "^16.8.6",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
@@ -59,5 +61,10 @@
       "^web(.*)$": "<rootDir>/web$1",
       "\\.(css|scss)$": "identity-obj-proxy"
     }
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "semi": false,
+    "singleQuote": true
   }
 }

@@ -27,16 +27,16 @@ const HeaderComponent = (props: Props) => {
   return (
     <div className={cn('header', fixed && 'fixed')}>
       <div className="home-link">
-        { !!hideHomeLink ? null : (
+        {!!hideHomeLink ? null : (
           <Link to={Routes.Home}>{RouteToPageMap.get(Routes.Home).text}</Link>
         )}
       </div>
       <div className="navigation">
-        { NavRoutes.map(route => (
+        {NavRoutes.map(route => (
           <Link
             key={route}
             to={route}
-            className={activeRoute === route ? "active" : ""}
+            className={activeRoute === route ? 'active' : ''}
           >
             {RouteToPageMap.get(route).text}
           </Link>

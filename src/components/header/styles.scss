@@ -1,4 +1,4 @@
-@import "ak.gg/styles/variables.scss";
+@import 'ak.gg/styles/variables.scss';
 
 .header {
   font-family: 'Do Hyeon', sans-serif;
@@ -9,9 +9,14 @@
   right: 0;
   z-index: 2;
   display: flex;
-  
+
   a {
     padding: 0.4rem;
+
+    &:active {
+      padding-top: 0.6rem;
+      padding-bottom: 0.2rem;
+    }
   }
 
   .home-link {
@@ -27,28 +32,21 @@
     a {
       margin: 0 1rem;
       background: none;
-      transition: border 0.2s, padding 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      border-bottom: 0.2rem solid transparent;
-
-      &:active {
-        padding-top: 0.6rem;
-        padding-bottom: 0.2rem;
-      }
     }
 
-    a[href="/projects"] {
+    a[href='/projects'] {
       color: $projectsColor;
       &.active,
       &:hover {
-        border-bottom-color: $projectsColor; 
+        border-bottom-color: $projectsColor;
       }
     }
 
-    a[href="/blog"] {
+    a[href='/blog'] {
       color: $blogColor;
       &.active,
       &:hover {
-        border-bottom-color: $blogColor; 
+        border-bottom-color: $blogColor;
       }
     }
   }

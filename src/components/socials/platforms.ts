@@ -4,5 +4,7 @@ export enum Platforms {
   GitHub = 'GitHub',
   SoundCloud = 'SoundCloud',
   LinkedIn = 'LinkedIn',
-  DevTo = 'DEV'
+  DevTo = 'DEV',
+  SauceLabs = 'SauceLabs',
+  RSS = 'RSS',
 }

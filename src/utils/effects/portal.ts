@@ -15,4 +15,3 @@ export function usePortal(id: string) {
 
   return rootElemRef.current
 }
-  
