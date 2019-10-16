@@ -43,14 +43,7 @@ export const PostFooter = (props: PostFooterProps) => {
         {'To keep up with posts on this blog, you can '}
         <Links.RSS />
         {' or follow me on '}
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://dev.to/l1fescape"
-        >
-          DEV
-        </a>
-        .
+        <Links.DEV />.
       </p>
     </>,
   ]

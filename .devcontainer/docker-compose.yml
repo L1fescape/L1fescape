@@ -17,6 +17,8 @@ services:
       - ../blog:/workspace/blog
       - ../package.json:/workspace/package.json
       - ../tsconfig.json:/workspace/tsconfig.json
+      - ../netlify.toml:/workspace/netlify.toml
+      - ../README.md:/workspace/README.md
       - ../.git:/workspace/.git
       - ../.gitignore:/workspace/.gitignore
     command: sleep infinity

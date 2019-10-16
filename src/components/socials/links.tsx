@@ -15,30 +15,28 @@ const defaultLinkProps = {
   rel: 'noopener noreferrer',
 }
 
-function getLink(url: string, title: string): Link {
+function getLink(url: string, text: string, title?: string): Link {
   return props => (
     <a
-      title={title}
+      title={props.title || title || text}
       className={props.className || ''}
-      href={url}
+      href={props.url || url}
       {...defaultLinkProps}
     >
-      {props.children || title}
+      {props.children || text}
     </a>
   )
 }
 
 function getAccountLink(platform: Platforms): Link {
-  return props => (
-    <a
-      title={props.title || platform}
-      className={props.className || platform.toLowerCase()}
-      href={props.url || Accounts[platform].url}
-      {...defaultLinkProps}
-    >
-      {props.children || props.title}
-    </a>
-  )
+  return props => {
+    const Link = getLink(Accounts[platform].url, platform)
+    return (
+      <Link className={props.className || platform.toLowerCase()}>
+        {props.children}
+      </Link>
+    )
+  }
 }
 
 export const Links: { [key in Platforms]: Link } = {
@@ -48,6 +46,14 @@ export const Links: { [key in Platforms]: Link } = {
   [Platforms.SoundCloud]: getAccountLink(Platforms.SoundCloud),
   [Platforms.LinkedIn]: getAccountLink(Platforms.LinkedIn),
   [Platforms.DevTo]: getAccountLink(Platforms.DevTo),
-  [Platforms.RSS]: getLink('/feed.xml', 'subscribe via RSS'),
-  [Platforms.SauceLabs]: getLink('https://saucelabs.com', 'Sauce Labs'),
+  [Platforms.RSS]: getLink(
+    '/feed.xml',
+    'subscribe via RSS',
+    'Subscribe to the RSS feed'
+  ),
+  [Platforms.SauceLabs]: getLink(
+    'https://saucelabs.com',
+    'Sauce Labs',
+    'Sauce Labs: Cross Browser Testing, Selenium Testing, Mobile Testing'
+  ),
 }
