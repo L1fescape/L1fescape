@@ -12,6 +12,7 @@ export interface PageProps {
   noFooter?: boolean
   fixedHeader?: boolean
   hideHomeLink?: boolean
+  pageSource?: string
 }
 
 export const Page: React.FC<PageProps> = props => {
@@ -23,6 +24,7 @@ export const Page: React.FC<PageProps> = props => {
     fixedHeader,
     hideHomeLink,
     children,
+    pageSource,
   } = props
   const {
     setHeaderFixed,
@@ -40,7 +42,7 @@ export const Page: React.FC<PageProps> = props => {
   return (
     <div className={cn('page', className)}>
       <div className="content">{children}</div>
-      {noFooter ? null : <Footer />}
+      {noFooter ? null : <Footer pageSource={pageSource} />}
     </div>
   )
 }

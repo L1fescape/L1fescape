@@ -1,4 +1,5 @@
-import { Links, Link } from './links'
+import { Links } from './links'
+import { LinkComponentType } from 'ak.gg/components/link'
 import { Icons, Icon } from './icons'
 import { Platforms } from './platforms'
 
@@ -7,7 +8,7 @@ export interface Account {
   userID?: string
   title?: string
   url: string
-  link: Link
+  link: LinkComponentType
   icon: Icon
 }
 

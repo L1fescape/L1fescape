@@ -20,7 +20,7 @@ module.exports = {
   resolve: {
     alias: {
       'ak.gg': src,
-      'web': web,
+      web: web,
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
@@ -39,14 +39,28 @@ module.exports = {
   module: {
     rules: [
       { test: /\.tsx?$/, loader: 'ts-loader' },
-      { test: /\.scss$/, use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'sass-loader' }] },
-      { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file-loader?name=[name].[ext]' },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' },
+        ],
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file-loader?name=[name].[ext]',
+      },
       { test: /\.md$/, use: [{ loader: 'html-loader' }] },
     ],
   },
   optimization: {
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
     },
+  },
+  node: {
+    __filename: true,
+    __dirname: true,
   },
 }

@@ -7,10 +7,7 @@ export function usePortal(id: string) {
   useLayoutEffect(() => {
     const parentElem = document.querySelector(`#${id}`)
     parentElem.appendChild(rootElemRef.current)
-    return () => {
-      console.log('remove')
-      rootElemRef.current.remove()
-    }
+    return () => rootElemRef.current.remove()
   }, [])
 
   return rootElemRef.current

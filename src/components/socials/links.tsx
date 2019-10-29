@@ -1,45 +1,30 @@
 import * as React from 'react'
 import { Accounts } from './accounts'
 import { Platforms } from './platforms'
+import { Link, LinkComponentType } from 'ak.gg/components/link'
 
-export interface LinkProps {
-  className?: string
-  url?: string
-  title?: string
-}
-
-export type Link = React.FC<LinkProps>
-
-const defaultLinkProps = {
-  target: '_blank',
-  rel: 'noopener noreferrer',
-}
-
-function getLink(url: string, text: string, title?: string): Link {
+function getAccountLink(platform: Platforms): LinkComponentType {
   return props => (
-    <a
-      title={props.title || title || text}
-      className={props.className || ''}
-      href={props.url || url}
-      {...defaultLinkProps}
+    <Link
+      className={props.className || platform.toLowerCase()}
+      url={Accounts[platform].url}
+      title={platform}
+      {...props}
     >
-      {props.children || text}
-    </a>
+      {props.children || platform}
+    </Link>
   )
 }
 
-function getAccountLink(platform: Platforms): Link {
-  return props => {
-    const Link = getLink(Accounts[platform].url, platform)
-    return (
-      <Link className={props.className || platform.toLowerCase()}>
-        {props.children}
-      </Link>
-    )
-  }
+function getLink(url: string, text: string, title: string): LinkComponentType {
+  return props => (
+    <Link url={url} title={title} {...props}>
+      {props.children || text}
+    </Link>
+  )
 }
 
-export const Links: { [key in Platforms]: Link } = {
+export const Links: { [key in Platforms]: LinkComponentType } = {
   [Platforms.Twitter]: getAccountLink(Platforms.Twitter),
   [Platforms.Instagram]: getAccountLink(Platforms.Instagram),
   [Platforms.GitHub]: getAccountLink(Platforms.GitHub),
