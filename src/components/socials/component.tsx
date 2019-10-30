@@ -8,11 +8,14 @@ export interface SocialIconsProps {
 
 export const Socials: React.FC<SocialIconsProps> = props => (
   <div className="social">
-    {AccountsList.map(account => (
-      <account.link key={account.title}>
-        <account.icon />
-        {!props.hideTitle && <span>{account.title}</span>}
-      </account.link>
-    ))}
+    {!props.hideTitle && <h4>Elsewhere on the Internet</h4>}
+    <div className="links">
+      {AccountsList.map(({ Link, Icon, title }) => (
+        <Link key={title}>
+          <Icon />
+          {!props.hideTitle && <span>{title}</span>}
+        </Link>
+      ))}
+    </div>
   </div>
 )

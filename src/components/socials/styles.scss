@@ -1,13 +1,17 @@
 @import 'ak.gg/styles/variables.scss';
 
 .social {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: space-around;
+  & > h4 {
+    padding-left: 1rem;
+    margin: 0;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   svg {
-    display: inline-block;
     height: 2rem;
     width: 2rem;
     vertical-align: bottom;
@@ -22,8 +26,8 @@
     color: $blue;
     fill: $blue;
     border-color: $blue;
-    flex-grow: 1;
     text-align: center;
+    padding: 1rem;
     transition: all 0.2s ease;
     border: none;
 

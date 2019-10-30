@@ -2,8 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "ak.gg": ["src"],
       "ak.gg/*": ["src/*"],
-      "web/*": ["web/*"],
+      "web/*": ["web/*"]
     },
     "outDir": "build/web",
     "target": "es6",
@@ -12,11 +13,8 @@
     "jsx": "react",
     "allowJs": true,
     "sourceMap": true,
-    "noImplicitAny": true,
+    "noImplicitAny": true
   },
-  "include": [
-    "web/index.tsx",
-    "src/**/*",
-  ],
+  "include": ["web/index.tsx", "src/**/*"],
   "exclude": ["test.ts", "**/*.spec.ts"]
 }

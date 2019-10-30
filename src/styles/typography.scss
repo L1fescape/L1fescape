@@ -14,11 +14,7 @@ h3,
 h4,
 h5 {
   font-family: 'Raleway', sans-serif;
-  margin: 0;
-}
-
-.home-link {
-  font-family: 'Do Hyeon', sans-serif;
+  margin: 0 0 1rem;
 }
 
 a {
@@ -26,7 +22,7 @@ a {
   text-decoration: none;
   color: #c77966;
   border-bottom: 0.2rem solid transparent;
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &:hover {
     color: #ce8978;
@@ -55,15 +51,6 @@ section {
 
 .wrapper {
   overflow: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: 'Raleway', sans-serif;
-  margin: 0;
 }
 
 h1 {

@@ -1,24 +1,52 @@
 .footer {
-  display: flex;
-  flex-direction: column;
-
-  .social {
+  .row {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding: 1rem;
+  }
+
+  & > * {
+    padding: 2rem 0;
+  }
+
+  .navigation {
+    font-family: 'Do Hyeon', sans-serif;
+    letter-spacing: 0.06rem;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     a {
-      padding: 1rem;
-      text-align: left;
+      padding: 0.2rem 0;
+      margin: 0 0.5rem;
+    }
+    span:after {
+      content: '/';
+      font-size: 0.6rem;
+      padding: 0.1rem;
+    }
+    span:last-child:after {
+      content: '';
+    }
+  }
+  .home-link {
+    display: flex;
+    align-items: center;
+
+    h3 {
+      font-family: 'Do Hyeon', sans-serif;
+      margin: 0;
     }
   }
 
-  .interwebs h4 {
-    margin: 1rem;
-  }
-
-  .copyme {
-    margin: 2rem 1rem 1rem;
-    text-align: center;
+  .love {
     font-size: 0.8rem;
+    text-align: right;
+
+    p {
+      margin: 0.2rem 0;
+    }
   }
 }

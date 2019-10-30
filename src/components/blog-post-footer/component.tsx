@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Accounts, Platforms, Links } from 'ak.gg/components/socials'
+import { Account, Accounts, Platforms, Links } from 'ak.gg/components/socials'
 
 export interface PostFooterProps {
   title?: string
@@ -9,13 +9,12 @@ export interface PostFooterProps {
 function getShareTwitter(
   title: string,
   url: string,
-  twitterHandle: string,
-  twitterUserID: string
+  user: Account = Accounts[Platforms.Twitter]
 ) {
   const tweetTitle = title.split(' ').join('+')
   const tweetUrl = encodeURIComponent(url)
-  const tweetShareLink = `https://twitter.com/intent/tweet?text=${tweetTitle}&amp;url=${tweetUrl}%2F&amp;via=${twitterHandle}`
-  const twitterFollowLink = `https://twitter.com/intent/follow?user_id=${twitterUserID}`
+  const tweetShareLink = `https://twitter.com/intent/tweet?text=${tweetTitle}&amp;url=${tweetUrl}%2F&amp;via=${user.username}`
+  const twitterFollowLink = `https://twitter.com/intent/follow?user_id=${user.userID}`
 
   return (
     <>
@@ -25,7 +24,7 @@ function getShareTwitter(
         <Links.Twitter url={tweetShareLink}>{'share it'}</Links.Twitter>
         {' or follow '}
         <Links.Twitter url={twitterFollowLink}>
-          {`@${twitterHandle} on Twitter`}
+          {`@${user.username} on Twitter`}
         </Links.Twitter>
         .
       </p>
@@ -49,10 +48,7 @@ export const PostFooter = (props: PostFooterProps) => {
   ]
 
   if (title && url) {
-    const account = Accounts[Platforms.Twitter]
-    sections.unshift(
-      getShareTwitter(title, url, account.username, account.userID)
-    )
+    sections.unshift(getShareTwitter(title, url))
   }
 
   return (

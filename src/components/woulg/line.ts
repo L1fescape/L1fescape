@@ -32,7 +32,7 @@ export function createLines(count: number, colors: string[]): DrawFn[] {
         Math.sin(((90 - angle) * Math.PI) / 180)
       ctx.beginPath()
       ctx.moveTo(x, 0)
-      ctx.lineTo(x + base, height)
+      ctx.lineTo(x + base, height + 2)
       ctx.strokeStyle = colors[colorIndex]
       ctx.lineWidth = 2 + speed * 2
       ctx.stroke()

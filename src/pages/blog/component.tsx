@@ -3,7 +3,7 @@ import { Page } from 'ak.gg/components/page'
 import { PostFooter } from 'ak.gg/components/blog-post-footer'
 
 export const Blog = () => (
-  <Page title="blog">
+  <Page title="blog" pageSource={__filename}>
     <section>
       <p>notes</p>
     </section>

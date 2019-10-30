@@ -1,4 +1,6 @@
 export * from './home'
-export * from './projects'
+export * from './music'
+export * from './code'
+export * from './talks'
 export * from './blog'
 export * from './404'

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { createContext } from 'react'
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom'
 import * as cn from 'classnames'
-import { Routes, RouteToPageMap, NavRoutes } from 'ak.gg/router'
+import { Routes, RouteToPageMap, NavRoutes } from 'ak.gg'
 import './styles.scss'
 
 interface SetHeaderState {
@@ -27,9 +27,9 @@ const HeaderComponent = (props: Props) => {
   return (
     <div className={cn('header', fixed && 'fixed')}>
       <div className="home-link">
-        {!!hideHomeLink ? null : (
-          <Link to={Routes.Home}>{RouteToPageMap.get(Routes.Home).text}</Link>
-        )}
+        <Link to={Routes.Home} className={cn(hideHomeLink && 'hidden')}>
+          {RouteToPageMap.get(Routes.Home).text}
+        </Link>
       </div>
       <div className="navigation">
         {NavRoutes.map(route => (

@@ -7,14 +7,14 @@ export interface LinkProps {
   text?: string
 }
 
-export type LinkComponentType = React.FC<LinkProps>
+export type LinkComponent = React.FC<LinkProps>
 
 const defaultLinkProps = {
   target: '_blank',
   rel: 'noopener noreferrer',
 }
 
-export const Link: LinkComponentType = props => (
+export const Link: LinkComponent = props => (
   <a
     title={props.title || props.text}
     className={props.className || ''}

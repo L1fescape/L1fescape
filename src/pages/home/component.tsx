@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { Woulg } from 'ak.gg/components/woulg'
 import { Link } from 'react-router-dom'
-import { Routes } from 'ak.gg/router'
+import { Routes } from 'ak.gg'
 import { Page } from 'ak.gg/components'
 import { Socials, Links } from 'ak.gg/components/socials'
+import { ProjectsList } from './projects-list'
 import './styles.scss'
 
 export const Home = () => (
@@ -15,8 +16,8 @@ export const Home = () => (
             <strong>Andrew Kennedy</strong> is a software engineer and musician
             based in San Francisco, CA
           </p>
-          <Socials hideTitle />
         </div>
+        <Socials hideTitle />
       </section>
     </Woulg>
     <section className="about">
@@ -26,19 +27,21 @@ export const Home = () => (
         {`I'm Andrew and I like writing music, skateboarding, and making things
         with code. During the day I'm a Software Engineer at `}
         <Links.SauceLabs />. At night I work on{' '}
-        <Links.GitHub>open source projects</Links.GitHub> and make beats.
+        <Links.GitHub>open source projects</Links.GitHub> and{' '}
+        <Links.SoundCloud>make beats</Links.SoundCloud>.
       </p>
     </section>
     <section className="projects">
       <h2>Projects</h2>
       <div className="content">
-        <div className="project">
-          <h3>Tetris</h3>
-        </div>
-        <div className="project">
-          <h3>Life</h3>
-          <h4>Magic: The Gathering Life Counter</h4>
-        </div>
+        {ProjectsList.map(({ name, description, content, Component }) => (
+          <div className="project" key={name}>
+            <h3>{name}</h3>
+            {description && <h5>{description}</h5>}
+            {content && content}
+            {Component && <Component />}
+          </div>
+        ))}
       </div>
     </section>
     <section className="blog">

@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { Accounts } from './accounts'
 import { Platforms } from './platforms'
-import { Link, LinkComponentType } from 'ak.gg/components/link'
+import { Link, LinkComponent } from 'ak.gg/components/link'
 
-function getAccountLink(platform: Platforms): LinkComponentType {
+function getAccountLink(platform: Platforms): LinkComponent {
   return props => (
     <Link
       className={props.className || platform.toLowerCase()}
@@ -16,7 +16,7 @@ function getAccountLink(platform: Platforms): LinkComponentType {
   )
 }
 
-function getLink(url: string, text: string, title: string): LinkComponentType {
+function getLink(url: string, text: string, title: string): LinkComponent {
   return props => (
     <Link url={url} title={title} {...props}>
       {props.children || text}
@@ -24,7 +24,7 @@ function getLink(url: string, text: string, title: string): LinkComponentType {
   )
 }
 
-export const Links: { [key in Platforms]: LinkComponentType } = {
+export const Links: { [key in Platforms]: LinkComponent } = {
   [Platforms.Twitter]: getAccountLink(Platforms.Twitter),
   [Platforms.Instagram]: getAccountLink(Platforms.Instagram),
   [Platforms.GitHub]: getAccountLink(Platforms.GitHub),

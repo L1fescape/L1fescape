@@ -1,5 +1,8 @@
 @import 'ak.gg/styles/variables.scss';
 
+$headerLinkPadding: 0.5rem;
+$headerBobbleAmt: 0.3;
+
 .header {
   font-family: 'Do Hyeon', sans-serif;
   letter-spacing: 0.06rem;
@@ -11,43 +14,22 @@
   display: flex;
 
   a {
-    padding: 0.4rem;
+    padding: $headerLinkPadding;
+    outline: 0;
 
     &:active {
-      padding-top: 0.6rem;
-      padding-bottom: 0.2rem;
+      padding-top: $headerLinkPadding * 2 * (1 - $headerBobbleAmt);
+      padding-bottom: $headerLinkPadding * 2 * $headerBobbleAmt;
     }
   }
 
   .home-link {
     flex-grow: 1;
     display: flex;
-    padding-left: 1rem;
-  }
-
-  .navigation {
-    background-color: transparentize(#242424, 0.25);
-    display: flex;
+    margin: 0 0.5rem;
 
     a {
-      margin: 0 1rem;
-      background: none;
-    }
-
-    a[href='/projects'] {
-      color: $projectsColor;
-      &.active,
-      &:hover {
-        border-bottom-color: $projectsColor;
-      }
-    }
-
-    a[href='/blog'] {
-      color: $blogColor;
-      &.active,
-      &:hover {
-        border-bottom-color: $blogColor;
-      }
+      border-bottom: none;
     }
   }
 
@@ -56,5 +38,47 @@
     top: 0;
     left: 0;
     right: 0;
+  }
+}
+
+.navigation {
+  background-color: transparentize(#242424, 0.25);
+  display: flex;
+
+  a {
+    margin: 0 $headerLinkPadding;
+    background: none;
+  }
+
+  a[href='/music'] {
+    color: $musicColor;
+    &.active,
+    &:hover {
+      border-bottom-color: $musicColor;
+    }
+  }
+
+  a[href='/code'] {
+    color: $codeColor;
+    &.active,
+    &:hover {
+      border-bottom-color: $codeColor;
+    }
+  }
+
+  a[href='/blog'] {
+    color: $blogColor;
+    &.active,
+    &:hover {
+      border-bottom-color: $blogColor;
+    }
+  }
+
+  a[href='/talks'] {
+    color: $talksColor;
+    &.active,
+    &:hover {
+      border-bottom-color: $talksColor;
+    }
   }
 }
