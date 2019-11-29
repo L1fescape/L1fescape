@@ -29,7 +29,7 @@ module.exports = {
     historyApiFallback: true,
     host: process.env.HOST || 'localhost',
     hot: true,
-    port: 3000,
+    port: process.env.PORT || 3000,
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -17,7 +17,7 @@ export const ProjectsList: Project[] = [
     content: 'hello',
   },
   {
-    name: 'Conrify',
+    name: 'Cornify',
     description: 'Unicorns, rainbows, and sparkles, oh my!',
     content: 'hello',
   },

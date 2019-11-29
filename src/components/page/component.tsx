@@ -8,39 +8,33 @@ import './styles.scss'
 export interface PageProps {
   className?: string
   title?: string
-  noHeader?: boolean
   noFooter?: boolean
-  fixedHeader?: boolean
-  hideHomeLink?: boolean
   pageSource?: string
+  banner?: JSX.Element
+  headerClassName?: string
 }
 
 export const Page: React.FC<PageProps> = props => {
   const {
     className,
     title,
-    noHeader,
     noFooter,
-    fixedHeader,
-    hideHomeLink,
     children,
     pageSource,
+    banner,
+    headerClassName,
   } = props
-  const {
-    setHeaderFixed,
-    setHeaderHomeLinkVisible,
-    setHeaderHidden,
-  } = React.useContext(HeaderContext)
+
+  const { setClassName: setHeaderClassName } = React.useContext(HeaderContext)
 
   useTitleEffect(title)
   useEffect(() => {
-    setHeaderHidden(noHeader)
-    setHeaderFixed(fixedHeader)
-    setHeaderHomeLinkVisible(hideHomeLink)
+    setHeaderClassName(headerClassName)
   }, [props])
 
   return (
     <div className={cn('page', className)}>
+      <div className="banner">{banner}</div>
       <div className="content">{children}</div>
       {noFooter ? null : <Footer pageSource={pageSource} />}
     </div>

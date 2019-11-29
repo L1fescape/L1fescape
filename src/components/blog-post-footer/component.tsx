@@ -1,9 +1,12 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
+import { Routes } from 'ak.gg/routes'
+import { BlogRoll } from 'ak.gg/components/blog-roll'
 import { Account, Accounts, Platforms, Links } from 'ak.gg/components/socials'
 
 export interface PostFooterProps {
   title?: string
-  url?: string
+  currentPostPathname?: string
 }
 
 function getShareTwitter(
@@ -21,9 +24,9 @@ function getShareTwitter(
       <h2>Share this post</h2>
       <p>
         {'If you liked this post please '}
-        <Links.Twitter url={tweetShareLink}>{'share it'}</Links.Twitter>
+        <Links.Twitter to={tweetShareLink}>{'share it'}</Links.Twitter>
         {' or follow '}
-        <Links.Twitter url={twitterFollowLink}>
+        <Links.Twitter to={twitterFollowLink}>
           {`@${user.username} on Twitter`}
         </Links.Twitter>
         .
@@ -33,11 +36,17 @@ function getShareTwitter(
 }
 
 export const PostFooter = (props: PostFooterProps) => {
-  const { title, url } = props
+  const { title, currentPostPathname } = props
 
   const sections = [
     <>
-      <h2>Subscribe</h2>
+      <h3>
+        More from the <Link to={Routes.Blog.path}>Blog</Link>
+      </h3>
+      <BlogRoll currentPostPathname={currentPostPathname} />
+    </>,
+    <>
+      <h3>Subscribe</h3>
       <p>
         {'To keep up with posts on this blog, you can '}
         <Links.RSS />
@@ -47,8 +56,8 @@ export const PostFooter = (props: PostFooterProps) => {
     </>,
   ]
 
-  if (title && url) {
-    sections.unshift(getShareTwitter(title, url))
+  if (title && currentPostPathname) {
+    sections.unshift(getShareTwitter(title, currentPostPathname))
   }
 
   return (

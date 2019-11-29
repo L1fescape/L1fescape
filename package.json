@@ -16,8 +16,11 @@
     "classnames": "^2.2.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-markdown": "^4.2.2",
     "react-router": "^5.0.0",
-    "react-router-dom": "^5.0.0"
+    "react-router-dom": "^5.0.0",
+    "react-router-hash-link": "^1.2.2",
+    "runes": "^0.4.3"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.7",
@@ -26,7 +29,9 @@
     "@types/react-dom": "^16.8.3",
     "@types/react-router": "^4.4.5",
     "@types/react-router-dom": "^4.3.1",
+    "@types/react-router-hash-link": "^1.2.1",
     "@types/react-test-renderer": "^16.8.1",
+    "@types/runes": "^0.4.1",
     "copy-webpack-plugin": "^5.0.2",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",

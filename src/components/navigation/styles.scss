@@ -1,0 +1,52 @@
+@import 'ak.gg/styles/variables.scss';
+
+$headerLinkPadding: 0.3rem;
+$headerBobbleAmt: 0.3;
+
+.navigation {
+  display: flex;
+
+  a {
+    margin: 0 $headerLinkPadding;
+    background: none;
+    padding: $headerLinkPadding;
+    outline: 0;
+
+    &:active {
+      padding-top: $headerLinkPadding * 2 * (1 - $headerBobbleAmt);
+      padding-bottom: $headerLinkPadding * 2 * $headerBobbleAmt;
+    }
+  }
+
+  a[href='/music'] {
+    color: $musicColor;
+    &.active,
+    &:hover {
+      border-bottom-color: $musicColor;
+    }
+  }
+
+  a[href='/code'] {
+    color: $codeColor;
+    &.active,
+    &:hover {
+      border-bottom-color: $codeColor;
+    }
+  }
+
+  a[href='/blog'] {
+    color: $blogColor;
+    &.active,
+    &:hover {
+      border-bottom-color: $blogColor;
+    }
+  }
+
+  a[href='/talks'] {
+    color: $talksColor;
+    &.active,
+    &:hover {
+      border-bottom-color: $talksColor;
+    }
+  }
+}

@@ -14,7 +14,6 @@ services:
       - ../.vscode:/workspace/.vscode
       - ../src:/workspace/src
       - ../web:/workspace/web
-      - ../blog:/workspace/blog
       - ../package.json:/workspace/package.json
       - ../tsconfig.json:/workspace/tsconfig.json
       - ../netlify.toml:/workspace/netlify.toml

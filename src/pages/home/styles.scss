@@ -10,6 +10,16 @@
   }
 }
 
+.header.home-header .home-link {
+  opacity: 0;
+}
+
+.home-header {
+  .navigation {
+    background-color: rgba(36, 36, 36, 0.75);
+  }
+}
+
 .hi {
   height: 100vh;
   display: flex;

@@ -1,62 +1,30 @@
 import * as React from 'react'
-import { Link, Socials } from 'ak.gg/components'
-import { Routes, RouteToPageMap, NavRoutes } from 'ak.gg'
-import {
-  Link as RouterLink,
-  RouteComponentProps,
-  withRouter,
-} from 'react-router-dom'
+import { Routes } from 'ak.gg/routes'
+import { Socials, ViewSource, Navigation, Link } from 'ak.gg/components'
 import './styles.scss'
 
-function getURLFromSource(filename: string) {
-  const projectRoot = 'https://github.com/l1fescape/ak.gg'
-  const branchPath = '/tree/master/'
-  const url = `${projectRoot}${branchPath}${filename}`
-  return url
-}
-
-interface FooterProps {
+export interface FooterProps {
   pageSource?: string
 }
 
-export type Props = FooterProps & RouteComponentProps
-
-export const FooterComponent = (props: Props) => (
+export const Footer: React.FC<FooterProps> = props => (
   <div className="footer">
     <Socials />
     <div className="row">
       <div className="home-link">
-        <RouterLink to={Routes.Home}>
-          <h3>{RouteToPageMap.get(Routes.Home).text}</h3>
-        </RouterLink>
+        <Link to={Routes.Home.path}>
+          <h3>{Routes.Home.text}</h3>
+        </Link>
       </div>
-      <div className="navigation">
-        {NavRoutes.map(route => (
-          <span key={route}>
-            <RouterLink
-              to={route}
-              className={props.location.pathname === route ? 'active' : ''}
-            >
-              {RouteToPageMap.get(route).text}
-            </RouterLink>
-          </span>
-        ))}
-      </div>
+      <Navigation />
       <div className="love">
         <p>Made with ♥ in SF</p>
         {props.pageSource && (
           <p>
-            <Link
-              title={'View Page Source'}
-              url={getURLFromSource(props.pageSource)}
-            >
-              View Source
-            </Link>
+            <ViewSource source={props.pageSource} />
           </p>
         )}
       </div>
     </div>
   </div>
 )
-
-export const Footer = withRouter(FooterComponent)

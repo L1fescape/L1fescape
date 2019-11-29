@@ -1,30 +1,37 @@
 import * as React from 'react'
 import { Accounts } from './accounts'
 import { Platforms } from './platforms'
-import { Link, LinkComponent } from 'ak.gg/components/link'
+import { ExternalLink } from 'ak.gg/components/link'
 
-function getAccountLink(platform: Platforms): LinkComponent {
+export interface AccountLinkProps {
+  to?: string
+  className?: string
+}
+
+export type AccountLink = React.FC<AccountLinkProps>
+
+function getAccountLink(platform: Platforms): AccountLink {
   return props => (
-    <Link
+    <ExternalLink
       className={props.className || platform.toLowerCase()}
-      url={Accounts[platform].url}
+      to={Accounts[platform].url}
       title={platform}
       {...props}
     >
       {props.children || platform}
-    </Link>
+    </ExternalLink>
   )
 }
 
-function getLink(url: string, text: string, title: string): LinkComponent {
+function getLink(url: string, text: string, title: string): AccountLink {
   return props => (
-    <Link url={url} title={title} {...props}>
+    <ExternalLink to={url} title={title} {...props}>
       {props.children || text}
-    </Link>
+    </ExternalLink>
   )
 }
 
-export const Links: { [key in Platforms]: LinkComponent } = {
+export const Links: { [key in Platforms]: AccountLink } = {
   [Platforms.Twitter]: getAccountLink(Platforms.Twitter),
   [Platforms.Instagram]: getAccountLink(Platforms.Instagram),
   [Platforms.GitHub]: getAccountLink(Platforms.GitHub),
