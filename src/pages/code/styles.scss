@@ -1,9 +1,10 @@
-.italics {
-  width: 100%;
-  min-height: 2rem;
-  padding: 0.5rem;
-  box-sizing: border-box;
-}
-.italics-result {
+.code-projects {
   padding: 1rem 0;
+
+  & > * {
+    padding: 0 1rem;
+  }
+  .projects {
+    padding: 0;
+  }
 }

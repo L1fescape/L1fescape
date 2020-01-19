@@ -59,44 +59,17 @@
   padding: 4rem 1rem 2rem;
 }
 
-.projects {
-  padding: 2rem 0;
-
-  h2 {
-    margin-left: 1rem;
-  }
-  .content {
-    display: flex;
-    flex-wrap: wrap;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .project {
-    padding: 1rem;
-    margin: 1rem;
-    background-color: $white;
-    color: $black;
-
-    &:nth-child(1) {
-      background-color: $green;
-      color: $black;
-    }
-    &:nth-child(2) {
-      background-color: $blue;
-      color: $white;
-    }
-    &:nth-child(3) {
-      background-color: $yellow;
-      color: $black;
-    }
-    &:nth-child(4) {
-      background-color: $red;
-      color: $white;
-    }
-  }
-}
-
 .blog {
   padding: 2rem 1rem;
+}
+
+.home-projects {
+  padding: 1rem 0;
+
+  & > * {
+    padding: 0 1rem;
+  }
+  .projects {
+    padding: 0;
+  }
 }

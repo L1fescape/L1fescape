@@ -3,10 +3,13 @@
   "dockerComposeFile": "./docker-compose.yml",
   "workspaceFolder": "/workspace",
   "service": "akgg",
-  "appPort": 3000,
   "runArgs": ["-it"],
   "extensions": [
     "ms-vscode.vscode-typescript-tslint-plugin",
-    "esbenp.prettier-vscode"
-  ]
+    "esbenp.prettier-vscode",
+    "firefox-devtools.vscode-firefox-debug"
+  ],
+  "settings": {
+    "firefox.args": []
+  }
 }

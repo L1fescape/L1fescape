@@ -3,7 +3,7 @@ import { BlogPost } from 'ak.gg/components/blog-post'
 import { Page } from 'ak.gg/components/page'
 import { BlogRoll } from 'ak.gg/components/blog-roll'
 import { RouteComponentProps, withRouter } from 'react-router'
-import { Posts } from './content'
+import { Posts } from 'cms.ak.gg'
 import './styles.scss'
 
 type Props = RouteComponentProps<{
@@ -12,7 +12,7 @@ type Props = RouteComponentProps<{
 
 export const BlogComponent = (props: Props) => {
   const { postID } = props.match.params
-  const post = Posts.find(post => props.location.pathname === post.pathname)
+  const post = Posts.find(post => post.path === props.location.pathname)
 
   if (post) {
     return <BlogPost post={post} />

@@ -4,6 +4,8 @@
     "paths": {
       "ak.gg": ["src"],
       "ak.gg/*": ["src/*"],
+      "cms.ak.gg": ["cms"],
+      "cms.ak.gg/*": ["cms/*"],
       "web/*": ["web/*"]
     },
     "outDir": "build/web",

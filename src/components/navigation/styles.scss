@@ -1,28 +1,28 @@
 @import 'ak.gg/styles/variables.scss';
 
 $headerLinkPadding: 0.3rem;
+$headerLinkSpacing: 1rem;
 $headerBobbleAmt: 0.3;
 
 .navigation {
   display: flex;
 
   a {
-    margin: 0 $headerLinkPadding;
+    margin: 0 $headerLinkSpacing/2;
     background: none;
     padding: $headerLinkPadding;
     outline: 0;
 
+    &:first-child {
+      margin-left: $headerLinkSpacing;
+    }
+    &:last-child {
+      margin-right: $headerLinkSpacing;
+    }
+
     &:active {
       padding-top: $headerLinkPadding * 2 * (1 - $headerBobbleAmt);
       padding-bottom: $headerLinkPadding * 2 * $headerBobbleAmt;
-    }
-  }
-
-  a[href='/music'] {
-    color: $musicColor;
-    &.active,
-    &:hover {
-      border-bottom-color: $musicColor;
     }
   }
 
@@ -39,14 +39,6 @@ $headerBobbleAmt: 0.3;
     &.active,
     &:hover {
       border-bottom-color: $blogColor;
-    }
-  }
-
-  a[href='/talks'] {
-    color: $talksColor;
-    &.active,
-    &:hover {
-      border-bottom-color: $talksColor;
     }
   }
 }

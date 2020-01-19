@@ -9,8 +9,12 @@
     "build:web": "cross-env NODE_ENV=production webpack --config web/webpack.config.js",
     "dev": "yarn && yarn dev:web",
     "dev:web": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --config web/webpack.config.js",
+    "clean": "rimraf build/",
     "test": "jest",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "tools": "yarn tools:clean && yarn tools:firefox",
+    "tools:clean": "rimraf tools/ && mkdir -p tools/",
+    "tools:firefox": "wget -O tools/react-dev-tools.xpi https://addons.mozilla.org/firefox/downloads/file/3478747/react_developer_tools-4.4.0-fx.xpi"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -41,8 +45,9 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.7.1",
     "node-sass": "^4.11.0",
-    "prettier": "^1.18.2",
+    "prettier": "^1.19.1",
     "react-test-renderer": "^16.8.6",
+    "rimraf": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "ts-jest": "^24.0.2",

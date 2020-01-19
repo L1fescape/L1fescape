@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { Posts } from 'ak.gg/pages/blog/content'
+import { Posts } from 'cms.ak.gg'
 import { formatDate } from 'ak.gg/utils'
 
 export interface BlogRollProps {
@@ -11,12 +11,12 @@ export const BlogRoll = (props: BlogRollProps) => {
   return (
     <>
       {Posts.map(post => {
-        if (post.pathname === props.currentPostPathname) {
+        if (post.path === props.currentPostPathname) {
           return null
         }
         return (
-          <div key={post.pathname}>
-            <Link key={post.pathname} to={post.pathname}>
+          <div key={post.path}>
+            <Link key={post.path} to={post.path}>
               {post.title}
             </Link>
             <br />

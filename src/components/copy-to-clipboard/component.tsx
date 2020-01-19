@@ -1,13 +1,14 @@
 import * as React from 'react'
-import { useState } from 'react'
 
 export interface CopyToClipboardProps {
   textAreaRef: React.MutableRefObject<any>
+  buttonText?: string
+  className?: string
   onSuccess?(): void
 }
 
 export const CopyToClipboard: React.FC<CopyToClipboardProps> = props => {
-  const { textAreaRef, onSuccess } = props
+  const { textAreaRef, onSuccess, className } = props
 
   function copyToClipboard(e: React.MouseEvent<HTMLButtonElement>) {
     if (textAreaRef) {
@@ -19,10 +20,17 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = props => {
     }
   }
 
-  // only render button if the copy command is supported
-  if (!document.queryCommandSupported('copy')) {
+  // only render the button if the copy command is supported
+  if (
+    !document.queryCommandSupported ||
+    !document.queryCommandSupported('copy')
+  ) {
     return null
   }
 
-  return <button onClick={copyToClipboard}>Copy</button>
+  return (
+    <button className={className} onClick={copyToClipboard}>
+      {props.buttonText || 'Copy to Clipboard'}
+    </button>
+  )
 }

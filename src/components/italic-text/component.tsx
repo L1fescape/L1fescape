@@ -22,12 +22,20 @@ export function getItalicText(text: string): string {
 
 export interface ItalicTextProps {
   className?: string
+  onChange?(italicText: string): void
   copyToClipboard?: boolean
 }
 
 export const ItalicText: React.FC<ItalicTextProps> = props => {
   const [text, setText] = useState('')
   const italicText = getItalicText(text)
+
+  React.useEffect(() => {
+    if (props.onChange) {
+      props.onChange(italicText)
+    }
+  }, [italicText])
+
   function onChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     setText(event.target.value)
   }

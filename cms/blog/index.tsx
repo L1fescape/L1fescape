@@ -9,7 +9,7 @@ export enum Tag {
 }
 
 export interface Post {
-  pathname: string
+  path: string
   redirects?: string[]
   title: string
   content: React.ReactElement
@@ -20,27 +20,18 @@ export interface Post {
   banner?: JSX.Element
 }
 
-export const Posts: Post[] = [
-  {
-    pathname: '/blog/sauce-labs',
-    title: 'Continuous Testing with Sauce Labs',
-    date: new Date('November 26 2019'),
+export const PostsMap: {[key: string]: Post } = {
+  crossPlatformTesting: {
+    title: 'Cross Plat',
+    path: '/blog/cross-platform-testing',
+    date: new Date('December 11 2019'),
     pageSource: path.join(__dirname, './sauce-labs.md'),
     content: <ReactMarkdown source={require('./sauce-labs.md')} />,
     tags: [Tag.Code],
   },
-  {
-    pathname: '/blog/i18n',
-    redirects: ['/blog/accessibility'],
-    title: 'Accessibility Testing',
-    date: new Date('November 26 2019'),
-    pageSource: path.join(__dirname, './accessibility.md'),
-    content: <ReactMarkdown source={require('./accessibility.md')} />,
-    tags: [Tag.Code, Tag.Testing],
-  },
-  {
-    pathname: '/csgo',
+  csgo: {
     title: 'Counter Strike: Global Offensive',
+    path: '/blog/csgo',
     date: new Date('November 26 2019'),
     updated: new Date('November 28 2019'),
     pageSource: path.join(__dirname, 'csgo'),
@@ -52,4 +43,6 @@ export const Posts: Post[] = [
       />
     ),
   },
-]
+}
+
+export const Posts: Post[] = Object.keys(PostsMap).map(key => PostsMap[key])

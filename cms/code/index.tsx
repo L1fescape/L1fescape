@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Italics } from './italics'
 
 export interface Project {
   name: string
@@ -6,10 +7,15 @@ export interface Project {
   content?: string
   Component?: React.ElementType
 }
+
 export const ProjectsList: Project[] = [
   {
     name: 'Tetris',
     Component: () => <p>play tetris</p>,
+  },
+  {
+    name: 'Italic Text Generator',
+    Component: () => <Italics />,
   },
   {
     name: 'Life',
@@ -19,11 +25,6 @@ export const ProjectsList: Project[] = [
   {
     name: 'Cornify',
     description: 'Unicorns, rainbows, and sparkles, oh my!',
-    content: 'hello',
-  },
-  {
-    name: 'Key',
-    description: 'a mini midi keyboard',
     content: 'hello',
   },
 ]

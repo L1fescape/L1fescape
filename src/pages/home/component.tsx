@@ -1,14 +1,17 @@
 import * as React from 'react'
-import { Woulg } from 'ak.gg/components/woulg'
 import { Link } from 'react-router-dom'
-import { Routes } from 'ak.gg/routes'
-import { Page } from 'ak.gg/components'
-import { Socials, Links } from 'ak.gg/components/socials'
-import { BlogRoll } from 'ak.gg/components/blog-roll'
-import { ProjectsList } from './projects-list'
+import { PagesMap } from 'ak.gg'
+import {
+  Socials,
+  Links,
+  Projects,
+  Page,
+  BlogRoll,
+  Woulg,
+} from 'ak.gg/components'
 import './styles.scss'
 
-const HomeBanner = () => (
+export const Banner = () => (
   <Woulg className="hi">
     <section>
       <div className="intro">
@@ -24,10 +27,6 @@ const HomeBanner = () => (
 
 export const Home = () => (
   <Page
-    className="home"
-    headerClassName="home-header"
-    pageSource={__filename}
-    banner={<HomeBanner />}
   >
     <section className="about">
       <h2>Hello! 👋</h2>
@@ -40,22 +39,13 @@ export const Home = () => (
         <Links.SoundCloud>make beats</Links.SoundCloud>.
       </p>
     </section>
-    <section className="projects">
+    <section className="home-projects">
       <h2>Projects</h2>
-      <div className="content">
-        {ProjectsList.map(({ name, description, content, Component }) => (
-          <div className="project" key={name}>
-            <h3>{name}</h3>
-            {description && <h5>{description}</h5>}
-            {content && content}
-            {Component && <Component />}
-          </div>
-        ))}
-      </div>
+      <Projects limit={2} />
     </section>
     <section className="blog">
       <h2>
-        Latest from the <Link to={Routes.Blog.path}>Blog</Link>
+        Latest from the <Link to={PagesMap.Blog.path}>Blog</Link>
       </h2>
       <BlogRoll />
     </section>

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SubNav, SubNavSection } from 'ak.gg/components'
+import { Expand, SubNav, SubNavSection } from 'ak.gg/components'
 import * as ReactMarkdown from 'react-markdown'
 
 enum SectionIDs {
@@ -23,7 +23,11 @@ export const CSGO = () => {
     <>
       <SubNav sections={sections} />
       <section id={SectionIDs.Config}>
-        <ReactMarkdown source={require('./config.md')} />
+        <h3>Config</h3>
+        <h5>autoexec.cfg</h5>
+        <Expand>
+          <ReactMarkdown source={require('./autoexec.md')} />
+        </Expand>
       </section>
       <section id={SectionIDs.DedicatedServer}>
         <ReactMarkdown source={require('./dedicated-server.md')} />

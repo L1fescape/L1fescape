@@ -2,65 +2,37 @@ import * as React from 'react'
 import {
   Page,
   ExternalLink,
-  ItalicText,
-  getItalicText,
   SubNav,
   SubNavSection,
+  Projects,
 } from 'ak.gg/components'
-import { CopyToClipboard } from 'ak.gg/components/copy-to-clipboard'
 import './styles.scss'
 
-enum SectionIDs {
-  Italics = 'italic-text-generator',
+export enum CodeSectionIDs {
+  Projects = 'projects',
   Links = 'links',
 }
 
 const sections: SubNavSection[] = [
   {
-    name: 'Italic Text Generator',
-    id: SectionIDs.Italics,
+    name: 'Projects',
+    id: CodeSectionIDs.Projects,
   },
   {
     name: 'Links',
-    id: SectionIDs.Links,
+    id: CodeSectionIDs.Links,
   },
 ]
 
 export const Code = () => {
-  const copyRef = React.useRef(null)
-  function onCopySuccess() {
-    console.log('success')
-  }
   return (
-    <Page title="code" pageSource={__filename}>
+    <Page title="code" className="code" pageSource={__filename}>
       <SubNav sections={sections} />
-      <section id={SectionIDs.Italics}>
-        <h2>Italic Text Generator</h2>
-        <p>
-          Tool for converting normal text into{' '}
-          {getItalicText('unicode italic text')}. This is useful for platforms
-          that do not support italic styling, such as Instagram and Twitter.
-        </p>
-        <ItalicText className="italics">
-          {(italicText: string) =>
-            italicText && (
-              <>
-                <textarea
-                  ref={copyRef}
-                  className="italics-result"
-                  value={italicText}
-                  onChange={() => {}}
-                />
-                <CopyToClipboard
-                  textAreaRef={copyRef}
-                  onSuccess={onCopySuccess}
-                />
-              </>
-            )
-          }
-        </ItalicText>
+      <section id={CodeSectionIDs.Projects} className="code-projects">
+        <h2>Projects</h2>
+        <Projects />
       </section>
-      <section id={SectionIDs.Links}>
+      <section id={CodeSectionIDs.Links}>
         <h2>Content I find Interesting</h2>
         <h4>Typescript</h4>
         <ul>
