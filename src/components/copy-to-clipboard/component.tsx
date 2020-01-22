@@ -7,19 +7,27 @@ export interface CopyToClipboardProps {
   onSuccess?(): void
 }
 
-export const CopyToClipboard: React.FC<CopyToClipboardProps> = props => {
-  const { textAreaRef, onSuccess, className } = props
-
-  function copyToClipboard(e: React.MouseEvent<HTMLButtonElement>) {
-    if (textAreaRef) {
-      textAreaRef.current.select()
-      document.execCommand('copy')
-      if (onSuccess) {
-        onSuccess()
-      }
-    }
+function copyToClipboard(
+  ref: React.MutableRefObject<any>,
+  callback?: () => void
+): Error | void {
+  if (!ref) {
+    return new Error('Input ref undefined')
   }
 
+  ref.current.select()
+  document.execCommand('copy')
+  if (callback) {
+    callback()
+  }
+}
+
+export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
+  className,
+  buttonText,
+  textAreaRef,
+  onSuccess,
+}) => {
   // only render the button if the copy command is supported
   if (
     !document.queryCommandSupported ||
@@ -29,8 +37,11 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = props => {
   }
 
   return (
-    <button className={className} onClick={copyToClipboard}>
-      {props.buttonText || 'Copy to Clipboard'}
+    <button
+      className={className}
+      onClick={e => copyToClipboard(textAreaRef, onSuccess)}
+    >
+      {buttonText || 'Copy to Clipboard'}
     </button>
   )
 }

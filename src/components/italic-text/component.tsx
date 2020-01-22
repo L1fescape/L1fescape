@@ -26,31 +26,34 @@ export interface ItalicTextProps {
   copyToClipboard?: boolean
 }
 
-export const ItalicText: React.FC<ItalicTextProps> = props => {
+export const ItalicText: React.FC<ItalicTextProps> = ({
+  onChange,
+  children,
+  className,
+}) => {
   const [text, setText] = useState('')
   const italicText = getItalicText(text)
 
   React.useEffect(() => {
-    if (props.onChange) {
-      props.onChange(italicText)
+    if (onChange) {
+      onChange(italicText)
     }
   }, [italicText])
 
-  function onChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+  function handleValueChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     setText(event.target.value)
   }
 
-  let children = props.children
-  if (typeof props.children === 'function') {
-    children = props.children(italicText)
+  if (typeof children === 'function') {
+    children = children(italicText)
   }
 
   return (
     <>
       <textarea
-        className={props.className}
+        className={className}
         value={text}
-        onChange={onChange}
+        onChange={handleValueChange}
         placeholder="Enter text here"
       ></textarea>
       {children || italicText}

@@ -5,6 +5,8 @@ $headerLinkSpacing: 1rem;
 $headerBobbleAmt: 0.3;
 
 .navigation {
+  font-family: 'Do Hyeon', sans-serif;
+  letter-spacing: 0.06rem;
   display: flex;
 
   a {
@@ -24,6 +26,19 @@ $headerBobbleAmt: 0.3;
       padding-top: $headerLinkPadding * 2 * (1 - $headerBobbleAmt);
       padding-bottom: $headerLinkPadding * 2 * $headerBobbleAmt;
     }
+  }
+
+  a {
+    padding: 0.2rem 0;
+    margin: 0 0.5rem;
+  }
+  span:after {
+    content: '/';
+    font-size: 0.6rem;
+    padding: 0.1rem;
+  }
+  span:last-child:after {
+    content: '';
   }
 
   a[href='/code'] {

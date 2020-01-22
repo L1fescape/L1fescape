@@ -1,34 +1,12 @@
 import * as React from 'react'
-import { Link, Page, PostFooter, ViewSource } from 'ak.gg/components'
+import { BlogRoll, Links, ViewSource } from 'ak.gg/components'
+import { TwitterShare } from 'ak.gg/components/social-media'
 import { Post } from 'cms.ak.gg'
 import { formatDate } from 'ak.gg/utils'
-import './blog-post.scss'
+import './styles.scss'
 
 export interface BlogPostProps {
   post: Post
-}
-
-export const Banner = (props: BlogPostProps) => {
-  const { post } = props
-  return (
-    <>
-      <div className="post-banner">
-        <div className="bg">{post.banner}</div>
-        <div className="title">
-          <h2>{post.title}</h2>
-          {(post.updated && (
-            <span>
-              Updated on:{' '}
-              <ViewSource source={post.pageSource}>
-                {formatDate(post.updated)}
-              </ViewSource>
-            </span>
-          )) || <span>Posted on: {formatDate(post.date)}</span>}
-        </div>
-      </div>
-      <Link to="/blog">Back to all posts</Link>
-    </>
-  )
 }
 
 interface FooterProps {
@@ -36,13 +14,31 @@ interface FooterProps {
   currentPostPathname?: string
 }
 
-const Footer = (props: FooterProps) => {
-  const { title, currentPostPathname } = props
+export const Banner: React.FC<BlogPostProps> = ({
+  post: { banner, title, updated, pageSource, date },
+}) => (
+  <>
+    <div className="post-banner">
+      <div className="bg">{banner}</div>
+      <div className="title">
+        <h2>{title}</h2>
+        {(updated && (
+          <span>
+            Updated on:{' '}
+            <ViewSource source={pageSource}>{formatDate(updated)}</ViewSource>
+          </span>
+        )) || <span>Posted on: {formatDate(date)}</span>}
+      </div>
+    </div>
+    <Links.blog>Back to all posts</Links.blog>
+  </>
+)
 
+const Footer: React.FC<FooterProps> = ({ title, currentPostPathname }) => {
   const sections = [
     <>
       <h3>
-        More from the <Link to={PagesMap.Blog.path}>Blog</Link>
+        More from the <Links.blog>Blog</Links.blog>
       </h3>
       <BlogRoll currentPostPathname={currentPostPathname} />
     </>,
@@ -58,7 +54,7 @@ const Footer = (props: FooterProps) => {
   ]
 
   if (title && currentPostPathname) {
-    sections.unshift(getShareTwitter(title, currentPostPathname))
+    sections.unshift(<TwitterShare title={title} url={currentPostPathname} />)
   }
 
   return (
@@ -71,13 +67,8 @@ const Footer = (props: FooterProps) => {
 }
 
 export const BlogPost: React.FC<BlogPostProps> = ({ post }) => (
-  <Page
-    title={`blog - ${post.title}`}
-    pageSource={post.pageSource}
-    headerClassName="float"
-    banner={<Banner post={post} />}
-  >
+  <>
     {post.content}
-    <PostFooter title={post.title} currentPostPathname={post.path} />
-  </Page>
+    <Footer title={post.title} currentPostPathname={post.path} />
+  </>
 )

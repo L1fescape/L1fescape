@@ -1,14 +1,19 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
-import { PagesMap } from 'ak.gg'
-import { BlogRoll } from 'ak.gg/components/blog-roll'
-import { Account, Accounts, Platforms, Links } from 'ak.gg/components/socials'
+import { Links } from 'ak.gg/components'
+import { Account, Accounts } from './accounts'
+import { Platforms } from './platforms'
 
-function getShareTwitter(
-  title: string,
-  url: string,
-  user: Account = Accounts[Platforms.Twitter]
-) {
+export interface TwitterShareProps {
+  title: string
+  url: string
+  user?: Account
+}
+
+export const TwitterShare: React.FC<TwitterShareProps> = ({
+  title,
+  url,
+  user = Accounts[Platforms.Twitter],
+}) => {
   const tweetTitle = title.split(' ').join('+')
   const tweetUrl = `https://ak.gg${encodeURIComponent(url)}`
   const tweetShareLink = `https://twitter.com/intent/tweet?text=${tweetTitle}&url=${tweetUrl}&via=${user.username}`

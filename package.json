@@ -9,7 +9,7 @@
     "build:web": "cross-env NODE_ENV=production webpack --config web/webpack.config.js",
     "dev": "yarn && yarn dev:web",
     "dev:web": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --config web/webpack.config.js",
-    "clean": "rimraf build/",
+    "clean": "rimraf build/ logs/",
     "test": "jest",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "tools": "yarn tools:clean && yarn tools:firefox",

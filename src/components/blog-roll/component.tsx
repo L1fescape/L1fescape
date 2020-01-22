@@ -16,9 +16,11 @@ export const BlogRoll = (props: BlogRollProps) => {
         }
         return (
           <div key={post.path}>
-            <Link key={post.path} to={post.path}>
-              {post.title}
-            </Link>
+            <h2>
+              <Link key={post.path} to={post.path}>
+                {post.title}
+              </Link>
+            </h2>
             <br />
             <small>{formatDate(post.date)}</small>
           </div>

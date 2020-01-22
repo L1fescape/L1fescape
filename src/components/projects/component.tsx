@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { ProjectsList } from 'cms.ak.gg/code'
-import { PagesMap, CodeSectionIDs } from 'ak.gg/pages'
+import { CodeSectionIDs } from 'ak.gg/pages'
+import { routes } from 'ak.gg/routes'
 import { HashLink } from 'react-router-hash-link'
 import './styles.scss'
 
@@ -30,7 +31,7 @@ export const Projects: React.FC<ProjectsProps> = props => {
       {showMore && (
         <HashLink
           key="show-more"
-          to={`${PagesMap.Code.path}#${CodeSectionIDs.Projects}`}
+          to={`${routes.code}#${CodeSectionIDs.Projects}`}
         >
           See More
         </HashLink>

@@ -1,24 +1,26 @@
-version: '3'
+version: "3"
 services:
   akgg:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
     ports:
-      - '3000:3000'
-      - '9229:9229'
+      - "3000:3000"
+      - "9229:9229"
     environment:
       HOST: 0.0.0.0
     volumes:
       - ~/.gitconfig:/root/.gitconfig
+      - ../.git:/workspace/.git
+      - ../.gitignore:/workspace/.gitignore
       - ../.devcontainer:/workspace/.devcontainer
       - ../.vscode:/workspace/.vscode
+      - ../cms:/workspace/cms
       - ../src:/workspace/src
       - ../web:/workspace/web
       - ../package.json:/workspace/package.json
       - ../tsconfig.json:/workspace/tsconfig.json
       - ../netlify.toml:/workspace/netlify.toml
       - ../README.md:/workspace/README.md
-      - ../.git:/workspace/.git
-      - ../.gitignore:/workspace/.gitignore
+      - ../yarn.lock:/workspace/yarn.lock
     command: sleep infinity

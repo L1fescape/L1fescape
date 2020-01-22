@@ -31,7 +31,7 @@ function getLink(url: string, text: string, title: string): AccountLink {
   )
 }
 
-export const Links: { [key in Platforms]: AccountLink } = {
+export const SocialMediaLinks: { [key in Platforms]: AccountLink } = {
   [Platforms.Twitter]: getAccountLink(Platforms.Twitter),
   [Platforms.Instagram]: getAccountLink(Platforms.Instagram),
   [Platforms.GitHub]: getAccountLink(Platforms.GitHub),

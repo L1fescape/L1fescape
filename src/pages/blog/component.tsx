@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { BlogPost } from 'ak.gg/components/blog-post'
-import { Page } from 'ak.gg/components/page'
-import { BlogRoll } from 'ak.gg/components/blog-roll'
-import { RouteComponentProps, withRouter } from 'react-router'
+import { ContentList, Page } from 'ak.gg/components'
+import { BlogPost, Banner } from 'ak.gg/components/blog-post'
+import { RouteComponentProps } from 'react-router'
 import { Posts } from 'cms.ak.gg'
 import './styles.scss'
 
@@ -10,22 +9,17 @@ type Props = RouteComponentProps<{
   postID: string
 }>
 
-export const BlogComponent = (props: Props) => {
-  const { postID } = props.match.params
-  const post = Posts.find(post => post.path === props.location.pathname)
-
-  if (post) {
-    return <BlogPost post={post} />
-  }
+export const Blog: React.FC<Props> = ({ location: { pathname } }) => {
+  const post = Posts.find(post => post.path === pathname)
+  const content = post ? <BlogPost post={post} /> : <ContentList />
 
   return (
-    <Page title="blog" pageSource={__filename}>
-      <div className="blog-container">
-        {postID && 'post not found'}
-        <BlogRoll />
-      </div>
+    <Page
+      title={`blog${post && ` - ${post.title}`}`}
+      pageSource={post ? post.pageSource : __filename}
+      banner={post && <Banner post={post} />}
+    >
+      {content}
     </Page>
   )
 }
-
-export const Blog = withRouter(BlogComponent)

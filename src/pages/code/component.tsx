@@ -6,6 +6,7 @@ import {
   SubNavSection,
   Projects,
 } from 'ak.gg/components'
+import { RouteComponentProps } from 'react-router'
 import './styles.scss'
 
 export enum CodeSectionIDs {
@@ -24,7 +25,7 @@ const sections: SubNavSection[] = [
   },
 ]
 
-export const Code = () => {
+export const Code: React.FC<RouteComponentProps> = () => {
   return (
     <Page title="code" className="code" pageSource={__filename}>
       <SubNav sections={sections} />

@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
-import { PagesMap } from 'ak.gg'
+import { RouteComponentProps } from 'react-router'
 import {
-  Socials,
+  SocialMedia,
   Links,
   Projects,
   Page,
@@ -11,7 +10,7 @@ import {
 } from 'ak.gg/components'
 import './styles.scss'
 
-export const Banner = () => (
+const Banner = () => (
   <Woulg className="hi">
     <section>
       <div className="intro">
@@ -20,14 +19,13 @@ export const Banner = () => (
           based in San Francisco, CA
         </p>
       </div>
-      <Socials hideTitle />
+      <SocialMedia hideTitle />
     </section>
   </Woulg>
 )
 
-export const Home = () => (
-  <Page
-  >
+export const Home: React.FC<RouteComponentProps> = () => (
+  <Page banner={<Banner />}>
     <section className="about">
       <h2>Hello! 👋</h2>
       <h3>Quick Intro</h3>
@@ -45,7 +43,7 @@ export const Home = () => (
     </section>
     <section className="blog">
       <h2>
-        Latest from the <Link to={PagesMap.Blog.path}>Blog</Link>
+        Latest from the <Links.blog />
       </h2>
       <BlogRoll />
     </section>

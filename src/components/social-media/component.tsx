@@ -6,8 +6,8 @@ export interface SocialIconsProps {
   hideTitle?: boolean
 }
 
-export const Socials: React.FC<SocialIconsProps> = props => (
-  <div className="social">
+export const SocialMedia: React.FC<SocialIconsProps> = props => (
+  <div className="social-media">
     {!props.hideTitle && <h4>Elsewhere on the Internet</h4>}
     <div className="links">
       {AccountsList.map(({ Link, Icon, title }) => (
