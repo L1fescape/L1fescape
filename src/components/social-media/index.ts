@@ -1,6 +1,4 @@
 export * from './component'
-export * from './accounts'
-export * from './icons'
-export * from './platforms'
 export * from './links'
 export * from './share'
+export * from './platforms'

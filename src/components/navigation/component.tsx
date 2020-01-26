@@ -1,50 +1,24 @@
 import * as React from 'react'
-import { Link, withRouter, RouteComponentProps } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 import * as cn from 'classnames'
-import { routes, routeText, Route } from 'ak.gg/routes'
-import './styles.scss'
+import { Links } from 'ak.gg/components'
+import './navigation.scss'
 
-interface NavigationProps {}
-
-type Props = NavigationProps & RouteComponentProps
-
-interface NavRoute {
-  path: string
-  text: string
+interface NavigationProps {
+  className?: string
+  console?: boolean
 }
 
-export const NavRoutes: NavRoute[] = [
-  {
-    path: routes.cs,
-    text: routeText.cs,
-  },
-  {
-    path: routes.blog,
-    text: routeText.blog,
-  },
-]
+type Props = NavigationProps
 
-const NavigationComponent: React.FC<Props> = ({
-  location: { pathname: activeRoute },
-}) => (
-  <div className="navigation">
-    <div className="home-link">
-      <Link to={routes.home}>{routeText.home}</Link>
-    </div>
-    {NavRoutes.map(route => (
-      <Link
-        key={route.path}
-        to={route.path}
-        className={cn(activeRoute.indexOf(route.path) === 0 && 'active')}
-      >
-        {route.text}
-      </Link>
-    ))}
+export const Navigation: React.FC<Props> = ({ console, className }) => (
+  <div className={cn('navigation', className, console && 'console')}>
+    <Links.home />
+    <Links.cs />
+    <Links.code />
+    <Links.blog />
   </div>
 )
-
-export const Navigation = withRouter(NavigationComponent)
 
 export interface SubNavSection {
   name: string

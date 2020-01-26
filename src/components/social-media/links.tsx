@@ -1,51 +1,54 @@
 import * as React from 'react'
-import { Accounts } from './accounts'
-import { Platforms } from './platforms'
-import { ExternalLink } from 'ak.gg/components/link'
+import * as cn from 'classnames'
+import { ExternalLink } from '../link'
+import { platformInfo, Platform } from './platforms'
+import { Icons } from './icons'
 
-export interface AccountLinkProps {
+export interface SocialMediaLinkProps {
+  icon?: boolean
   to?: string
   className?: string
 }
 
-export type AccountLink = React.FC<AccountLinkProps>
+type Props = SocialMediaLinkProps & {
+  platform: Platform
+}
 
-function getAccountLink(platform: Platforms): AccountLink {
-  return props => (
+export const SocialMediaLink: React.FC<Props> = ({
+  platform,
+  icon,
+  to,
+  children,
+  className,
+}) => {
+  const { className: platformClassName, url, title } = platformInfo[platform]
+  const Icon = Icons[platform]
+  const showIcon = icon
+  const content = children || title
+
+  return (
     <ExternalLink
-      className={props.className || platform.toLowerCase()}
-      to={Accounts[platform].url}
-      title={platform}
-      {...props}
+      className={cn([showIcon && 'link-icon', className, platformClassName])}
+      to={to || url}
+      title={title}
     >
-      {props.children || platform}
+      {showIcon ? (
+        <>
+          <Icon /> <span>{content}</span>
+        </>
+      ) : (
+        content
+      )}
     </ExternalLink>
   )
 }
 
-function getLink(url: string, text: string, title: string): AccountLink {
-  return props => (
-    <ExternalLink to={url} title={title} {...props}>
-      {props.children || text}
-    </ExternalLink>
-  )
-}
-
-export const SocialMediaLinks: { [key in Platforms]: AccountLink } = {
-  [Platforms.Twitter]: getAccountLink(Platforms.Twitter),
-  [Platforms.Instagram]: getAccountLink(Platforms.Instagram),
-  [Platforms.GitHub]: getAccountLink(Platforms.GitHub),
-  [Platforms.SoundCloud]: getAccountLink(Platforms.SoundCloud),
-  [Platforms.LinkedIn]: getAccountLink(Platforms.LinkedIn),
-  [Platforms.DevTo]: getAccountLink(Platforms.DevTo),
-  [Platforms.RSS]: getLink(
-    '/feed.xml',
-    'subscribe via RSS',
-    'Subscribe to the RSS feed'
-  ),
-  [Platforms.SauceLabs]: getLink(
-    'https://saucelabs.com',
-    'Sauce Labs',
-    'Sauce Labs: Cross Browser Testing, Selenium Testing, Mobile Testing'
-  ),
+export const SocialMediaLinks: {
+  [key in Platform]: React.FC<SocialMediaLinkProps>
+} = {
+  SoundCloud: props => <SocialMediaLink platform="SoundCloud" {...props} />,
+  Twitter: props => <SocialMediaLink platform="Twitter" {...props} />,
+  GitHub: props => <SocialMediaLink platform="GitHub" {...props} />,
+  Instagram: props => <SocialMediaLink platform="Instagram" {...props} />,
+  DevTo: props => <SocialMediaLink platform="DevTo" {...props} />,
 }

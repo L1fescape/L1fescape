@@ -1,21 +1,38 @@
 import * as React from 'react'
-import { AccountsList } from './accounts'
-import './styles.scss'
+import { SocialMediaLinks } from './links'
+import { Icons } from './icons'
+import { Platform } from './platforms'
+import './social-media.scss'
 
-export interface SocialIconsProps {
-  hideTitle?: boolean
+export interface SocialMediaProps {
+  icons?: boolean
+  className?: string
+  children?(platform: Platform): React.ReactNode
 }
 
-export const SocialMedia: React.FC<SocialIconsProps> = props => (
-  <div className="social-media">
-    {!props.hideTitle && <h4>Elsewhere on the Internet</h4>}
-    <div className="links">
-      {AccountsList.map(({ Link, Icon, title }) => (
-        <Link key={title}>
-          <Icon />
-          {!props.hideTitle && <span>{title}</span>}
+export const SocialMedia: React.FC<SocialMediaProps> = props => (
+  <>
+    {Object.keys(SocialMediaLinks).map(pf => {
+      const platform = pf as Platform
+      const Link = SocialMediaLinks[platform]
+      const children =
+        typeof props.children === 'function'
+          ? props.children(platform)
+          : props.children
+      return (
+        <Link key={platform} icon={props.icons} {...props}>
+          {children}
         </Link>
-      ))}
-    </div>
-  </div>
+      )
+    })}
+  </>
+)
+
+export const SocialMediaIcons: React.FC<SocialMediaProps> = props => (
+  <SocialMedia className="link-icon" {...props}>
+    {platform => {
+      const Icon = Icons[platform]
+      return <Icon />
+    }}
+  </SocialMedia>
 )

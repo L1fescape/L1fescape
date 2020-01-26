@@ -1,9 +1,9 @@
 import * as React from 'react'
+import * as cn from 'classnames'
 import { useRef, useState } from 'react'
 import { useLoopEffect } from 'ak.gg/utils/effects'
-import { createLoop, DrawFn } from './loop'
-import './styles.scss'
-import * as cn from 'classnames'
+import { createLoop } from './loop'
+import './woulg.scss'
 
 const colors = [
   // '#FF6B53',

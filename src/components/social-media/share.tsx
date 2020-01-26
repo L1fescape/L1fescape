@@ -1,18 +1,17 @@
 import * as React from 'react'
 import { Links } from 'ak.gg/components'
-import { Account, Accounts } from './accounts'
-import { Platforms } from './platforms'
+import { PlatformInfo, platformInfo } from './platforms'
 
 export interface TwitterShareProps {
   title: string
   url: string
-  user?: Account
+  user?: PlatformInfo
 }
 
 export const TwitterShare: React.FC<TwitterShareProps> = ({
   title,
   url,
-  user = Accounts[Platforms.Twitter],
+  user = platformInfo.Twitter,
 }) => {
   const tweetTitle = title.split(' ').join('+')
   const tweetUrl = `https://ak.gg${encodeURIComponent(url)}`

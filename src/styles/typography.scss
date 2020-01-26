@@ -1,11 +1,12 @@
 @import 'ak.gg/styles/variables.scss';
+@import 'ak.gg/styles/mixins.scss';
 
 html,
 body {
   font-family: 'Open Sans', sans-serif;
+  line-height: 1.5rem;
   background: $background;
   color: $white;
-  font-size: 120%;
 }
 
 h1,
@@ -14,19 +15,21 @@ h3,
 h4,
 h5 {
   font-family: 'Raleway', sans-serif;
-  margin: 0 0 1rem;
+  margin: 1rem 0;
 }
 
 a {
+  @include link-animation($ak);
   cursor: pointer;
   text-decoration: none;
-  color: #c77966;
-  border-bottom: 0.2rem solid transparent;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-  &:hover {
-    color: #ce8978;
-    border-bottom-color: #c77966;
+  &.no-border {
+    border: none;
+  }
+
+  svg {
+    margin-bottom: -0.5rem;
+    width: 1.5rem;
   }
 }
 
@@ -46,7 +49,7 @@ p {
 }
 
 section {
-  padding: 1rem;
+  margin: 1rem 0;
 }
 
 .wrapper {

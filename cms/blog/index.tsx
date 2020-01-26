@@ -20,9 +20,9 @@ export interface Post {
   banner?: JSX.Element
 }
 
-export const PostsMap: {[key: string]: Post } = {
+export const PostsMap: { [key: string]: Post } = {
   crossPlatformTesting: {
-    title: 'Cross Plat',
+    title: 'Cross Platform Automation Testing',
     path: '/blog/cross-platform-testing',
     date: new Date('December 11 2019'),
     pageSource: path.join(__dirname, './sauce-labs.md'),

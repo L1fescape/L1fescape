@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 import * as cn from 'classnames'
-import './styles.scss'
+import './expand.scss'
 
 export interface ExpandProps {
   className?: string

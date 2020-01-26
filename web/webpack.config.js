@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const root = path.resolve(__dirname, '..')
 const src = path.resolve(root, 'src')
@@ -40,9 +41,18 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(web, 'index.ejs'),
     }),
-    new webpack.SourceMapDevToolPlugin({
-      filename: '[file].map[query]',
+    new MiniCssExtractPlugin({
+      filename: isDev ? '[id].[contenthash].css' : '[id].css',
+      chunkFilename: isDev ? '[name].[contenthash].css' : '[name].css',
     }),
+    ...(isDev
+      ? [
+          new webpack.SourceMapDevToolPlugin({
+            filename: '[file].map[query]',
+            exclude: ['vendor/*.js'],
+          }),
+        ]
+      : []),
   ],
   module: {
     rules: [
@@ -50,9 +60,14 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader', options: { sourceMap: true } },
-          { loader: 'sass-loader', options: { sourceMap: true } },
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: isDev,
+            },
+          },
+          'css-loader',
+          'sass-loader',
         ],
       },
       {
@@ -74,5 +89,10 @@ module.exports = {
   watchOptions: {
     aggregateTimeout: 300,
     poll: 1000,
+  },
+  stats: {
+    entrypoints: false,
+    children: false,
+    modules: false,
   },
 }

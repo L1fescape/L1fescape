@@ -1,6 +1,4 @@
-// ∗˚(* ˃̤൬˂̤ *)˚∗
 @import 'ak.gg/styles/typography.scss';
-@import 'ak.gg/styles/common.scss';
 
 html,
 body {
@@ -13,4 +11,9 @@ body {
 #root {
   min-height: 100vh;
   width: 100%;
+}
+
+svg {
+  max-width: 2rem;
+  max-height: 2rem;
 }

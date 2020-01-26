@@ -6,10 +6,7 @@ import './styles.scss'
 export const Italics = () => {
   const copyRef = React.useRef(null)
   const [showSuccessMsg, setShowSuccessMsg] = React.useState(false)
-  function onCopySuccess() {
-    console.log('success')
-    setShowSuccessMsg(true)
-  }
+  const onCopySuccess = () => setShowSuccessMsg(true)
 
   return (
     <div className="italics">

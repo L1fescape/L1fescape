@@ -1,0 +1,26 @@
+@import 'ak.gg/styles/variables.scss';
+@import 'ak.gg/styles/mixins.scss';
+
+.link-twitter {
+  @include link-external(#007abc);
+}
+
+.link-instagram {
+  @include link-external($green);
+}
+
+.link-github {
+  @include link-external($gray);
+}
+
+.link-linkedin {
+  @include link-external(#0077b5);
+}
+
+.link-soundcloud {
+  @include link-external(#f50);
+}
+
+.link-devto {
+  @include link-external(#cfd7ff);
+}

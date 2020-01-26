@@ -1,5 +1,5 @@
 export * from './blog'
 export * from './code'
-export * from './cs'
+export * from './csgo'
 export * from './home'
 export * from './404'

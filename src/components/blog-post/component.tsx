@@ -3,7 +3,7 @@ import { BlogRoll, Links, ViewSource } from 'ak.gg/components'
 import { TwitterShare } from 'ak.gg/components/social-media'
 import { Post } from 'cms.ak.gg'
 import { formatDate } from 'ak.gg/utils'
-import './styles.scss'
+import './blog-post.scss'
 
 export interface BlogPostProps {
   post: Post
@@ -21,7 +21,7 @@ export const Banner: React.FC<BlogPostProps> = ({
     <div className="post-banner">
       <div className="bg">{banner}</div>
       <div className="title">
-        <h2>{title}</h2>
+        <h1>{title}</h1>
         {(updated && (
           <span>
             Updated on:{' '}
@@ -41,15 +41,6 @@ const Footer: React.FC<FooterProps> = ({ title, currentPostPathname }) => {
         More from the <Links.blog>Blog</Links.blog>
       </h3>
       <BlogRoll currentPostPathname={currentPostPathname} />
-    </>,
-    <>
-      <h3>Subscribe</h3>
-      <p>
-        {'To keep up with posts on this blog, you can '}
-        <Links.RSS />
-        {' or follow me on '}
-        <Links.DEV />.
-      </p>
     </>,
   ]
 

@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { App } from 'ak.gg'
 import { createHistory, preserveScrollPosition } from './history'
-import './styles.scss'
+import './index.scss'
 
 const history = createHistory()
 history.listen(preserveScrollPosition())

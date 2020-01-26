@@ -4,7 +4,7 @@ export const routes: { [key in Route]: string } = {
   home: '/',
   code: '/code',
   blog: '/blog',
-  cs: '/cs',
+  cs: '/csgo',
 }
 
 export const routeText: { [key in Route]: string } = {

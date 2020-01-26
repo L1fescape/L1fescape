@@ -1,0 +1,30 @@
+@import 'ak.gg/styles/variables.scss';
+@import 'ak.gg/styles/mixins.scss';
+
+a.link-icon {
+  border-bottom: $underline solid transparent;
+  &:hover {
+    border-bottom: $underline solid transparent;
+    span {
+      border-bottom-width: $underline;
+      border-bottom-style: solid;
+    }
+  }
+}
+
+.link-home {
+  @include link($ak);
+}
+.link-cs {
+  @include link($csgo);
+}
+.link-blog {
+  @include link($blog);
+}
+.link-code {
+  @include link($code);
+}
+
+.link-saucelabs {
+  @include link-external(#e2231a);
+}

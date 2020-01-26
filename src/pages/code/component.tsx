@@ -7,7 +7,7 @@ import {
   Projects,
 } from 'ak.gg/components'
 import { RouteComponentProps } from 'react-router'
-import './styles.scss'
+import './code.scss'
 
 export enum CodeSectionIDs {
   Projects = 'projects',

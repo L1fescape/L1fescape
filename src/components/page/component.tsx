@@ -1,8 +1,8 @@
 import * as React from 'react'
 import * as cn from 'classnames'
-import { Navigation, Love, SocialMedia } from 'ak.gg/components'
+import { Navigation, Love, SocialMediaIcons } from 'ak.gg/components'
 import { useTitleEffect } from 'ak.gg/utils/effects'
-import './styles.scss'
+import './page.scss'
 
 export interface PageProps {
   className?: string
@@ -23,12 +23,16 @@ export const Page: React.FC<PageProps> = ({
 
   return (
     <div className={cn('page', className)}>
-      <Navigation />
+      <Navigation className="header backgroundTransition" />
       {banner && <div className="banner">{banner}</div>}
       <div className="content">{children}</div>
-      <SocialMedia />
-      <Navigation />
-      <Love source={pageSource} />
+      <div className="footer">
+        <div className="social-media">
+          <SocialMediaIcons />
+        </div>
+        <Navigation console />
+        <Love source={pageSource} />
+      </div>
     </div>
   )
 }

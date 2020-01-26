@@ -3,17 +3,17 @@ import { ProjectsList } from 'cms.ak.gg/code'
 import { CodeSectionIDs } from 'ak.gg/pages'
 import { routes } from 'ak.gg/routes'
 import { HashLink } from 'react-router-hash-link'
-import './styles.scss'
+import './projects.scss'
 
 export interface ProjectsProps {
   limit?: number
 }
 
-export const Projects: React.FC<ProjectsProps> = props => {
+export const Projects: React.FC<ProjectsProps> = ({ limit }) => {
   let projects = ProjectsList
   let showMore = false
-  if (props.limit !== undefined && props.limit < projects.length) {
-    projects = projects.slice(0, props.limit)
+  if (limit !== undefined && limit < projects.length) {
+    projects = projects.slice(0, limit)
     showMore = true
   }
   return (

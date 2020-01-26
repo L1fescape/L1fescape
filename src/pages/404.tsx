@@ -1,3 +1,8 @@
 import * as React from 'react'
+import { Page } from 'ak.gg/components'
 
-export const FourOhFour = () => <p>shit</p>
+export const FourOhFour = () => (
+  <Page>
+    <p>shit</p>
+  </Page>
+)

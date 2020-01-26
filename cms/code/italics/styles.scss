@@ -1,14 +1,12 @@
 .italics {
   display: flex;
   flex-direction: column;
-  width: 15rem;
 }
 .italics-textarea,
 .italics-result {
   min-height: 2rem;
   padding: 0.5rem;
   box-sizing: border-box;
-  font-size: 1rem;
 }
 .italics-result {
   margin: 1rem 0;
@@ -19,7 +17,6 @@
 
   button {
     padding: 0.5rem 1rem;
-    font-size: 0.75rem;
   }
 
   p {
