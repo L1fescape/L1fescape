@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Expand, SubNav, SubNavSection } from 'ak.gg/components'
+import { Expand, SubNav, SubNavSection } from 'l1/components'
 import * as ReactMarkdown from 'react-markdown'
 
 enum SectionIDs {

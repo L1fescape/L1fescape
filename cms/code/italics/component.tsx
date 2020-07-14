@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { ItalicText, getItalicText } from 'ak.gg/components'
-import { CopyToClipboard } from 'ak.gg/components/copy-to-clipboard'
+import { ItalicText, getItalicText } from 'l1/components'
+import { CopyToClipboard } from 'l1/components/copy-to-clipboard'
 import './styles.scss'
 
 export const Italics = () => {
@@ -11,9 +11,9 @@ export const Italics = () => {
   return (
     <div className="italics">
       <p key="italics-description">
-        Tool for converting normal text into{' '}
-        {getItalicText('unicode italic text')}. This is useful for platforms
-        that do not support italic styling, such as Instagram and Twitter.
+        Convert text into {getItalicText('unicode italic text')}. This is useful
+        for platforms that do not support italic styling, such as Instagram and
+        Twitter.
       </p>
       <ItalicText
         key="italics-generator"

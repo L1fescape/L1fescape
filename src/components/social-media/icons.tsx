@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { IconComponent } from 'ak.gg/components/icons'
+import { IconComponent } from 'l1/components/icons'
 
 export const Icons: { [key: string]: IconComponent } = {
   Twitter: () => (

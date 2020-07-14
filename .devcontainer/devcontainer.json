@@ -1,8 +1,8 @@
 {
-  "name": "ak.gg",
+  "name": "l1fescape.com",
   "dockerComposeFile": "./docker-compose.yml",
   "workspaceFolder": "/workspace",
-  "service": "akgg",
+  "service": "web",
   "runArgs": [
     "-it"
   ],

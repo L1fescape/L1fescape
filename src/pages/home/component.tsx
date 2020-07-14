@@ -7,7 +7,7 @@ import {
   Page,
   BlogRoll,
   Woulg,
-} from 'ak.gg/components'
+} from 'l1/components'
 import './home.scss'
 
 export const About: React.FC = () => (
@@ -43,15 +43,15 @@ export const Home: React.FC<RouteComponentProps> = () => (
     <Woulg className="hi">
       <About />
     </Woulg>
-    <section className="home-code">
+    {/* <section className="home-code">
       <h2>Code</h2>
-      <Projects limit={2} />
+      <Projects limit={5} />
     </section>
     <section>
       <h2>
         Latest from the <Links.blog />
       </h2>
-      <BlogRoll />
-    </section>
+      <BlogRoll limit={1} />
+    </section> */}
   </Page>
 )

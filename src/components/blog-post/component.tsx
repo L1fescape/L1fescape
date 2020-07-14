@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { BlogRoll, Links, ViewSource } from 'ak.gg/components'
-import { TwitterShare } from 'ak.gg/components/social-media'
-import { Post } from 'cms.ak.gg'
-import { formatDate } from 'ak.gg/utils'
+import { BlogRoll, Links, ViewSource } from 'l1/components'
+import { TwitterShare } from 'l1/components/social-media'
+import { Post } from 'cms.l1'
+import { formatDate } from 'l1/utils'
 import './blog-post.scss'
 
 export interface BlogPostProps {

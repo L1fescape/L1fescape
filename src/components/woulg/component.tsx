@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as cn from 'classnames'
 import { useRef, useState } from 'react'
-import { useLoopEffect } from 'ak.gg/utils/effects'
+import { useLoopEffect } from 'l1/utils/effects'
 import { createLoop } from './loop'
 import './woulg.scss'
 

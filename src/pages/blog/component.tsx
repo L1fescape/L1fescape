@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { BlogRoll, Page } from 'ak.gg/components'
-import { BlogPost, Banner } from 'ak.gg/components/blog-post'
+import { BlogRoll, Page } from 'l1/components'
+import { BlogPost, Banner } from 'l1/components/blog-post'
 import { RouteComponentProps } from 'react-router'
-import { Posts } from 'cms.ak.gg'
+import { Posts } from 'cms.l1'
 import './blog.scss'
 
 type Props = RouteComponentProps<{

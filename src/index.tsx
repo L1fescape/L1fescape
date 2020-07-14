@@ -1,7 +1,7 @@
-import { App } from 'ak.gg/components'
+import { App } from 'l1/components'
 export default App
 
-export { App } from 'ak.gg/components'
-export * from 'ak.gg/pages'
-export * from 'ak.gg/routes'
-export * from 'ak.gg/utils'
+export { App } from 'l1/components'
+export * from 'l1/pages'
+export * from 'l1/routes'
+export * from 'l1/utils'

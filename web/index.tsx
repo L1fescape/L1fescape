@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { App } from 'ak.gg'
+import { App } from 'l1'
 import { createHistory, preserveScrollPosition } from './history'
 import './index.scss'
 

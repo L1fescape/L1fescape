@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const defaultTitle = 'ak.gg'
+const defaultTitle = 'L1fescape.com'
 
 export function useTitleEffect(title?: string) {
   useEffect(() => {

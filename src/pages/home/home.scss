@@ -1,4 +1,4 @@
-@import 'ak.gg/styles/variables.scss';
+@import 'l1/styles/variables.scss';
 
 .home {
   position: relative;
@@ -61,7 +61,7 @@
   }
 }
 
-.home-code {
+section.home-code {
   padding: 1rem 0;
   border-top: $underline solid $code;
 

@@ -1,4 +1,4 @@
-@import 'ak.gg/styles/variables.scss';
+@import 'l1/styles/variables.scss';
 
 .navigation {
   font-family: 'Do Hyeon', sans-serif;
@@ -6,7 +6,6 @@
   display: flex;
 
   a {
-    outline: 0;
     vertical-align: middle;
     padding: 0.5rem 0;
     margin: 0 0.5rem;
@@ -16,6 +15,10 @@
     &:last-child {
       margin-right: 1rem;
     }
+  }
+
+  .menu {
+    display: flex;
   }
 
   &.console {
@@ -41,6 +44,7 @@
         color: $gray;
       }
       &:first-child {
+        margin-left: 0.4rem;
         &:hover:before {
           color: #8d909641;
         }

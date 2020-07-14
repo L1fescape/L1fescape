@@ -1,12 +1,15 @@
 import * as React from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 import {
   Page,
   ExternalLink,
   SubNav,
   SubNavSection,
   Projects,
-} from 'ak.gg/components'
-import { RouteComponentProps } from 'react-router'
+  Links,
+} from 'l1/components'
+import { HashLink } from 'react-router-hash-link'
+import { ProjectsList as projects } from 'cms.l1/code'
 import './code.scss'
 
 export enum CodeSectionIDs {
@@ -25,10 +28,60 @@ const sections: SubNavSection[] = [
   },
 ]
 
+const projectSections: SubNavSection[] = projects.map(project => ({
+  name: project.name,
+  id: project.name,
+}))
+
+const Terminal: React.FC = () => (
+  <div className="term-container">
+    <div className="term">
+      <div className="title">
+        {/* <div className="button close" />
+        <div className="button maximize" /> */}
+      </div>
+      <div className="text">
+        <span className="code">
+          <span className="status">~/code</span>
+          <br />
+          <span className="cursor">$</span>
+          {' cat README.md'}
+        </span>
+        <br />
+        <span>
+          {`Here's a list of `}
+          <HashLink smooth to={`#${CodeSectionIDs.Projects}`}>
+            projects
+          </HashLink>
+          {` I've made with software:`}
+        </span>
+        <span>
+          <SubNav sections={projectSections} />
+        </span>
+        <br />
+        <span>
+          {`I also write about software `}
+          <Links.blog>on my blog</Links.blog>
+          {` and like keeping track of `}
+          <HashLink smooth to={`#${CodeSectionIDs.Links}`}>
+            interesting links
+          </HashLink>
+          {'.'}
+        </span>
+      </div>
+    </div>
+  </div>
+)
+
 export const Code: React.FC<RouteComponentProps> = () => {
   return (
-    <Page title="code" className="code" pageSource={__filename}>
-      <SubNav sections={sections} />
+    <Page
+      title="code"
+      className="code"
+      pageSource={__filename}
+      banner={<Terminal />}
+      subnav={<SubNav sections={sections} />}
+    >
       <section id={CodeSectionIDs.Projects} className="code-projects">
         <h2>Projects</h2>
         <Projects />

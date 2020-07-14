@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { ExternalLink } from 'ak.gg/components'
+import { ExternalLink } from 'l1/components'
 
 export function getURLFromSource(filename: string, commit: string = 'master') {
-  const projectRoot = 'https://github.com/l1fescape/ak.gg'
+  const projectRoot = 'https://github.com/l1fescape/l1'
   const url = `${projectRoot}/tree/${commit}/${filename}`
   return url
 }

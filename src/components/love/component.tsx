@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ViewSource } from 'ak.gg/components'
+import { ViewSource } from 'l1/components'
 
 export interface LoveProps {
   source?: string

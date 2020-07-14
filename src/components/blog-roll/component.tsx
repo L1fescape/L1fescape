@@ -1,17 +1,28 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { Posts } from 'cms.ak.gg'
-import { formatDate } from 'ak.gg/utils'
+import { Posts } from 'cms.l1'
+import { formatDate } from 'l1/utils'
+import { Links } from '../links'
 
 export interface BlogRollProps {
   currentPostPathname?: string
+  limit?: number
 }
 
-export const BlogRoll = (props: BlogRollProps) => {
+export const BlogRoll: React.FC<BlogRollProps> = ({
+  limit,
+  currentPostPathname,
+}) => {
+  let posts = Posts
+  let showMore = false
+  if (limit !== undefined && limit < posts.length) {
+    posts = posts.slice(0, limit)
+    showMore = true
+  }
   return (
     <>
-      {Posts.map(post => {
-        if (post.path === props.currentPostPathname) {
+      {posts.map(post => {
+        if (post.path === currentPostPathname) {
           return null
         }
         return (
@@ -26,6 +37,7 @@ export const BlogRoll = (props: BlogRollProps) => {
           </div>
         )
       })}
+      {showMore && <Links.blog>See all blog posts</Links.blog>}
     </>
   )
 }

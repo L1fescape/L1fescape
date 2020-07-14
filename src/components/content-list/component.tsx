@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { BlogRoll } from 'ak.gg/components'
+import { BlogRoll } from 'l1/components'
 
 interface Props {}
 

@@ -1,6 +1,6 @@
 version: "3"
 services:
-  akgg:
+  web:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
@@ -10,17 +10,11 @@ services:
     environment:
       HOST: 0.0.0.0
     volumes:
-      - ~/.gitconfig:/root/.gitconfig
-      - ../.git:/workspace/.git
-      - ../.gitignore:/workspace/.gitignore
-      - ../.devcontainer:/workspace/.devcontainer
-      - ../.vscode:/workspace/.vscode
-      - ../cms:/workspace/cms
-      - ../src:/workspace/src
-      - ../web:/workspace/web
-      - ../package.json:/workspace/package.json
-      - ../tsconfig.json:/workspace/tsconfig.json
-      - ../netlify.toml:/workspace/netlify.toml
-      - ../README.md:/workspace/README.md
-      - ../yarn.lock:/workspace/yarn.lock
+      - ../:/workspace
+      - build:/workspace/build
+      - node_modules:/workspace/node_modules
     command: sleep infinity
+
+volumes:
+  node_modules:
+  build:

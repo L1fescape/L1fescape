@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Links } from 'ak.gg/components'
+import { Links } from 'l1/components'
 import { PlatformInfo, platformInfo } from './platforms'
 
 export interface TwitterShareProps {
@@ -14,7 +14,7 @@ export const TwitterShare: React.FC<TwitterShareProps> = ({
   user = platformInfo.Twitter,
 }) => {
   const tweetTitle = title.split(' ').join('+')
-  const tweetUrl = `https://ak.gg${encodeURIComponent(url)}`
+  const tweetUrl = `https://l1${encodeURIComponent(url)}`
   const tweetShareLink = `https://twitter.com/intent/tweet?text=${tweetTitle}&url=${tweetUrl}&via=${user.username}`
   const twitterFollowLink = `https://twitter.com/intent/follow?user_id=${user.userID}`
 

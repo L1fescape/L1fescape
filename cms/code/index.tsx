@@ -1,30 +1,36 @@
 import * as React from 'react'
 import { Italics } from './italics'
+import { ProjectComponent } from 'l1/components/projects'
+import { Tiles } from 'l1/components/tiles'
 
 export interface Project {
   name: string
   description?: string
-  content?: string
   Component?: React.ElementType
 }
 
 export const ProjectsList: Project[] = [
   {
     name: 'Tetris',
-    Component: () => <p>play tetris</p>,
   },
   {
     name: 'Italic Text Generator',
-    Component: () => <Italics />,
+    Component: props => (
+      <ProjectComponent {...props}>
+        <Italics />
+      </ProjectComponent>
+    ),
   },
   {
     name: 'Life',
     description: 'Magic: The Gathering Life Counter',
-    content: 'hello',
   },
   {
-    name: 'Cornify',
-    description: 'Unicorns, rainbows, and sparkles, oh my!',
-    content: 'hello',
+    name: 'Tiles',
+    Component: props => (
+      <Tiles>
+        <ProjectComponent className="tiles" {...props} />
+      </Tiles>
+    ),
   },
 ]

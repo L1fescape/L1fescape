@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Page } from 'ak.gg/components'
+import { Page } from 'l1/components'
 
 export const Music = () => (
   <Page title="music" pageSource={__filename}>

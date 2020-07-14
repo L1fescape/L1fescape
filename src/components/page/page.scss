@@ -12,13 +12,18 @@
     right: 0;
     z-index: 2;
 
-    span:first-child {
-      flex-grow: 1;
+    span {
+      display: flex;
+
+      &:first-child {
+        flex-grow: 1;
+      }
     }
 
     // stop link borders from resizing the container height
     a {
       border-bottom: 0.15rem solid transparent;
+      padding: 0.5rem 0;
       &:hover {
         border-bottom-color: inherit;
       }
@@ -30,17 +35,23 @@
   }
 
   .content {
-    margin: 4rem 0;
     flex-grow: 1;
     padding: 1rem;
     z-index: 1;
   }
+
   .footer {
     display: flex;
+    flex-direction: row;
 
     & > * {
       display: flex;
+      justify-content: flex-start;
       align-items: center;
+      margin-bottom: 1rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     .social-media {
@@ -60,21 +71,47 @@
       flex-grow: 3;
       justify-content: center;
     }
+
     .love {
       padding: 1rem;
       flex-grow: 1;
       text-align: right;
       flex-direction: column;
       align-items: end;
+      position: relative;
+      align-items: flex-end;
 
       p {
         margin: 0;
       }
 
       .source {
+        position: absolute;
+        bottom: 0.5rem;
         font-family: 'Do Hyeon', sans-serif;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         letter-spacing: 0.06rem;
+        a {
+          padding-bottom: 0.25rem;
+        }
+      }
+    }
+
+    @media (max-width: 50rem) {
+      & {
+        flex-direction: column;
+      }
+      & > * {
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .navigation {
+        justify-content: flex-start;
+      }
+      .love {
+        justify-content: flex-start;
+        text-align: left;
+        align-items: flex-start;
       }
     }
   }

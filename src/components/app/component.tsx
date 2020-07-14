@@ -1,8 +1,8 @@
 import * as React from 'react'
 import * as History from 'history'
 import { Redirect, Router, Route, Switch } from 'react-router'
-import { Home, Code, Blog, CounterStrike, FourOhFour } from 'ak.gg/pages'
-import { routes } from 'ak.gg/routes'
+import { Home, Code, Blog, CS, FourOhFour } from 'l1/pages'
+import { routes } from 'l1/routes'
 
 export type RouterHistory = History.History<any>
 
@@ -16,8 +16,8 @@ export const App: React.FC<AppProps> = ({ history }) => (
       <Route exact path={routes.home} render={Home} />
       <Route path={routes.blog} render={Blog} />
       <Route path={routes.code} render={Code} />
-      <Route path={routes.cs} render={CounterStrike} />
-      <Redirect exact from="/csgo" to="/cs" />
+      <Route path={routes.cs} render={CS} />
+      <Redirect from="/cs" to={routes.cs} />
       <Route render={FourOhFour} />
     </Switch>
   </Router>

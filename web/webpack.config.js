@@ -23,8 +23,8 @@ module.exports = {
   devtool: false,
   resolve: {
     alias: {
-      'ak.gg': src,
-      'cms.ak.gg': cms,
+      'l1': src,
+      'cms.l1': cms,
       web: web,
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],

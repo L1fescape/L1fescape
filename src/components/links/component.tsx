@@ -1,8 +1,8 @@
 import * as React from 'react'
 import * as cn from 'classnames'
-import { Link, ExternalLink, Icons } from 'ak.gg/components'
-import { Platform, SocialMediaLinks } from 'ak.gg/components/social-media'
-import { routes, Route, routeText } from 'ak.gg/routes'
+import { Link, ExternalLink, Icons } from 'l1/components'
+import { Platform, SocialMediaLinks } from 'l1/components/social-media'
+import { routes, Route, routeText } from 'l1/routes'
 import './links.scss'
 
 type External = 'SauceLabs'
@@ -39,6 +39,11 @@ export const Links: {
   code: ({ children }) => (
     <Link className="link-code" to={routes.code}>
       {children || routeText.code}
+    </Link>
+  ),
+  music: ({ children }) => (
+    <Link className="link-music" to={routes.music}>
+      {children || routeText.home}
     </Link>
   ),
   SauceLabs: ({ children = 'SauceLabs', icon }) => (

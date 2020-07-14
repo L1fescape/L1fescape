@@ -1,4 +1,4 @@
-# ak.gg
+# L1fescape.com
 
 > internet site with cool things 🎉
 
@@ -13,10 +13,10 @@ $ yarn start
 ## docker
 
 ```
-$ docker build -f web/Dockerfile -t ak.gg:latest .
-$ docker run -it -p 8000:80 ak.gg:latest
+$ docker build -f web/Dockerfile -t l1fescape.com:latest .
+$ docker run -it -p 8000:80 l1fescape.com:latest
 ```
 
 ## issues?
 
-[let's solve 'em!](https://github.com/L1fescape/ak.gg/issues/new)
+[let's solve 'em!](https://github.com/L1fescape/L1fescape/issues/new)
