@@ -22,7 +22,7 @@ export const About: React.FC = () => (
       <Links.GitHub icon>open source projects</Links.GitHub> and{' '}
       <Links.SoundCloud icon>make beats</Links.SoundCloud>.
     </p>
-    <p>
+    {/* <p>
       {'I post on this website about '}
       <Links.code>software projects</Links.code>
       {' and the game '}
@@ -30,7 +30,7 @@ export const About: React.FC = () => (
       {'. I also write '}
       <Links.blog>blog posts</Links.blog>
       {" about different things I'm interested in."}
-    </p>
+    </p> */}
     <p>You can find me elsewhere on the internet:</p>
     <p className="social-media">
       <SocialMediaIcons />
