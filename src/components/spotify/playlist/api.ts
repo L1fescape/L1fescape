@@ -1,8 +1,8 @@
 import fetch from 'node-fetch'
 
 export const playlistIDs: string[] = [
-  '6szxs14WfHeYbHD9MgX5TM',
-  '1nFbRcvSU0Qv81uW6XOxQo',
+  'spotify:playlist:1IoSlQbiD7OZ7APX3tviuX',
+  'spotify:playlist:0Qf5El4jvjpUnsJ4YZdTKo',
   'spotify:playlist:1EOj4DNc4LJD6ujTkFu6N7',
 ]
 
