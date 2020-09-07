@@ -3,6 +3,6 @@ FROM node:12
 WORKDIR /workspace
 
 COPY package.json .
-COPY yarn.lock .
+COPY package-lock.json .
 
-RUN yarn install
+RUN npm install

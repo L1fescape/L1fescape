@@ -1,38 +1,56 @@
 import * as React from 'react'
-import { SocialMediaLinks } from './links'
-import { Icons } from './icons'
-import { Platform } from './platforms'
-import './social-media.scss'
+import { Icons } from 'l1/components/icons'
+import './style.scss'
 
 export interface SocialMediaProps {
-  icons?: boolean
-  className?: string
-  children?(platform: Platform): React.ReactNode
+  hideIcons?: boolean
+  hideNames?: boolean
 }
 
-export const SocialMedia: React.FC<SocialMediaProps> = props => (
+const Sites = [
+  {
+    name: 'Twitter',
+    link: 'https://twitter.com/L1fescape',
+    Icon: Icons.Twitter,
+    className: 'twitter',
+  },
+  {
+    name: 'Instagram',
+    link: 'https://instagram.com/L1fescape',
+    Icon: Icons.Instagram,
+    className: 'instagram',
+  },
+  {
+    name: 'SoundCloud',
+    link: 'https://soundcloud.com/L1fescape',
+    Icon: Icons.SoundCloud,
+    className: 'soundcloud',
+  },
+]
+
+export const SocialMedia: React.FC<SocialMediaProps> = ({
+  hideIcons,
+  hideNames,
+}) => (
   <>
-    {Object.keys(SocialMediaLinks).map(pf => {
-      const platform = pf as Platform
-      const Link = SocialMediaLinks[platform]
-      const children =
-        typeof props.children === 'function'
-          ? props.children(platform)
-          : props.children
+    {Sites.map(({ name, link, Icon, className }) => {
+      let children = (
+        <>
+          <Icon />
+          <span>{name}</span>
+        </>
+      )
+      if (hideIcons) {
+        children = <>{name}</>
+      }
+      if (hideNames) {
+        children = <Icon />
+      }
       return (
-        <Link key={platform} icon={props.icons} {...props}>
+        <a key={name} href={link} target="_blank" className={className}>
           {children}
-        </Link>
+        </a>
       )
     })}
   </>
-)
-
-export const SocialMediaIcons: React.FC<SocialMediaProps> = props => (
-  <SocialMedia className="link-icon" {...props}>
-    {platform => {
-      const Icon = Icons[platform]
-      return <Icon />
-    }}
-  </SocialMedia>
 )

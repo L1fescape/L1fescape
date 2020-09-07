@@ -2,24 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "firefox",
-      "type": "firefox",
+      "name": "debug",
+      "type": "chrome",
       "request": "launch",
       "preLaunchTask": "dev",
-      "reAttach": true,
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}",
       "port": 9222,
-      "pathMappings": [
-        {
-          "url": "http://localhost:3000",
-          "path": "${webRoot}/build/web"
-        },
-        {
-          "url": "webpack:///",
-          "path": "${webRoot}"
-        }
-      ],
       "skipFiles": ["http?(s):/**", "**/node_modules/**"]
       // "log": {
       //   "fileName": "${workspaceFolder}/logs/ff-debugger-log.txt",

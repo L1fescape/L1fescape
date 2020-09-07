@@ -1,39 +1,15 @@
 @import 'l1/styles/variables.scss';
 
-// $style: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-$style: ease;
-$time: 0.2s;
-$transition: color $time $style, border-bottom $time $style, fill $time $style;
-
-@mixin link-animation($color) {
+@mixin link($color) {
   fill: $color;
   color: $color;
-  transition: $transition;
-  border-bottom: $underline solid transparent;
 
   &:hover {
     fill: $color;
     color: $color;
-    border-bottom-color: $color;
   }
+
   span {
-    transition: $transition;
-    border-bottom-color: $color;
-    // margin-left: 0.4rem;
-  }
-}
-
-@mixin link($color) {
-  @include link-animation($color);
-}
-
-@mixin link-external($color) {
-  @include link-animation($color);
-  // soften social media colors until interacted with
-  color: lighten($color, 20%);
-  fill: lighten($color, 20%);
-
-  &.link-icon:hover {
-    border-bottom-color: transparent;
+    margin-left: 0.25rem;
   }
 }

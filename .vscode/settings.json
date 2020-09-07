@@ -1,6 +1,6 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnPaste": false
-  // "firefox.args": ["${workspaceFolder}/tools/react-dev-tools.xpi"]
+  "editor.formatOnPaste": false,
+  "editor.tabSize": 2
 }

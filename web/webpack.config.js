@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const root = path.resolve(__dirname, '..')
 const src = path.resolve(root, 'src')
-const cms = path.resolve(root, 'cms')
 const web = path.resolve(__dirname)
 const dist = path.resolve(root, 'build/web')
 
@@ -23,8 +22,7 @@ module.exports = {
   devtool: false,
   resolve: {
     alias: {
-      'l1': src,
-      'cms.l1': cms,
+      l1: src,
       web: web,
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],

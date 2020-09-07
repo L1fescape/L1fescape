@@ -1,0 +1,36 @@
+@import 'l1/styles/variables.scss';
+@import 'l1/styles/mixins.scss';
+
+.twitter {
+  @include link(#007abc);
+}
+
+.instagram {
+  @include link($green);
+}
+
+.github {
+  @include link($gray);
+}
+
+.linkedin {
+  @include link(#0077b5);
+}
+
+.soundcloud {
+  @include link(#f50);
+}
+
+.devto {
+  @include link(#cfd7ff);
+}
+
+a:hover {
+  &.twitter,
+  &.instagram {
+  }
+
+  span {
+    text-decoration: underline;
+  }
+}

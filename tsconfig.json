@@ -4,8 +4,6 @@
     "paths": {
       "l1": ["src"],
       "l1/*": ["src/*"],
-      "cms.l1": ["cms"],
-      "cms.l1/*": ["cms/*"],
       "web/*": ["web/*"]
     },
     "outDir": "build/web",
