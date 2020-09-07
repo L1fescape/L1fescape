@@ -10,7 +10,14 @@ async function genPlaylistData() {
   const res = {} as PlaylistMap
   for (let i = 0; i < playlistIDs.length; i++) {
     const id = playlistIDs[i]
-    res[id] = await getPlaylist(token, id)
+    const data = await getPlaylist(token, id)
+    if (data) {
+      res[id] = data
+    }
+  }
+
+  if (Object.entries(res).length === 0) {
+    return
   }
 
   await new Promise(resolve => {
