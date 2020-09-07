@@ -1,12 +1,19 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import { getPlaylist, PlaylistData, playlistIDs } from './api'
+import { refreshToken } from '../account'
 
 export type PlaylistMap = { [key: string]: PlaylistData }
 
-const token = process.env.SPOTIFY_TOKEN
+const clientId = process.env.SPOTIFY_CLIENT_ID
+const clientSecret = process.env.SPOTIFY_CLIENT_SECRET
+let token = process.env.SPOTIFY_TOKEN
 
 async function genPlaylistData() {
+  const newToken = await refreshToken(clientId, clientSecret, token)
+  console.log(newToken)
+  token = process.env.SPOTIFY_TOKEN = newToken
+
   const res = {} as PlaylistMap
   for (let i = 0; i < playlistIDs.length; i++) {
     const id = playlistIDs[i]

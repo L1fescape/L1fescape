@@ -22,12 +22,12 @@ export const App = () => (
     </section>
 
     <section>
-      <p>here are a few playlists i've been working on</p>
+      <p>here a couple playlists i've been working on</p>
       <Spotify />
     </section>
 
     <section>
-      <p>and what songs i've been obsessing over lately</p>
+      <p>and a few songs i've been obsessing over</p>
       <Lastfm />
     </section>
 
