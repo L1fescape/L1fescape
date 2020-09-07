@@ -43,6 +43,7 @@ module.exports = {
       filename: isDev ? '[id].[contenthash].css' : '[id].css',
       chunkFilename: isDev ? '[name].[contenthash].css' : '[name].css',
     }),
+    new webpack.EnvironmentPlugin({ ...process.env }),
     ...(isDev
       ? [
           new webpack.SourceMapDevToolPlugin({

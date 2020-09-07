@@ -9,11 +9,16 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --config web/webpack.config.js",
     "clean": "rimraf build/*",
     "test": "jest",
+    "data": "npm run data:spotify && npm run data:lastfm",
+    "data:spotify": "ts-node src/components/spotify/playlist/gen-playlist-data.ts",
+    "data:lastfm": "ts-node src/components/lastfm/tracks/gen-track-data.ts",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
+    "@types/node-fetch": "^2.5.7",
     "classnames": "^2.2.6",
     "eslint": "^6.8.0",
+    "node-fetch": "^2.6.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-spring": "^8.0.27"
@@ -41,6 +46,7 @@
     "style-loader": "^0.23.1",
     "ts-jest": "^24.0.2",
     "ts-loader": "^5.3.3",
+    "ts-node": "^9.0.0",
     "typescript": "^3.4.3",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",

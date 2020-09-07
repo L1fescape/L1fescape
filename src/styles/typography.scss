@@ -59,12 +59,6 @@ ul {
   list-style-type: none;
 }
 
-li {
-  &:before {
-    content: '- ';
-  }
-}
-
 svg {
   max-width: 2rem;
   max-height: 2rem;

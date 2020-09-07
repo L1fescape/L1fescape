@@ -1,42 +1,20 @@
 import * as React from 'react'
+import { Lastfm } from 'l1/components/lastfm'
+import { Spotify } from 'l1/components/spotify'
 import { SocialMedia } from 'l1/components/social-media'
 import './style.scss'
 
-interface Song {
-  title: string
-  artist: string | string[]
-  spotify: string
-}
-
-const songs: Song[] = [
+const playlists = [
   {
-    title: 'ghosts (feat. hana)',
-    artist: ['tchami, hana'],
-    spotify: 'https://open.spotify.com/track/5LGEEhT48ta9X8vHGCzwby',
-  },
-  {
-    title: 'house arrest',
-    artist: ['sofi tukker', 'gorgon city'],
-    spotify: 'https://open.spotify.com/track/5LGEEhT48ta9X8vHGCzwby',
-  },
-  {
-    title: 'fuzzwar',
-    artist: 'daniel avery',
-    spotify: 'https://open.spotify.com/track/1txulnjmojCRvbgl0ub5qB',
+    link:
+      'https://open.spotify.com/playlist/1nFbRcvSU0Qv81uW6XOxQo?si=wSPodijySmeTMh05FTXxlA',
   },
 ]
-
-function formatArtist(artist: string | string[]) {
-  return typeof artist === 'object' ? artist.join(', ') : artist
-}
 
 export const App = () => (
   <div className="app">
     <section className="hi">
-      <p>hey! 👋 i'm andrew</p>
-    </section>
-
-    <section>
+      <h2>hey! 👋 i'm andrew</h2>
       <p>
         i like 🎸 making music, 🛹 skateboarding, and 💻 creating things with
         code
@@ -44,19 +22,17 @@ export const App = () => (
     </section>
 
     <section>
-      <p>here's what i've been listening to lately:</p>
-      <ul>
-        {songs.map(song => (
-          <li>
-            {song.title} - {formatArtist(song.artist)}{' '}
-            <a href={song.spotify}>spotify</a>
-          </li>
-        ))}
-      </ul>
+      <p>here are a few playlists i've been working on</p>
+      <Spotify />
+    </section>
+
+    <section>
+      <p>and what songs i've been obsessing over lately</p>
+      <Lastfm />
     </section>
 
     <section className="socials">
-      <p>you can find me elsewhere on the internet:</p>
+      <p>you can find me elsewhere on the internet</p>
       <SocialMedia />
     </section>
   </div>

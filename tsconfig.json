@@ -14,7 +14,8 @@
     "allowJs": true,
     "sourceMap": true,
     "noImplicitAny": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
   },
   "include": ["web/index.tsx", "src/**/*"],
   "exclude": ["test.ts", "**/*.spec.ts"]

@@ -26,6 +26,12 @@ const Sites = [
     Icon: Icons.SoundCloud,
     className: 'soundcloud',
   },
+  {
+    name: 'GitHub',
+    link: 'https://github.com/L1fescape',
+    Icon: Icons.GitHub,
+    className: 'github',
+  },
 ]
 
 export const SocialMedia: React.FC<SocialMediaProps> = ({
