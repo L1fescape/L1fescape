@@ -12,7 +12,11 @@ export const Playlist: React.FC<{ id: string }> = ({ id }) => {
   return (
     <div className="playlist">
       <a href={data.external_urls.spotify}>
-        <img src={data.images[0].url} />
+        <img
+          height="60"
+          width="60"
+          src={data.images.sort((a, b) => a.height - b.height)[0].url}
+        />
         <p>{data.name}</p>
       </a>
     </div>
