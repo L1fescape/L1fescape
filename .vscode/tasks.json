@@ -5,7 +5,7 @@
       "label": "dev",
       "type": "process",
       "command": "npm",
-      "args": ["run dev"],
+      "args": ["run", "dev"],
       "isBackground": true,
       "problemMatcher": [
         {
