@@ -23,12 +23,12 @@ export const App = () => (
     </section>
 
     <section>
-      <p>here a couple playlists i've been working on</p>
+      <p>here are a couple playlists i've been working on</p>
       <Spotify />
     </section>
 
     <section>
-      <p>and a few songs i've been obsessing over</p>
+      <p>and a few songs i've recently been obsessing over</p>
       <Lastfm />
     </section>
 

@@ -11,9 +11,7 @@ const clientSecret = process.env.SPOTIFY_CLIENT_SECRET
 let token = process.env.SPOTIFY_TOKEN
 
 async function genPlaylistData() {
-  const newToken = await refreshToken(clientId, clientSecret, token)
-  console.log(newToken)
-  token = process.env.SPOTIFY_TOKEN = newToken
+  token = await refreshToken(clientId, clientSecret, token)
 
   const res = {} as PlaylistMap
   for (let i = 0; i < playlistIDs.length; i++) {
@@ -25,6 +23,7 @@ async function genPlaylistData() {
   }
 
   if (Object.entries(res).length === 0) {
+    console.log('no spotify data')
     return
   }
 
