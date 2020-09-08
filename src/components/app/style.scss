@@ -1,6 +1,11 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .app section {
-  overflow: hidden;
-  margin: 2rem 1rem;
+  margin: 1rem;
 }
 
 .socials {
@@ -11,4 +16,13 @@
 
 .hi h2 {
   margin-bottom: 0;
+}
+
+.app .update {
+  color: #aaa;
+  flex-grow: 1;
+  font-size: 0.75rem;
+  margin: 0 1rem;
+  display: flex;
+  align-items: flex-end;
 }

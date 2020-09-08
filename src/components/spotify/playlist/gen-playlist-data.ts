@@ -1,5 +1,6 @@
 import * as fs from 'fs'
 import * as path from 'path'
+import * as moment from 'moment'
 import { getPlaylist, PlaylistData, playlistIDs } from './api'
 import { refreshToken } from '../account'
 
@@ -31,6 +32,17 @@ async function genPlaylistData() {
     fs.writeFile(
       path.join(__dirname, 'playlist-data.json'),
       JSON.stringify(res),
+      'utf8',
+      () => {
+        resolve()
+      }
+    )
+  })
+
+  await new Promise(resolve => {
+    fs.writeFile(
+      path.join(__dirname, 'last-updated.json'),
+      JSON.stringify({ time: moment.now() }),
       'utf8',
       () => {
         resolve()

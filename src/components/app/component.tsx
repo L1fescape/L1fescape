@@ -2,14 +2,15 @@ import * as React from 'react'
 import { Lastfm } from 'l1/components/lastfm'
 import { Spotify } from 'l1/components/spotify'
 import { SocialMedia } from 'l1/components/social-media'
+import * as lasfmLastUpdate from 'l1/components/lastfm/tracks/last-updated.json'
+import * as spofityLastUpdate from 'l1/components/spotify/playlist/last-updated.json'
+import * as moment from 'moment'
 import './style.scss'
 
-const playlists = [
-  {
-    link:
-      'https://open.spotify.com/playlist/1nFbRcvSU0Qv81uW6XOxQo?si=wSPodijySmeTMh05FTXxlA',
-  },
-]
+function getLastUpdateTime(): number {
+  const updates = [lasfmLastUpdate, spofityLastUpdate]
+  return updates.sort((a, b) => b.time - a.time)[0].time
+}
 
 export const App = () => (
   <div className="app">
@@ -34,6 +35,17 @@ export const App = () => (
     <section className="socials">
       <p>you can find me elsewhere on the internet</p>
       <SocialMedia />
+    </section>
+
+    <section className="update">
+      <p>
+        Last updated{' '}
+        <span
+          title={moment(getLastUpdateTime()).format('MMMM Do YYYY, h:mm:ss a')}
+        >
+          {moment(getLastUpdateTime()).fromNow()}
+        </span>
+      </p>
     </section>
   </div>
 )
