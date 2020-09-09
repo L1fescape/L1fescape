@@ -15,7 +15,7 @@ export const App = () => (
       </p>
     </section>
 
-    <section>
+    <section className="playlists">
       <p>here are a couple playlists i've been working on</p>
       <Spotify />
     </section>

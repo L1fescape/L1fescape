@@ -4,10 +4,12 @@ import './style.scss'
 
 export const Spotify = () => {
   return (
-    <div className="playlists">
+    <ul>
       {playlistIDs.map(id => (
-        <Playlist id={id} key={id} />
+        <li key={id}>
+          <Playlist id={id} />
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }
