@@ -23,12 +23,15 @@ const base = 'https://api.spotify.com/v1'
 
 export function parsePlaylistId(id: string): string {
   const parts = id.split(':')
+  // 1IoSlQbiD7OZ7APX3tviuX
   if (parts.length === 1) {
     return id
   }
+  // spotify:playlist:1IoSlQbiD7OZ7APX3tviuX
   if (parts.length === 3 && parts[1] === 'playlist') {
     return parts[2]
   }
+  // https://open.spotify.com/playlist/19x8zn8rBoAzl0EEciH14w?si=1uNY_xZFQxK8iOXeIYlLfg
   if (id.indexOf('://') > -1) {
     return id.substring(id.lastIndexOf('/') + 1, id.indexOf('?'))
   }
