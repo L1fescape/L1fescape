@@ -6,20 +6,19 @@ import * as relativeTime from 'dayjs/plugin/relativeTime'
 
 dayjs.extend(relativeTime)
 
-function getLastUpdateTime(): string {
-  const updates = [lasfmTracks, spofityPlaylists]
-  const time = updates.sort((a, b) => b.updated - a.updated)[0].updated
-  return `${time}`
+function getLastUpdateTime(): number {
+  const updates = [lasfmTracks, spofityPlaylists].map(d => d.updated)
+  updates.sort((a, b) => b - a)
+  return updates[0]
 }
 
 export const LastUpdate = () => {
   const time = getLastUpdateTime()
+  const formattedTime = dayjs(time).format('MMMM D YYYY, h:mm:ss a')
   return (
     <>
-      Last updated{' '}
-      <span title={dayjs(time).format('MMMM D YYYY, h:mm:ss a')}>
-        {dayjs(time).fromNow()}
-      </span>
+      {'Last updated '}
+      <span title={formattedTime}>{dayjs(time).fromNow()}</span>
     </>
   )
 }

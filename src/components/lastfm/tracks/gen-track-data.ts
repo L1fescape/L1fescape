@@ -15,7 +15,7 @@ async function genTrackData() {
   await new Promise(resolve => {
     const data = {
       tracks,
-      updated: Date.now().toString(),
+      updated: Date.now(),
     }
     fs.writeFile(
       path.join(__dirname, 'track-data.json'),

@@ -50,7 +50,7 @@ async function genPlaylistData() {
   await new Promise(resolve => {
     const data = {
       playlists,
-      updated: Date.now().toString(),
+      updated: Date.now(),
     }
     fs.writeFile(
       path.join(__dirname, 'playlist-data.json'),
