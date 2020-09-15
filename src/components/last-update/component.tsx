@@ -6,9 +6,10 @@ import * as relativeTime from 'dayjs/plugin/relativeTime'
 
 dayjs.extend(relativeTime)
 
-function getLastUpdateTime(): number {
+function getLastUpdateTime(): string {
   const updates = [lasfmTracks, spofityPlaylists]
-  return updates.sort((a, b) => b.updated - a.updated)[0].updated
+  const time = updates.sort((a, b) => b.updated - a.updated)[0].updated
+  return `${time}`
 }
 
 export const LastUpdate = () => {
