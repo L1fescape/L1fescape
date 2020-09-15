@@ -4,7 +4,28 @@ import * as moment from 'moment'
 import { getPlaylist, PlaylistData, playlistIDs } from './api'
 import { refreshToken } from '../account'
 
-export type PlaylistMap = { [key: string]: PlaylistData }
+export interface Playlist {
+  title: string
+  description: string
+  emoji?: string
+  url: string
+  imageUrl: string
+}
+
+function parseDescription(desc: string): string {
+  return desc.replace('&#x27;', "'")
+}
+
+function parsePlaylist(data: PlaylistData): Playlist {
+  return {
+    title: data.name,
+    description: parseDescription(data.description),
+    url: data.external_urls.spotify,
+    imageUrl: data.images.sort((a, b) => b.height - a.height)[0].url,
+  }
+}
+
+export type PlaylistMap = { [key: string]: Playlist }
 
 const clientId = process.env.SPOTIFY_CLIENT_ID
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET
@@ -13,35 +34,28 @@ let token = process.env.SPOTIFY_TOKEN
 async function genPlaylistData() {
   token = await refreshToken(clientId, clientSecret, token)
 
-  const res = {} as PlaylistMap
+  const playlists = {} as PlaylistMap
   for (let i = 0; i < playlistIDs.length; i++) {
     const id = playlistIDs[i]
     const data = await getPlaylist(token, id)
     if (data) {
-      res[id] = data
+      playlists[id] = parsePlaylist(data)
     }
   }
 
-  if (Object.entries(res).length === 0) {
+  if (Object.entries(playlists).length === 0) {
     console.log('no spotify data')
     return
   }
 
   await new Promise(resolve => {
+    const data = {
+      playlists,
+      updated: moment.now(),
+    }
     fs.writeFile(
       path.join(__dirname, 'playlist-data.json'),
-      JSON.stringify(res),
-      'utf8',
-      () => {
-        resolve()
-      }
-    )
-  })
-
-  await new Promise(resolve => {
-    fs.writeFile(
-      path.join(__dirname, 'last-updated.json'),
-      JSON.stringify({ time: moment.now() }),
+      JSON.stringify(data),
       'utf8',
       () => {
         resolve()

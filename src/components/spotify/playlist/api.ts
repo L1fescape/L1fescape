@@ -1,10 +1,10 @@
 import fetch from 'node-fetch'
 
 export const playlistIDs: string[] = [
-  'spotify:playlist:1IoSlQbiD7OZ7APX3tviuX',
-  'spotify:playlist:0Qf5El4jvjpUnsJ4YZdTKo',
   'spotify:playlist:1EOj4DNc4LJD6ujTkFu6N7',
   'https://open.spotify.com/playlist/19x8zn8rBoAzl0EEciH14w?si=1uNY_xZFQxK8iOXeIYlLfg',
+  'spotify:playlist:1IoSlQbiD7OZ7APX3tviuX',
+  'spotify:playlist:0Qf5El4jvjpUnsJ4YZdTKo',
 ]
 
 export interface PlaylistData {
@@ -14,6 +14,7 @@ export interface PlaylistData {
     url: string
   }[]
   name: string
+  description: string
   external_urls: {
     spotify: string
   }

@@ -1,6 +1,7 @@
 .playlists {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  max-width: 50rem;
 
   p {
     margin-left: 0.5rem;
@@ -16,14 +17,19 @@
 .playlist {
   display: flex;
   padding: 0.5rem;
-  text-align: center;
+  width: 20rem;
 
   img {
-    height: 4rem;
-    width: 4rem;
+    height: 6rem;
+    width: 6rem;
   }
 
   p {
     margin: 0;
+  }
+
+  .info {
+    flex: 1;
+    margin-left: 0.5rem;
   }
 }

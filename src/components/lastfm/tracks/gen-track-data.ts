@@ -1,36 +1,26 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import * as moment from 'moment'
-import { getTracks, LastfmData } from './api'
-import * as trackData from './track-data.json'
+import { getTracks } from './api'
 
 const apikey = process.env.LASTFM_KEY
 
-const data = trackData as LastfmData
-
 async function genTrackData() {
-  const res = await getTracks(apikey)
+  const tracks = await getTracks(apikey)
 
-  if (Object.entries(res).length === 0) {
+  if (Object.entries(tracks).length === 0) {
     console.log('no lastfm data')
     return
   }
 
   await new Promise(resolve => {
+    const data = {
+      tracks,
+      updated: moment.now(),
+    }
     fs.writeFile(
       path.join(__dirname, 'track-data.json'),
-      JSON.stringify(res),
-      'utf8',
-      () => {
-        resolve()
-      }
-    )
-  })
-
-  await new Promise(resolve => {
-    fs.writeFile(
-      path.join(__dirname, 'last-updated.json'),
-      JSON.stringify({ time: moment.now() }),
+      JSON.stringify(data),
       'utf8',
       () => {
         resolve()
