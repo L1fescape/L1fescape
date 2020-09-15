@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 
 const root = path.resolve(__dirname, '..')
 const src = path.resolve(root, 'src')
@@ -9,6 +11,7 @@ const web = path.resolve(__dirname)
 const dist = path.resolve(root, 'build/web')
 
 const isDev = process.env.NODE_ENV === 'development'
+const isAnalysis = process.env.NODE_ENV === 'analyze'
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
@@ -50,8 +53,10 @@ module.exports = {
             filename: '[file].map[query]',
             exclude: ['vendor/*.js'],
           }),
+          new BundleAnalyzerPlugin(),
         ]
       : []),
+    ...(isAnalysis ? [new BundleAnalyzerPlugin()] : []),
   ],
   module: {
     rules: [

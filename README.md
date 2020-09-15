@@ -52,7 +52,3 @@ $ npm test
 ## issues?
 
 [let's solve 'em!](https://github.com/L1fescape/L1fescape/issues/new)
-
-```
-
-```

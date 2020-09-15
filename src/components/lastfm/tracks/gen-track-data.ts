@@ -1,6 +1,5 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import * as moment from 'moment'
 import { getTracks } from './api'
 
 const apikey = process.env.LASTFM_KEY
@@ -16,7 +15,7 @@ async function genTrackData() {
   await new Promise(resolve => {
     const data = {
       tracks,
-      updated: moment.now(),
+      updated: Date.now().toString(),
     }
     fs.writeFile(
       path.join(__dirname, 'track-data.json'),
