@@ -21,7 +21,7 @@ export interface LastfmData {
 const base = 'https://ws.audioscrobbler.com/2.0/'
 const args: any = {
   method: 'user.getTopTracks',
-  period: '1day',
+  period: '7day',
   limit: 5,
   user: 'L1fescape',
   format: 'json',

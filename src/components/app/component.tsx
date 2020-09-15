@@ -5,6 +5,8 @@ import { SocialMedia } from 'l1/components/social-media'
 import { LastUpdate } from 'l1/components/last-update'
 import './style.scss'
 
+process.env.API_ROOT = 'https://ak.gg/api/rest/v1'
+
 export const App = () => (
   <div className="app">
     <section className="hi">
@@ -14,6 +16,13 @@ export const App = () => (
         code
       </p>
     </section>
+
+    {/* <section>
+      <p>
+        recently i've been working on hosting custom servers for the game cs:go
+      </p>
+      <CounterStrike />
+    </section> */}
 
     <section className="playlists">
       <p>check out a few playlists i've been working on</p>

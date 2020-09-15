@@ -5,8 +5,8 @@ services:
       context: ..
       dockerfile: .devcontainer/Dockerfile
     ports:
-      - '3000:3000'
-      - '9229:9229'
+      - '3000'
+      - '9229'
     environment:
       HOST: 0.0.0.0
     volumes:
