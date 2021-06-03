@@ -15,6 +15,7 @@ section {
 }
 
 .hi h2 {
+  margin-top: 2rem;
   margin-bottom: 0;
 }
 
@@ -24,4 +25,45 @@ section {
   font-size: 0.75rem;
   display: flex;
   align-items: flex-end;
+}
+
+.sparkle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+
+  .moon {
+    font-size: 1.8rem;
+    position: absolute;
+  }
+  .stars {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: 2rem;
+
+    & > * {
+      position: absolute;
+      &:first-child {
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+.soundcloud-embed {
+  max-width: 40rem;
+  min-width: 10rem;
+  height: 10rem;
+  margin-bottom: 1rem;
+
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
 }

@@ -21,6 +21,20 @@
   @include link(#f50);
 }
 
+.spotify {
+  @include link(#1db954);
+  svg {
+    transform: scale(0.8);
+  }
+}
+
+.lastfm {
+  @include link(#d51007);
+  svg {
+    transform: scale(0.8);
+  }
+}
+
 .devto {
   @include link(#cfd7ff);
 }

@@ -32,6 +32,18 @@ const Sites = [
     Icon: Icons.GitHub,
     className: 'github',
   },
+  {
+    name: 'Spotify',
+    link: 'https://open.spotify.com/user/1224725738?si=DUfTrXamShCL0iZUCXNF7Q',
+    Icon: Icons.Spotify,
+    className: 'spotify',
+  },
+  {
+    name: 'Last.fm',
+    link: 'https://www.last.fm/user/L1fescape',
+    Icon: Icons.Lastfm,
+    className: 'lastfm',
+  },
 ]
 
 export const SocialMedia: React.FC<SocialMediaProps> = ({

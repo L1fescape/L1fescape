@@ -19,7 +19,7 @@ export const Playlist: React.FC<{ id: string }> = ({ id }) => {
       </div>
       <div className="info">
         <a href={url}>
-          <p>{title}</p>
+          <span>{title}</span>
         </a>
         <p>{description}</p>
       </div>

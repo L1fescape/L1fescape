@@ -24,6 +24,7 @@
     "node-fetch": "^2.6.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-player": "^2.6.2",
     "react-spring": "^8.0.27"
   },
   "devDependencies": {
