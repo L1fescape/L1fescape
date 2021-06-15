@@ -3,7 +3,7 @@ import { Lastfm } from 'l1/components/lastfm'
 import { Spotify } from 'l1/components/spotify'
 import { SocialMedia } from 'l1/components/social-media'
 import { LastUpdate } from 'l1/components/last-update'
-import { Twitch } from 'l1/components/twitch'
+import { Mix } from 'l1/components/mix'
 import './style.scss'
 
 const Sparkle = () => {
@@ -19,43 +19,72 @@ const Sparkle = () => {
   )
 }
 
-// todo: pass as prop to cs component
-process.env.API_ROOT = 'https://ak.gg/api/rest/v1'
+const m1Tracklist = [
+  {
+    track: 'Terrain: III',
+    artist: 'Portico Quartet',
+  },
+  {
+    track: 'Sister (Floating Points Remix)',
+    artist: 'Caribou',
+  },
+  {
+    track: 'Reserve Parachute',
+    artist: 'Dark Sky',
+  },
+  {
+    track: 'Unity',
+    artist: 'Phaeleh',
+  },
+  {
+    track: 'Balearic Incarnation',
+    artist: 'Dolle Jolle',
+  },
+  {
+    track: 'Nomad',
+    artist: 'Tor',
+  },
+  {
+    track: 'Debold',
+    artist: 'Vegyn',
+  },
+  {
+    track: 'heal',
+    artist: 'ICO',
+  },
+]
 
 export const App = () => (
   <div className="app">
     <section className="hi">
-      <h2>hey! 👋 i'm andrew</h2>
-      <p>i like 🎸 making music, 🛹 skateboarding, and 💻 programming</p>
+      <h2>Hey! 👋 I'm Andrew</h2>
+      <p>I like 🎸 making music, 🛹 skateboarding, and 💻 programming</p>
     </section>
 
     <section className="playlists">
-      <p>check some playlists i've been working on</p>
+      <p>Check some playlists I've been working on:</p>
       <Spotify />
     </section>
 
     <section>
       <p>
-        i recorded a mix of a few tunes i listened to a lot in the month of may
-        2021. you can listen to it here:
+        I recorded a mix of a few tunes I listened to a lot in the month of May
+        2021.
       </p>
-      <div className="soundcloud-embed">
-        <iframe
-          scrolling="no"
-          frameBorder="no"
-          allow="autoplay"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1053816040&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
-        ></iframe>
-      </div>
+      <Mix
+        soundcloudId="1053816040"
+        spotifyId="5443H4ZhAWa94tbegE93ap"
+        tracklist={m1Tracklist}
+      />
     </section>
 
     <section>
-      <p>here are a few tracks i've been listening to a lot lately</p>
+      <p>These are a few tracks I've been listening to a lot lately</p>
       <Lastfm />
     </section>
 
     <section className="socials">
-      <p>you can find me elsewhere on the internet</p>
+      <p>You can find me elsewhere on the internet</p>
       <SocialMedia />
     </section>
 

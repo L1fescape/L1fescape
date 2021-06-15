@@ -1,7 +1,19 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import { getPlaylist, PlaylistData, playlistIDs } from './api'
+import { decode } from 'he'
+
+import { getPlaylist, PlaylistData } from './api'
 import { refreshToken } from '../account'
+
+const playlistIDs: string[] = [
+  'spotify:playlist:1EOj4DNc4LJD6ujTkFu6N7',
+  'https://open.spotify.com/playlist/19x8zn8rBoAzl0EEciH14w?si=1uNY_xZFQxK8iOXeIYlLfg',
+  'spotify:playlist:1IoSlQbiD7OZ7APX3tviuX',
+  'spotify:playlist:0Qf5El4jvjpUnsJ4YZdTKo',
+  'spotify:playlist:0Gm4bXeS0P3YJnDyEoH3KR',
+
+  'spotify:playlist:5443H4ZhAWa94tbegE93ap',
+]
 
 export interface Playlist {
   title: string
@@ -12,7 +24,7 @@ export interface Playlist {
 }
 
 function parseDescription(desc: string): string {
-  return desc.replace('&#x27;', "'")
+  return decode(desc)
 }
 
 function parsePlaylist(data: PlaylistData): Playlist {
@@ -57,7 +69,7 @@ async function genPlaylistData() {
       JSON.stringify(data),
       'utf8',
       () => {
-        resolve()
+        resolve(undefined)
       }
     )
   })

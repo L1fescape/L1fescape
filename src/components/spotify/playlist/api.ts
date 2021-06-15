@@ -1,12 +1,5 @@
 import fetch from 'node-fetch'
 
-export const playlistIDs: string[] = [
-  'spotify:playlist:1EOj4DNc4LJD6ujTkFu6N7',
-  'https://open.spotify.com/playlist/19x8zn8rBoAzl0EEciH14w?si=1uNY_xZFQxK8iOXeIYlLfg',
-  'spotify:playlist:1IoSlQbiD7OZ7APX3tviuX',
-  'spotify:playlist:0Qf5El4jvjpUnsJ4YZdTKo',
-]
-
 export interface PlaylistData {
   id: string
   images: {
@@ -32,11 +25,15 @@ export function parsePlaylistId(id: string): string {
   if (parts.length === 3 && parts[1] === 'playlist') {
     return parts[2]
   }
-  // https://open.spotify.com/playlist/19x8zn8rBoAzl0EEciH14w?si=1uNY_xZFQxK8iOXeIYlLfg
-  if (id.indexOf('://') > -1) {
-    return id.substring(id.lastIndexOf('/') + 1, id.indexOf('?'))
+  // remove ?si=asdfasdf
+  if (id.indexOf('?') > -1) {
+    id = id.split('?')[0]
   }
-  throw new Error(`unknown id: ${id}`)
+  // https://open.spotify.com/playlist/19x8zn8rBoAzl0EEciH14w
+  if (id.indexOf('://') > -1) {
+    return id.substring(id.lastIndexOf('/') + 1)
+  }
+  return id
 }
 
 export async function getPlaylist(
