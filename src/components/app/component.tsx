@@ -3,7 +3,7 @@ import { Lastfm } from 'l1/components/lastfm'
 import { Spotify } from 'l1/components/spotify'
 import { SocialMedia } from 'l1/components/social-media'
 import { LastUpdate } from 'l1/components/last-update'
-import { Mix } from 'l1/components/mix'
+import { Mix, Tracklist } from 'l1/components/mix'
 import './style.scss'
 
 const Sparkle = () => {
@@ -19,7 +19,7 @@ const Sparkle = () => {
   )
 }
 
-const m1Tracklist = [
+const m1Tracklist: Tracklist = [
   {
     track: 'Terrain: III',
     artist: 'Portico Quartet',
@@ -62,7 +62,10 @@ export const App = () => (
     </section>
 
     <section className="playlists">
-      <p>Check some playlists I've been working on:</p>
+      <p>
+        If you're looking for new music check out a few playlists I regularly
+        update
+      </p>
       <Spotify />
     </section>
 

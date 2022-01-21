@@ -11,7 +11,7 @@ const web = path.resolve(__dirname)
 const dist = path.resolve(root, 'build/web')
 
 const isDev = process.env.NODE_ENV === 'development'
-const isAnalysis = process.env.NODE_ENV === 'analyze'
+const isAnalysis = process.env.WEBPACK_ANALYZE === 'true'
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
@@ -25,18 +25,18 @@ module.exports = {
   devtool: false,
   resolve: {
     alias: {
+      '@': src,
       l1: src,
       web: web,
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   devServer: {
-    contentBase: src,
+    static: dist,
     historyApiFallback: true,
     hot: true,
     host: process.env.HOST || 'localhost',
     port: process.env.PORT || 3000,
-    writeToDisk: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -66,17 +66,14 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: isDev,
-            },
           },
           'css-loader',
           'sass-loader',
         ],
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loader: 'file-loader?name=[name].[ext]',
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
       { test: /\.md$/, use: [{ loader: 'html-loader' }] },
     ],

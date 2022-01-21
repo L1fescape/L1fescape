@@ -5,12 +5,15 @@ import './style.scss'
 export interface Track {
   artist: string
   track: string
+  url?: string
 }
+
+export type Tracklist = Track[]
 
 interface Props {
   soundcloudId?: string
   spotifyId?: string
-  tracklist: Track[]
+  tracklist: Tracklist
 }
 
 export const Mix: React.FC<Props> = ({

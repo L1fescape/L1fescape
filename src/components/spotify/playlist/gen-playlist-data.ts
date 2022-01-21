@@ -13,6 +13,7 @@ const playlistIDs: string[] = [
   'spotify:playlist:0Gm4bXeS0P3YJnDyEoH3KR',
 
   'spotify:playlist:5443H4ZhAWa94tbegE93ap',
+  'https://open.spotify.com/playlist/1MMqJT3c36EPJ0IYFo8DNn?si=dac41c00766d4f4a',
 ]
 
 export interface Playlist {
