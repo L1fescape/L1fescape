@@ -1,100 +1,107 @@
 import * as React from 'react'
-import { Lastfm } from 'l1/components/lastfm'
-import { Spotify } from 'l1/components/spotify'
-import { SocialMedia } from 'l1/components/social-media'
-import { LastUpdate } from 'l1/components/last-update'
-import { Mix, Tracklist } from 'l1/components/mix'
+
+import { Tracks } from '@/components/recent-tracks'
+import { Playlist } from '@/components/playlist'
+import { SocialMedia } from '@/components/social-media'
+import { LastUpdate } from '@/components/recent-tracks/last-update'
+import { Icons } from '@/components/icons'
+import { Mix } from '@/components/mix'
+import { m1Tracklist, Mix as MixType } from '@/data/mixes'
 import './style.scss'
 
-const Sparkle = () => {
-  return (
-    <div className="sparkle">
-      <div className="moon">🌙</div>
-      <div className="stars">
-        <div>✨</div>
-        <div>✨</div>
-        <div>✨</div>
-      </div>
-    </div>
-  )
-}
+export const playlistIDs: string[] = [
+  'spotify:playlist:1EOj4DNc4LJD6ujTkFu6N7',
+  'spotify:playlist:0Gm4bXeS0P3YJnDyEoH3KR',
+  'spotify:playlist:1IoSlQbiD7OZ7APX3tviuX',
+  'spotify:playlist:0Qf5El4jvjpUnsJ4YZdTKo',
 
-const m1Tracklist: Tracklist = [
-  {
-    track: 'Terrain: III',
-    artist: 'Portico Quartet',
-  },
-  {
-    track: 'Sister (Floating Points Remix)',
-    artist: 'Caribou',
-  },
-  {
-    track: 'Reserve Parachute',
-    artist: 'Dark Sky',
-  },
-  {
-    track: 'Unity',
-    artist: 'Phaeleh',
-  },
-  {
-    track: 'Balearic Incarnation',
-    artist: 'Dolle Jolle',
-  },
-  {
-    track: 'Nomad',
-    artist: 'Tor',
-  },
-  {
-    track: 'Debold',
-    artist: 'Vegyn',
-  },
-  {
-    track: 'heal',
-    artist: 'ICO',
-  },
+  'https://open.spotify.com/playlist/5ywVhKummH20oqmvVDaSpm?si=d995ff38c4294b8e',
 ]
 
+export const mixes: MixType[] = [{
+  title: 'm1',
+  tracklist: m1Tracklist,
+  soundcloud: '1053816040',
+  spotify: '544H4ZhAWa94tbegE93ap',
+  description: 'i recorded a mix of a few tunes i listened to a lot in the month of may 2021.',
+}, {
+  title: 'm2',
+  soundcloud: '1155198274',
+  spotify: '2VxPeV9cgCmiIAQfDouQ7T',
+}, {
+  title: 'moongate',
+  soundcloud: '1155198274',
+  spotify: '2VxPeV9cgCmiIAQfDouQ7T',
+}]
+
 export const App = () => (
-  <div className="app">
+  <div className="home">
     <section className="hi">
-      <h2>Hey! 👋 I'm Andrew</h2>
-      <p>I like 🎸 making music, 🛹 skateboarding, and 💻 programming</p>
+      <div className="pic">
+        <img className="profile" src="/img/profile.jpg" />
+      </div>
+      <div className="blurb">
+        <h2>hi! i'm andrew</h2>
+        <p>i'm a programmer currently living in berlin. i really enjoy music and software. here on my website you'll find some spotify playlists with music i like, soundcloud links to sets i've mixed, tracks i've been listening to lately via last.fm, and a couple of my other projects. i post content here when i can but some playlists i update frequently, so check back for updates!</p>
+        <p>you can also find me elsewhere on the internet, should you be so inclined <span className="arrow-icon"><Icons.Arrow /></span></p>
+        <div className="socials">
+          <SocialMedia />
+        </div>
+      </div>
     </section>
 
-    <section className="playlists">
-      <p>
-        If you're looking for new music check out a few playlists I regularly
-        update
-      </p>
-      <Spotify />
+    <section className="music">
+      <div className="title"><h2>music</h2></div>
+      <div className="content grid">
+        <div className="playlists">
+          <h3>playlists</h3>
+          <p>these are a few spotify playlists i've made with tunes i really like. check em out if you're looking for some music to groove to.</p>
+          <ul>
+            {playlistIDs.map(id => (
+              <li key={id}><Playlist id={id} /></li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mixes">
+          <h3>mixes & live sets</h3>
+          <ul>
+            {mixes.map(mix => (
+              <li key={mix.soundcloud}>
+                <Mix
+                  soundcloud={mix.soundcloud}
+                  description={mix.description}
+                  spotify={mix.spotify}
+                  tracklist={mix.tracklist}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className='recent-tracks'>
+          <h3>what i've been listening to recently</h3>
+          <p>a few tunes that have been hitting my ears a lot this past week*:</p>
+          <Tracks />
+          <p>* <span className="small">last updated <a href="https://github.com/L1fescape/L1fescape.com/actions/workflows/data.yml" target="_blank"><LastUpdate /></a></span></p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <p>
-        I recorded a mix of a few tunes I listened to a lot in the month of May
-        2021.
-      </p>
-      <Mix
-        soundcloudId="1053816040"
-        spotifyId="5443H4ZhAWa94tbegE93ap"
-        tracklist={m1Tracklist}
-      />
-    </section>
+    {/* <section className="code">
+      <div className="title"><h2>projects</h2></div>
+      <div className="content grid">
+        <div>
+          <h3>blanqslate.fm</h3>
+        </div>
+      </div>
+    </section> */}
 
-    <section>
-      <p>These are a few tracks I've been listening to a lot lately</p>
-      <Lastfm />
-    </section>
-
-    <section className="socials">
-      <p>You can find me elsewhere on the internet</p>
-      <SocialMedia />
-    </section>
-
-    <section className="update">
-      <p>
-        <LastUpdate />
-      </p>
+    <section className="source">
+      <div className="title"><h2>source</h2></div>
+      <div className="content">
+        <p>view the source code for this website <a href="https://github.com/l1fescape/l1fescape.com" target="_blank">on github</a>.</p>
+      </div>
     </section>
   </div>
 )

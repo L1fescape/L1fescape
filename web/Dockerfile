@@ -1,9 +1,9 @@
-FROM node:10 AS builder
+FROM node:14 AS builder
 
 WORKDIR /usr/share/app
 COPY . .
 
-RUN yarn build
+RUN npm run build
 
 FROM nginx:stable
 

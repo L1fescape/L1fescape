@@ -2,8 +2,8 @@ import * as fs from 'fs'
 import * as path from 'path'
 import { decode } from 'he'
 
-import { getPlaylist, PlaylistData } from './api'
-import { refreshToken } from '../account'
+import { getPlaylist, PlaylistData } from '../api/spotify/playlist'
+import { refreshToken } from '../api/spotify'
 
 const playlistIDs: string[] = [
   'spotify:playlist:1EOj4DNc4LJD6ujTkFu6N7',

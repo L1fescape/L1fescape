@@ -9,40 +9,40 @@ export interface SocialMediaProps {
 
 const Sites = [
   {
-    name: 'Twitter',
-    link: 'https://twitter.com/L1fescape',
-    Icon: Icons.Twitter,
-    className: 'twitter',
-  },
-  {
-    name: 'Instagram',
-    link: 'https://instagram.com/L1fescape',
-    Icon: Icons.Instagram,
-    className: 'instagram',
-  },
-  {
-    name: 'SoundCloud',
+    name: 'soundcloud',
     link: 'https://soundcloud.com/L1fescape',
     Icon: Icons.SoundCloud,
     className: 'soundcloud',
   },
   {
-    name: 'GitHub',
-    link: 'https://github.com/L1fescape',
-    Icon: Icons.GitHub,
-    className: 'github',
+    name: 'last.fm',
+    link: 'https://www.last.fm/user/L1fescape',
+    Icon: Icons.Lastfm,
+    className: 'lastfm',
   },
   {
-    name: 'Spotify',
+    name: 'spotify',
     link: 'https://open.spotify.com/user/1224725738?si=DUfTrXamShCL0iZUCXNF7Q',
     Icon: Icons.Spotify,
     className: 'spotify',
   },
   {
-    name: 'Last.fm',
-    link: 'https://www.last.fm/user/L1fescape',
-    Icon: Icons.Lastfm,
-    className: 'lastfm',
+    name: 'github',
+    link: 'https://github.com/L1fescape',
+    Icon: Icons.GitHub,
+    className: 'github',
+  },
+  {
+    name: 'twitter',
+    link: 'https://twitter.com/L1fescape',
+    Icon: Icons.Twitter,
+    className: 'twitter',
+  },
+  {
+    name: 'instagram',
+    link: 'https://instagram.com/L1fescape',
+    Icon: Icons.Instagram,
+    className: 'instagram',
   },
 ]
 

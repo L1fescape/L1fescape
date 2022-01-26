@@ -1,10 +1,10 @@
 import * as React from 'react'
-import * as playlistData from './playlist-data.json'
-import { PlaylistMap } from './gen-playlist-data'
+import * as playlistData from '@/data/playlist-data.json'
+import { PlaylistMap } from '@/utils/gen-playlist-data'
 
 const playlistMap: PlaylistMap = playlistData.playlists
 
-export const Playlist: React.FC<{ id: string }> = ({ id }) => {
+export const Spotify: React.FC<{ id: string }> = ({ id }) => {
   const playlist = playlistMap[id]
   if (!playlist) {
     return null

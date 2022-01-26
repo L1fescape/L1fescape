@@ -1,57 +1,152 @@
-.app {
+@import 'l1/styles/variables.scss';
+@import 'l1/styles/mixins.scss';
+
+$gridSize: 40rem;
+
+.home {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
+  align-items: center;
 
-section {
-  margin: 1rem;
-}
+  section {
+    display: flex;
+    width: 100%;
+    display: block;
+    flex-direction: column;
+    margin: 0 0 calc($padding * 8);
 
-.socials {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
+    &.hi {
+      display: flex;
+    }
 
-.hi h2 {
-  margin-bottom: 0;
-}
+    &:last-child {
+      margin-bottom: 0;
+    }
 
-.app .update {
-  color: #aaa;
-  flex-grow: 1;
-  font-size: 0.75rem;
-  display: flex;
-  align-items: flex-end;
-}
+    .title {
+      color: $background;
+      background: $text;
+      padding: $padding;
+      padding-right: $padding * 4;
+      display: inline-block;
 
-.sparkle {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 1rem;
-
-  .moon {
-    font-size: 1.8rem;
-    position: absolute;
-  }
-  .stars {
-    font-size: 0.8rem;
-    line-height: 0.8rem;
-    position: relative;
-    top: 0;
-    right: 0;
-    width: 2rem;
-    height: 2rem;
-
-    & > * {
-      position: absolute;
-      &:first-child {
-        top: 0;
-        left: 0;
+      h2 {
+        margin: 0;
+        display: block;
       }
     }
+
+    .grid {
+      grid-template-columns: repeat(auto-fit, minmax($gridSize, 1fr));
+    }
+
+    h2, h3 {
+      margin-bottom: calc($padding / 2);
+    }
+  }
+}
+
+.hi {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: $padding;
+  box-sizing: border-box;
+  max-width: 60rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  .arrow-icon {
+    position: relative;
+    svg {
+      position: absolute;
+      top: 0.25rem;
+      left: 0.25rem;
+    }
+  }
+
+  .pic {
+    display: flex;
+    align-items: center;
+    margin: $padding;
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .blurb {
+    display: flex;
+    flex-direction: column;
+    margin-right: $padding;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .aka {
+    font-size: 50%;
+    color: $gray;
+  }
+
+  .profile {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 12rem;
+    object-position: 0 60%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .socials {
+    display: flex;
+    flex-wrap: wrap;
+
+    a {
+      margin-right: $padding;
+      margin-top: calc($padding / 2);
+    }
+  }
+}
+
+.music {
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 0;
+  box-sizing: border-box;
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(186px, 1fr));
+  }
+
+  .playlists {
+    padding: $padding;
+
+    ul {
+      margin-right: $padding;
+    }
+  }
+
+  .mixes {
+    padding: $padding;
+    padding-right: 0;
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(calc($gridSize / 2), 1fr));
+
+      li {
+        margin-right: $padding;
+        margin-bottom: $padding;
+      }
+    }
+  }
+
+  .recent-tracks {
+    padding: $padding;
   }
 }
 
@@ -64,5 +159,35 @@ section {
   iframe {
     height: 100%;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: $desktop) {
+  .music {
+    .grid {
+      grid-template-areas:
+        "playlist mixes"
+        "lastfm mixes";
+    }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .home {
+    section {
+      .grid {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .hi {
+    flex-direction: column;
+    align-items: center;
+
+    .blurb {
+      margin-right: 0;
+    }
   }
 }

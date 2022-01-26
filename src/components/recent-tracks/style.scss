@@ -1,0 +1,17 @@
+@import 'l1/styles/variables.scss';
+@import 'l1/styles/mixins.scss';
+
+.tracks {
+  li {
+    list-style: none;
+
+    a {
+      font-size: 70%;
+    }
+
+    &:before {
+      content: '🎶';
+      margin-right: calc($padding * 3/4);
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import 'l1/styles/variables.scss';
+
+$iconWidth: $padding * 1.5;
+
+.spotify-link {
+  .spotify {
+    position: relative;
+    width: $iconWidth;
+    height: $iconWidth;
+    margin-left: $iconWidth;
+
+    svg {
+      position: absolute;
+      left: -1 * $iconWidth;
+      width: $iconWidth;
+      height: $iconWidth;
+    }
+  }
+}
