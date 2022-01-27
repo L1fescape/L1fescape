@@ -1,7 +1,7 @@
 @import 'l1/styles/variables.scss';
 @import 'l1/styles/mixins.scss';
 
-$gridSize: 40rem;
+$gridSize: 30rem;
 
 .home {
   min-height: 100vh;
@@ -119,7 +119,7 @@ $gridSize: 40rem;
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(186px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(calc($gridSize / 2), 1fr));
   }
 
   .playlists {
