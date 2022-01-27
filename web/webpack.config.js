@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
@@ -26,6 +27,7 @@ module.exports = {
   resolve: {
     alias: {
       '@': src,
+      '@/c': path.resolve(src, 'components'),
       l1: src,
       web: web,
     },
@@ -39,6 +41,11 @@ module.exports = {
     port: process.env.PORT || 3000,
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: path.resolve(src, 'img'), to: path.resolve(dist, 'img') },
+      ]
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(web, 'index.ejs'),
     }),

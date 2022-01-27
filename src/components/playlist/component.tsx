@@ -1,14 +1,13 @@
 import * as React from 'react'
-import * as playlistData from './playlist-data.json'
-import { PlaylistMap } from './gen-playlist-data'
 
-const playlistMap: PlaylistMap = playlistData.playlists
+import { Playlist as PlaylistType } from '@/data/playlists'
+import './style.scss'
 
-export const Playlist: React.FC<{ id: string }> = ({ id }) => {
-  const playlist = playlistMap[id]
-  if (!playlist) {
-    return null
-  }
+export interface PlaylistProps {
+  playlist: PlaylistType
+}
+
+export const Playlist: React.FC<PlaylistProps> = ({ playlist }) => {
   const { title, description, url, imageUrl } = playlist
   return (
     <div className="playlist">

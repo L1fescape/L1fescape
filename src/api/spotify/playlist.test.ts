@@ -1,4 +1,4 @@
-import { parsePlaylistId } from './api'
+import { parsePlaylistId } from './playlist'
 
 test('parses spotify playlist ids', () => {
   expect(parsePlaylistId('1IoSlQbiD7OZ7APX3tviuX')).toBe(

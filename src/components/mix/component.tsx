@@ -1,55 +1,57 @@
 import * as React from 'react'
-import { Playlist } from 'l1/components/spotify'
+
+import { Mix as MixType } from '@/data/mixes'
 import './style.scss'
-
-export interface Track {
-  artist: string
-  track: string
-  url?: string
-}
-
-export type Tracklist = Track[]
+import { SoundcloudLink, SpotifyLink } from '../social-media'
 
 interface Props {
-  soundcloudId?: string
-  spotifyId?: string
-  tracklist: Tracklist
+  mix: MixType
 }
 
 export const Mix: React.FC<Props> = ({
-  soundcloudId,
-  spotifyId,
-  tracklist,
+  mix: {
+    url,
+    soundcloud,
+    spotify,
+    tracklist,
+    description,
+  }
 }) => (
   <>
-    {soundcloudId && (
+    {soundcloud && (
       <div className="soundcloud-embed">
         <iframe
           scrolling="no"
           frameBorder="no"
           allow="autoplay"
-          src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloudId}&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`}
+          src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloud}&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false`}
         ></iframe>
       </div>
     )}
-    {spotifyId && (
+    {description && (
+      <p>{description}</p>
+    )}
+    {url && (
+      <p><SoundcloudLink url={url}>listen on soundcloud</SoundcloudLink></p>
+    )}
+    {spotify && (
       <p>
-        You can also listen to the{' '}
-        <a
-          target="_blank"
-          href={`https://open.spotify.com/playlist/${spotifyId}`}
-        >
-          playlist on Spotify
-        </a>
-        . Here's the tracklist:
+        <SpotifyLink url={`https://open.spotify.com/playlist/${spotify}`}>spotify playlist</SpotifyLink>
       </p>
     )}
-    <ol>
-      {tracklist.map((song, idx) => (
-        <li key={idx}>
-          {song.track} - {song.artist}
-        </li>
-      ))}
-    </ol>
+    {tracklist?.length > 0 && (
+      <>
+        <p>
+          view tracklist
+        </p>
+        <ol className='tracklist'>
+          {tracklist.map((song, idx) => (
+            <li key={idx}>
+              {song.track} - {song.artist}
+            </li>
+          ))}
+        </ol>
+      </>
+    )}
   </>
 )

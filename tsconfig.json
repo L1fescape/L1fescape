@@ -2,6 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@": ["src"],
+      "@/*": ["src/*"],
+      "@/c/*": ["src/components/*"],
       "l1": ["src"],
       "l1/*": ["src/*"],
       "web/*": ["web/*"]

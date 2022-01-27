@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import { getTracks } from './api'
+import { getTracks } from '../api/lastfm/api'
 
 const apikey = process.env.LASTFM_KEY
 
@@ -18,11 +18,11 @@ async function genTrackData() {
       updated: Date.now(),
     }
     fs.writeFile(
-      path.join(__dirname, 'track-data.json'),
+      path.join(__dirname, '../data', 'track-data.json'),
       JSON.stringify(data),
       'utf8',
       () => {
-        resolve()
+        resolve(true)
       }
     )
   })

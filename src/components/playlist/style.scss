@@ -1,13 +1,6 @@
+@import 'l1/styles/variables.scss';
+
 .playlists {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  max-width: 50rem;
-
-  p {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
-
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -16,8 +9,9 @@
 
 .playlist {
   display: flex;
-  padding: 0.5rem;
   width: 20rem;
+  margin-right: calc($padding / 2);
+  margin-bottom: calc($padding / 2);
 
   img {
     height: 6rem;

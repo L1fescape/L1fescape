@@ -2,27 +2,9 @@ import * as fs from 'fs'
 import * as path from 'path'
 import { decode } from 'he'
 
-import { getPlaylist, PlaylistData } from './api'
-import { refreshToken } from '../account'
-
-const playlistIDs: string[] = [
-  'spotify:playlist:1EOj4DNc4LJD6ujTkFu6N7',
-  'https://open.spotify.com/playlist/19x8zn8rBoAzl0EEciH14w?si=1uNY_xZFQxK8iOXeIYlLfg',
-  'spotify:playlist:1IoSlQbiD7OZ7APX3tviuX',
-  'spotify:playlist:0Qf5El4jvjpUnsJ4YZdTKo',
-  'spotify:playlist:0Gm4bXeS0P3YJnDyEoH3KR',
-
-  'spotify:playlist:5443H4ZhAWa94tbegE93ap',
-  'https://open.spotify.com/playlist/1MMqJT3c36EPJ0IYFo8DNn?si=dac41c00766d4f4a',
-]
-
-export interface Playlist {
-  title: string
-  description: string
-  emoji?: string
-  url: string
-  imageUrl: string
-}
+import { getPlaylist, PlaylistData } from '../api/spotify/playlist'
+import { playlistIds, Playlist } from '../data/playlists'
+import { refreshToken } from '../api/spotify'
 
 function parseDescription(desc: string): string {
   return decode(desc)
@@ -47,8 +29,8 @@ async function genPlaylistData() {
   token = await refreshToken(clientId, clientSecret, token)
 
   const playlists = {} as PlaylistMap
-  for (let i = 0; i < playlistIDs.length; i++) {
-    const id = playlistIDs[i]
+  for (let i = 0; i < playlistIds.length; i++) {
+    const id = playlistIds[i]
     const data = await getPlaylist(token, id)
     if (data) {
       playlists[id] = parsePlaylist(data)
@@ -66,7 +48,7 @@ async function genPlaylistData() {
       updated: Date.now(),
     }
     fs.writeFile(
-      path.join(__dirname, 'playlist-data.json'),
+      path.join(__dirname, '../data/', 'playlist-data.json'),
       JSON.stringify(data),
       'utf8',
       () => {

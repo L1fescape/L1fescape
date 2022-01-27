@@ -25,12 +25,15 @@ export function parsePlaylistId(id: string): string {
   if (parts.length === 3 && parts[1] === 'playlist') {
     return parts[2]
   }
-  // remove ?si=asdfasdf
+  // remove query params ?si=asdfasdf
   if (id.indexOf('?') > -1) {
     id = id.split('?')[0]
   }
   // https://open.spotify.com/playlist/19x8zn8rBoAzl0EEciH14w
   if (id.indexOf('://') > -1) {
+    if (id.charAt(id.length - 1) === '/') {
+      id = id.slice(0, id.length - 1)
+    }
     return id.substring(id.lastIndexOf('/') + 1)
   }
   return id
