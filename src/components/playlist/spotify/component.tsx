@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as playlistData from '@/data/playlist-data.json'
-import { PlaylistMap } from '@/utils/gen-playlist-data'
+import { PlaylistMap } from '@/scripts/gen-playlist-data'
 
 const playlistMap: PlaylistMap = playlistData.playlists
 

@@ -5,13 +5,12 @@
   li {
     list-style: none;
 
-    a {
-      font-size: 70%;
-    }
-
     &:before {
       content: '🎶';
       margin-right: calc($padding * 3/4);
+    }
+    &:nth-child(even):before {
+      content: '🎵';
     }
   }
 }

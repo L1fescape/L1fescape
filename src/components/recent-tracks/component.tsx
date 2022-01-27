@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { LastfmLink } from '@/components/social-media'
 import { LastfmData } from '@/api/lastfm/api'
 import * as trackData from '@/data/track-data.json'
 import './style.scss'
@@ -14,7 +15,7 @@ export const Tracks = () => {
     <ul className='tracks'>
       {data.toptracks.track.map(track => (
         <li key={track.url}>
-          {track.name} - {track.artist.name} <a className="small" href={track.url}>last.fm</a>
+          {track.name} by {track.artist.name} <LastfmLink url={track.url} noIcon />
         </li>
       ))}
     </ul>

@@ -66,7 +66,7 @@ async function genPlaylistData() {
       updated: Date.now(),
     }
     fs.writeFile(
-      path.join(__dirname, 'playlist-data.json'),
+      path.join(__dirname, '../data/', 'playlist-data.json'),
       JSON.stringify(data),
       'utf8',
       () => {

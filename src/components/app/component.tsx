@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { Tracks } from '@/components/recent-tracks'
 import { Playlist } from '@/components/playlist'
-import { SocialMedia } from '@/components/social-media'
+import { SocialMedia, GithubLink } from '@/components/social-media'
 import { LastUpdate } from '@/components/recent-tracks/last-update'
 import { Icons } from '@/components/icons'
 import { Mix } from '@/components/mix'
@@ -19,17 +19,20 @@ export const playlistIDs: string[] = [
 ]
 
 export const mixes: MixType[] = [{
+  url: 'https://soundcloud.com/l1fescape/moongate',
+  title: 'moongate',
+  soundcloud: '1204353763',
+  spotify: '5ywVhKummH20oqmvVDaSpm',
+}, {
+  url: 'https://soundcloud.com/l1fescape/mix1',
   title: 'm1',
   tracklist: m1Tracklist,
   soundcloud: '1053816040',
   spotify: '544H4ZhAWa94tbegE93ap',
   description: 'i recorded a mix of a few tunes i listened to a lot in the month of may 2021.',
 }, {
+  url: 'https://soundcloud.com/l1fescape/mix2',
   title: 'm2',
-  soundcloud: '1155198274',
-  spotify: '2VxPeV9cgCmiIAQfDouQ7T',
-}, {
-  title: 'moongate',
   soundcloud: '1155198274',
   spotify: '2VxPeV9cgCmiIAQfDouQ7T',
 }]
@@ -55,7 +58,7 @@ export const App = () => (
       <div className="content grid">
         <div className="playlists">
           <h3>playlists</h3>
-          <p>these are a few spotify playlists i've made with tunes i really like. check em out if you're looking for some music to groove to.</p>
+          <p>these are a few spotify playlists i've made with tunes i really like. check 'em out if you're looking for some music to groove to.</p>
           <ul>
             {playlistIDs.map(id => (
               <li key={id}><Playlist id={id} /></li>
@@ -68,12 +71,7 @@ export const App = () => (
           <ul>
             {mixes.map(mix => (
               <li key={mix.soundcloud}>
-                <Mix
-                  soundcloud={mix.soundcloud}
-                  description={mix.description}
-                  spotify={mix.spotify}
-                  tracklist={mix.tracklist}
-                />
+                <Mix mix={mix} />
               </li>
             ))}
           </ul>
@@ -81,9 +79,9 @@ export const App = () => (
 
         <div className='recent-tracks'>
           <h3>what i've been listening to recently</h3>
-          <p>a few tunes that have been hitting my ears a lot this past week*:</p>
+          <p>a few tunes that have been hitting my ears a lot recently*:</p>
           <Tracks />
-          <p>* <span className="small">last updated <a href="https://github.com/L1fescape/L1fescape.com/actions/workflows/data.yml" target="_blank"><LastUpdate /></a></span></p>
+          <p>* last updated <GithubLink url="https://github.com/L1fescape/L1fescape.com/actions/workflows/data.yml" noIcon><LastUpdate /></GithubLink></p>
         </div>
       </div>
     </section>
@@ -100,7 +98,13 @@ export const App = () => (
     <section className="source">
       <div className="title"><h2>source</h2></div>
       <div className="content">
-        <p>view the source code for this website <a href="https://github.com/l1fescape/l1fescape.com" target="_blank">on github</a>.</p>
+        <p>this site was built using</p>
+        <ul>
+          <li>frontend: typescript, react, sass, webpack</li>
+          <li>ci/cd: github actions, netlify</li>
+          <li>cdn: cloudflare</li>
+        </ul>
+        <p>you can view the source code <GithubLink url="https://github.com/l1fescape/l1fescape.com">on github</GithubLink>.</p>
       </div>
     </section>
   </div>

@@ -1,21 +1,21 @@
 import * as React from 'react'
 
-import { Icons } from '@/components/icons'
-import { Tracklist } from '@/data/mixes'
+import { Mix as MixType } from '@/data/mixes'
 import './style.scss'
+import { SoundcloudLink, SpotifyLink } from '../social-media'
 
 interface Props {
-  soundcloud?: string
-  spotify?: string
-  tracklist?: Tracklist
-  description?: string
+  mix: MixType
 }
 
 export const Mix: React.FC<Props> = ({
-  soundcloud,
-  spotify,
-  tracklist = [],
-  description,
+  mix: {
+    url,
+    soundcloud,
+    spotify,
+    tracklist,
+    description,
+  }
 }) => (
   <>
     {soundcloud && (
@@ -31,23 +31,20 @@ export const Mix: React.FC<Props> = ({
     {description && (
       <p>{description}</p>
     )}
+    {url && (
+      <p><SoundcloudLink url={url}>listen on soundcloud</SoundcloudLink></p>
+    )}
     {spotify && (
-      <p className="spotify-link">
-        <span className="spotify"><Icons.Spotify /></span>
-        <a
-          target="_blank"
-          href={`https://open.spotify.com/playlist/${spotify}`}
-        >
-          spotify playlist
-        </a>
+      <p>
+        <SpotifyLink url={`https://open.spotify.com/playlist/${spotify}`}>spotify playlist</SpotifyLink>
       </p>
     )}
-    {tracklist?.length > 0 && false && (
+    {tracklist?.length > 0 && (
       <>
         <p>
-          tracklist:
+          view tracklist
         </p>
-        <ol>
+        <ol className='tracklist'>
           {tracklist.map((song, idx) => (
             <li key={idx}>
               {song.track} - {song.artist}

@@ -63,7 +63,7 @@ $gridSize: 40rem;
     position: relative;
     svg {
       position: absolute;
-      top: 0.25rem;
+      top: 0.35rem;
       left: 0.25rem;
     }
   }
@@ -150,6 +150,23 @@ $gridSize: 40rem;
   }
 }
 
+.source {
+  .content {
+    padding: $padding;
+    p {
+      margin: 0;
+    }
+  }
+  ul {
+    li {
+      list-style-type: none;
+      &:before {
+        content: '-';
+        margin-right: calc($padding / 2);
+      }
+    }
+  }
+}
 .soundcloud-embed {
   max-width: 40rem;
   min-width: 10rem;
