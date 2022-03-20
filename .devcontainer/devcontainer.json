@@ -1,8 +1,7 @@
 {
   "name": "l1fescape.com",
-  "dockerComposeFile": "./docker-compose.yml",
   "workspaceFolder": "/workspace",
-  "service": "web",
+  "image": "node:17",
   "runArgs": ["-it"],
   "extensions": [
     "ms-vscode.vscode-typescript-tslint-plugin",
@@ -12,5 +11,11 @@
   ],
   "settings": {
     "firefox.args": []
-  }
+  },
+  "appPort": 3000,
+  "mounts": [
+    "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind,consistency=cached",
+    "source=try-node-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+    "source=try-build,target=${containerWorkspaceFolder}/build,type=volume"
+  ]
 }
