@@ -38,7 +38,8 @@ $gridSize: 30rem;
       grid-template-columns: repeat(auto-fit, minmax($gridSize, 1fr));
     }
 
-    h2, h3 {
+    h2,
+    h3 {
       margin-bottom: calc($padding / 2);
     }
   }
@@ -180,8 +181,8 @@ $gridSize: 30rem;
   .music {
     .grid {
       grid-template-areas:
-        "playlist mixes"
-        "lastfm mixes";
+        'playlist mixes'
+        'lastfm mixes';
     }
   }
 }

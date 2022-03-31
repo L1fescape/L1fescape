@@ -1,4 +1,5 @@
 import * as React from 'react'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 import { Tracks } from '@/components/recent-tracks'
 import { Playlist } from '@/components/playlist'
@@ -18,8 +19,26 @@ export const App = () => (
       </div>
       <div className="blurb">
         <h2>hi! i'm andrew</h2>
-        <p>i'm a programmer currently living in berlin. i really enjoy music and software. here on my website you'll find some spotify playlists with music i like, soundcloud links to sets i've mixed, tracks i've been listening to lately via last.fm, and a couple of my other projects. i post content here when i can but some playlists i update frequently, so check back for updates!</p>
-        <p>you can also find me elsewhere on the internet, should you be so inclined <span className="arrow-icon"><Icons.Arrow /></span></p>
+        <p>
+          i'm a programmer currently living in berlin. i really enjoy music and
+          software. here on my website you'll find some{' '}
+          <AnchorLink href="#playlists">spotify playlists</AnchorLink> with
+          music i like,{' '}
+          <AnchorLink href="#soundcloud">soundcloud links</AnchorLink> to sets
+          i've mixed,{' '}
+          <AnchorLink href="#lastfm">
+            tracks i've been listening to lately
+          </AnchorLink>{' '}
+          via last.fm, and a couple of my other projects. i post content here
+          when i can but some playlists i update frequently, so check back for
+          updates!
+        </p>
+        <p>
+          you can also find me elsewhere on the internet{' '}
+          <span className="arrow-icon">
+            <Icons.Arrow />
+          </span>
+        </p>
         <div className="socials">
           <SocialMedia />
         </div>
@@ -27,19 +46,26 @@ export const App = () => (
     </section>
 
     <section className="music">
-      <div className="title"><h2>music</h2></div>
+      <div className="title">
+        <h2>music</h2>
+      </div>
       <div className="content grid">
-        <div className="playlists">
+        <div id="playlists" className="playlists">
           <h3>playlists</h3>
-          <p>these are a few spotify playlists i've made with tunes i really like. check 'em out if you're looking for some music to groove to.</p>
+          <p>
+            these are a few spotify playlists i've made with tunes i really
+            like. check 'em out if you're looking for some music to groove to.
+          </p>
           <ul>
             {playlists.map(playlist => (
-              <li key={playlist.url}><Playlist playlist={playlist} /></li>
+              <li key={playlist.url}>
+                <Playlist playlist={playlist} />
+              </li>
             ))}
           </ul>
         </div>
 
-        <div className="mixes">
+        <div id="soundcloud" className="mixes">
           <h3>mixes & live sets</h3>
           <ul>
             {mixes.map(mix => (
@@ -50,11 +76,19 @@ export const App = () => (
           </ul>
         </div>
 
-        <div className='recent-tracks'>
+        <div id="lastfm" className="recent-tracks">
           <h3>what i've been listening to recently</h3>
           <p>a few tunes that have been hitting my ears a lot recently*:</p>
           <Tracks />
-          <p>* last updated <GithubLink url="https://github.com/L1fescape/L1fescape.com/actions/workflows/data.yml" noIcon><LastUpdate /></GithubLink></p>
+          <p>
+            * last updated{' '}
+            <GithubLink
+              url="https://github.com/L1fescape/L1fescape.com/actions/workflows/data.yml"
+              noIcon
+            >
+              <LastUpdate />
+            </GithubLink>
+          </p>
         </div>
       </div>
     </section>
@@ -69,7 +103,9 @@ export const App = () => (
     </section> */}
 
     <section className="source">
-      <div className="title"><h2>source</h2></div>
+      <div className="title">
+        <h2>source</h2>
+      </div>
       <div className="content">
         <p>this site is built using</p>
         <ul>
@@ -77,7 +113,13 @@ export const App = () => (
           <li>ci/cd: github actions, netlify</li>
           <li>cdn: cloudflare</li>
         </ul>
-        <p>you can view the source code <GithubLink url="https://github.com/l1fescape/l1fescape.com">on github</GithubLink>.</p>
+        <p>
+          you can view the source code{' '}
+          <GithubLink url="https://github.com/l1fescape/l1fescape.com">
+            on github
+          </GithubLink>
+          .
+        </p>
       </div>
     </section>
   </div>
