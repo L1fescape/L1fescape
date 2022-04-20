@@ -6,6 +6,7 @@ import { Playlist } from '@/components/playlist'
 import { SocialMedia, GithubLink } from '@/components/social-media'
 import { LastUpdate } from '@/components/recent-tracks/last-update'
 import { Icons } from '@/components/icons'
+import { DAW } from '@/components/daw'
 import { Mix } from '@/components/mix'
 import { mixes } from '@/data/mixes'
 import { playlists } from '@/data/playlists'
@@ -75,6 +76,8 @@ export const App = () => (
             ))}
           </ul>
         </div>
+
+        <DAW />
 
         <div id="lastfm" className="recent-tracks">
           <h3>what i've been listening to recently</h3>
