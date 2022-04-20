@@ -8,6 +8,7 @@ import { LastUpdate } from '@/components/recent-tracks/last-update'
 import { Icons } from '@/components/icons'
 import { DAW } from '@/components/daw'
 import { Mix } from '@/components/mix'
+import { Posts } from '@/components/posts'
 import { mixes } from '@/data/mixes'
 import { playlists } from '@/data/playlists'
 import './style.scss'
@@ -104,6 +105,15 @@ export const App = () => (
         </div>
       </div>
     </section> */}
+
+    <section className="posts">
+      <div className="title">
+        <h2>posts</h2>
+      </div>
+      <div className="content grid">
+        <Posts />
+      </div>
+    </section>
 
     <section className="source">
       <div className="title">

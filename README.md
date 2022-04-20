@@ -1,4 +1,4 @@
-# L1fescape.com
+# L1fescape.com [![Netlify Status](https://api.netlify.com/api/v1/badges/5b7626ff-beca-4949-bafc-e810ed75c914/deploy-status)](https://app.netlify.com/sites/l1fescape/deploys)
 
 > internet site with cool things 🎉
 
