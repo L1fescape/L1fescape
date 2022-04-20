@@ -18,6 +18,8 @@ export const DAW = () => {
     synth.triggerRelease(now + 1)
   }
 
+  return null
+
   return (
     <div>
       <h2>daw</h2>
