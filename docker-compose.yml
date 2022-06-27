@@ -1,0 +1,21 @@
+version: "3"
+services:
+  dev:
+    container_name: l1fe
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    user: "${UID}:${GID}"
+    ports:
+      - "8080"
+      - "8787"
+    volumes:
+      - ./:/workspace
+      - l1fe-web-node_modules:/workspace/app/node_modules
+      - l1fe-api-node_modules:/workspace/api/node_modules
+    command: sleep infinity
+
+volumes:
+  l1fe-web-node_modules:
+  l1fe-api-node_modules:

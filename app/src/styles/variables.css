@@ -1,0 +1,34 @@
+:root {
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --black: #0d0d0d;
+  --white: #f3f4f4;
+  --off-white: #d9d9d9;
+  --green: #c6e5df;
+  --red: #ff5c50;
+  --blue: #5190d9;
+  --yellow: #ffcf5a;
+
+  --ak: var(--blue);
+  --csgo: var(--yellow);
+  --code: var(--red);
+  --blog: var(--green);
+
+  --gray: #adaeb0;
+  --lightgray: #36393e;
+  --accent: #233276;
+
+  --background: var(--black);
+  --text: var(--off-white);
+
+  --padding: 1rem;
+  --borderThickness: 0.2rem;
+  --border: var(--borderThickness) solid var(--white);
+
+  --phone: 30rem;
+  --tablet: 40rem;
+  --desktop: 56rem;
+  --desktop-max-width: 72rem;
+  --gridSize: 30rem;
+}
+

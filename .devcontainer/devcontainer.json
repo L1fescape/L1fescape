@@ -1,17 +1,13 @@
 {
   "name": "l1fescape.com",
   "workspaceFolder": "/workspace",
-  "image": "node:17",
   "runArgs": ["-it"],
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "dev",
   "extensions": [
+    "Vue.volar",
     "ms-vscode.vscode-typescript-tslint-plugin",
     "esbenp.prettier-vscode",
-    "msjsdiag.debugger-for-chrome",
     "eamodio.tsl-problem-matcher"
-  ],
-  "mounts": [
-    "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind,consistency=cached",
-    "source=try-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
-    "source=try-build,target=${containerWorkspaceFolder}/build,type=volume"
   ]
 }
