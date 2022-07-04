@@ -5,7 +5,7 @@
         <img class="profile" src="img/profile.jpeg" />
       </div>
       <div class="blurb">
-        <h2>hi! i'm andrew</h2>
+        <h2 class="text-3xl font-bold underline">hi! i'm andrew</h2>
         <p>
           i'm a programmer currently living in berlin. i really enjoy music and
           software. here on my website you'll find some spotify playlists with
@@ -92,7 +92,7 @@ export default {
       .then((data) => {
         this.mixes = data.mixes;
         this.playlists = data.spotify_playlists;
-        this.tracks = data.lastfm_tracks;
+        this.tracks = data.lastfm_tracks?.tracks?.toptracks?.track;
       })
       .catch((err) => (this.error = err))
       .finally(() => (this.loading = false));
@@ -102,26 +102,6 @@ export default {
 
 <style>
 @import "./styles/variables.css";
-
-html,
-body {
-  font-family: var(--font-family);
-  line-height: 1.5rem;
-  background: var(--bg-color);
-  color: var(--text-color);
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin: var(--padding) 0;
-}
 
 .home {
   min-height: 100vh;
