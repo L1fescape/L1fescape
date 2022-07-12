@@ -1,4 +1,6 @@
-# app
+# vue app
+
+the frontend is built using [vue.js](https://vuejs.org/)
 
 ## Project setup
 ```

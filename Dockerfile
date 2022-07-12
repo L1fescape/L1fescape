@@ -3,7 +3,7 @@ FROM --platform=linux/amd64 node:14.18
 WORKDIR /workspace
 
 RUN apt-get update
-RUN apt-get install tmux
+RUN apt-get install -y tmux
 
 EXPOSE 8080
 EXPOSE 8787
