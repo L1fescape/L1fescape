@@ -8,9 +8,10 @@
         <h2>hi! i'm andrew</h2>
         <p>
           i'm a programmer currently living in berlin. i really enjoy music and
-          software. here on my website you'll find some spotify playlists with
+          software.
+          <!-- here on my website you'll find some spotify playlists with
           music i like, soundcloud links to sets i've mixed, and tracks i've
-          been listening to lately.
+          been listening to lately. -->
         </p>
         <p>
           you can also find me elsewhere on the internet
@@ -22,7 +23,7 @@
       </div>
     </section>
 
-    <section class="music">
+    <!-- <section class="music">
       <div class="title">
         <h2>music</h2>
       </div>
@@ -55,23 +56,23 @@
           <a href="https://github.com/l1fescape/l1fescape.com">on github</a>
         </p>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
 
 <script>
 import { ArrowSmDownIcon } from "@heroicons/vue/solid";
 import SocialMedia from "./components/SocialMedia.vue";
-import SoundcloudMixes from "./components/SoundcloudMixes.vue";
-import LastfmTracks from "./components/LastfmTracks.vue";
-import { getData } from "./utils/api";
+// import SoundcloudMixes from "./components/SoundcloudMixes.vue";
+// import LastfmTracks from "./components/LastfmTracks.vue";
+// import { getData } from "./utils/api";
 
 export default {
   name: "App",
   components: {
     SocialMedia,
-    SoundcloudMixes,
-    LastfmTracks,
+    // SoundcloudMixes,
+    // LastfmTracks,
     ArrowSmDownIcon,
   },
   data() {
@@ -84,15 +85,15 @@ export default {
     };
   },
   created() {
-    this.loading = true;
-    getData()
-      .then((data) => {
-        this.mixes = data.mixes;
-        this.playlists = data.spotify_playlists;
-        this.tracks = data.lastfm_tracks?.tracks?.toptracks?.track;
-      })
-      .catch((err) => (this.error = err))
-      .finally(() => (this.loading = false));
+    // this.loading = true;
+    // getData()
+    //   .then((data) => {
+    //     this.mixes = data.mixes;
+    //     this.playlists = data.spotify_playlists;
+    //     this.tracks = data.lastfm_tracks?.tracks?.toptracks?.track;
+    //   })
+    //   .catch((err) => (this.error = err))
+    //   .finally(() => (this.loading = false));
   },
 };
 </script>
