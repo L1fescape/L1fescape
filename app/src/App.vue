@@ -2,23 +2,19 @@
   <div class="home">
     <section class="hi">
       <div class="pic">
-        <img class="profile" src="img/profile.jpeg" />
+        <img class="profile" src="profile.jpg" />
       </div>
       <div class="blurb">
-        <h2 class="text-3xl font-bold underline">hi! i'm andrew</h2>
+        <h2>hi! i'm andrew</h2>
         <p>
           i'm a programmer currently living in berlin. i really enjoy music and
           software. here on my website you'll find some spotify playlists with
-          music i like, soundcloud links to sets i've mixed, tracks i've been
-          listening to lately via last.fm, and a couple of my other projects. i
-          post content here when i can but some playlists i update frequently,
-          so check back for updates!
+          music i like, soundcloud links to sets i've mixed, and tracks i've
+          been listening to lately.
         </p>
         <p>
-          <span>you can also find me elsewhere on the internet</span>
-          <span class="arrow-icon">
-            <img src="icons/arrow.svg" />
-          </span>
+          you can also find me elsewhere on the internet
+          <ArrowSmDownIcon class="inline h-5 w-5 text-blue-500" />
         </p>
         <div class="socials">
           <SocialMedia />
@@ -30,15 +26,14 @@
       <div class="title">
         <h2>music</h2>
       </div>
-      <div class="content grid">
-        <div id="soundcloud" class="mixes">
+      <div class="grid grid-cols-2 gap-2">
+        <div class="mixes">
           <h3>mixes & live sets</h3>
           <SoundcloudMixes :loading="loading" :mixes="mixes" />
         </div>
 
-        <div id="lastfm" class="recent-tracks">
+        <div class="recent-tracks">
           <h3>what i've been listening to recently</h3>
-          <p>a few tunes that have been hitting my ears a lot recently*:</p>
           <LastfmTracks :loading="loading" :tracks="tracks" />
         </div>
       </div>
@@ -51,7 +46,7 @@
       <div class="content">
         <p>this site is built using</p>
         <ul>
-          <li>frontend: vue, webpack, cloudflare pages</li>
+          <li>frontend: vue, tailwind, & cloudflare pages</li>
           <li>api: cloudflare workers</li>
           <li>ci/cd: github actions</li>
         </ul>
@@ -65,6 +60,7 @@
 </template>
 
 <script>
+import { ArrowSmDownIcon } from "@heroicons/vue/solid";
 import SocialMedia from "./components/SocialMedia.vue";
 import SoundcloudMixes from "./components/SoundcloudMixes.vue";
 import LastfmTracks from "./components/LastfmTracks.vue";
@@ -76,6 +72,7 @@ export default {
     SocialMedia,
     SoundcloudMixes,
     LastfmTracks,
+    ArrowSmDownIcon,
   },
   data() {
     return {
@@ -101,8 +98,6 @@ export default {
 </script>
 
 <style>
-@import "./styles/variables.css";
-
 .home {
   min-height: 100vh;
   display: flex;
@@ -114,7 +109,7 @@ export default {
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin: 0 0 calc(var(--padding) * 8);
+  padding: 2rem;
 }
 
 .hi {
@@ -122,7 +117,6 @@ export default {
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
-  padding: var(--padding);
   box-sizing: border-box;
   max-width: 60rem;
   flex-direction: row;
@@ -133,7 +127,6 @@ export default {
 .pic {
   display: flex;
   align-items: center;
-  margin: var(--padding);
   width: 12rem;
   height: 12rem;
 }
@@ -141,7 +134,6 @@ export default {
 .blurb {
   display: flex;
   flex-direction: column;
-  margin-right: var(--padding);
 }
 
 .profile {
@@ -151,64 +143,5 @@ export default {
   object-position: 0 60%;
   object-fit: cover;
   flex-shrink: 0;
-}
-
-.socials {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.socials a {
-  margin-right: var(--padding);
-  margin-top: calc(var(--padding) / 2);
-}
-
-.music {
-  flex-direction: column;
-  flex-wrap: wrap;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.music .grid {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(calc(var(--gridSize) / 2), 1fr)
-  );
-}
-
-.mixes {
-  padding: var(--padding);
-  padding-right: 0;
-}
-
-.mixes ul {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(calc(var(--gridSize) / 2), 1fr)
-  );
-}
-
-.mixes li {
-  margin-right: var(--padding);
-  margin-bottom: var(--padding);
-}
-
-.recent-tracks {
-  padding: var(--padding);
-}
-
-.soundcloud-embed {
-  max-width: 40rem;
-  min-width: 10rem;
-  height: 10rem;
-  margin-bottom: 1rem;
-}
-
-.soundcloud-embed iframe {
-  height: 100%;
-  width: 100%;
 }
 </style>

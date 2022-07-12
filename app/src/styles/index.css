@@ -1,24 +1,27 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
-@import "./variables.css";
 
 html,
 body {
-  font-family: var(--font-family);
-  line-height: 1.5rem;
-  background: var(--bg-color);
-  color: var(--text-color);
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-slate-900 text-slate-100;
+}
+h1 {
+  @apply text-2xl;
+}
+h2 {
+  @apply text-xl;
+}
+h3 {
+  @apply text-lg;
+}
+a {
+  @apply text-blue-500;
+}
+a:hover {
+  @apply underline;
+}
+p {
+  @apply my-1;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin: var(--padding) 0;
-}
+@tailwind components;
+@tailwind utilities;

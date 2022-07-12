@@ -8,6 +8,7 @@
     "Vue.volar",
     "ms-vscode.vscode-typescript-tslint-plugin",
     "esbenp.prettier-vscode",
-    "eamodio.tsl-problem-matcher"
+    "eamodio.tsl-problem-matcher",
+    "bradlc.vscode-tailwindcss"
   ]
 }

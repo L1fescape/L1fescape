@@ -1,48 +1,69 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>{{ loading ? 'loading...' : data }}</p>
-  </div>
+  <ul class="social-media list-none">
+    <li class="inline" v-for="account in accounts" :key="account.name">
+      <a :href="account.url" target="_blank">{{ account.name }}</a>
+    </li>
+  </ul>
 </template>
 
 <script>
-import { getData } from '../utils/api'
+const accounts = [
+  {
+    name: "soundcloud",
+    url: "https://soundcloud.com/L1fescape",
+  },
+  {
+    name: "last.fm",
+    url: "https://www.last.fm/user/L1fescape",
+  },
+  {
+    name: "spotify",
+    url: "https://open.spotify.com/user/1224725738?si=DUfTrXamShCL0iZUCXNF7Q",
+  },
+  {
+    name: "github",
+    url: "https://github.com/L1fescape",
+  },
+  {
+    name: "twitter",
+    url: "https://twitter.com/L1fescape",
+  },
+  {
+    name: "instagram",
+    url: "https://instagram.com/L1fescape",
+  },
+];
 export default {
-  name: 'HelloWorld',
+  name: "SocialMedia",
   props: {
-    msg: String
+    hide: [String, Array],
   },
-  created() {
-    this.loading = true
-    getData()
-      .then(data => this.data = data.msg)
-      .catch(err => this.error = err)
-      .finally(() => this.loading = false)
-  },
-  data() {
-    return {
-      loading: false,
-      data: null,
-      error: null,
+  data({ hide }) {
+    let filteredAccounts = accounts;
+    if (typeof hide !== "undefined") {
+      let toHide = hide;
+      if (typeof toHide === "string") {
+        toHide = [toHide];
+      }
+      filteredAccounts = accounts.filter(
+        (account) => toHide.indexOf(account.name) === -1
+      );
     }
+    return {
+      accounts: filteredAccounts,
+    };
   },
-}
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.social-media li {
+  margin: 0 0.5rem;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.social-media li:first-child {
+  margin-left: 0;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.social-media li:last-child {
+  margin-right: 0;
 }
 </style>
