@@ -1,14 +1,15 @@
 import { Router } from "itty-router";
 
-import * as Soundcloud from "./services/soundcloud";
+import { getMixes } from "./services/soundcloud";
+import { getRecentTracks } from "./services/lastfm";
 
 const router = Router({
   base: "/api",
 });
 
-router.get("/music", async ({ params }) => {
-  const mixes = await Soundcloud.getMixes();
-  const lastfmTracks = await Lastfm.getRecentTracks();
+router.get("/music", ({ params }) => {
+  const mixes = getMixes();
+  const lastfmTracks = getRecentTracks();
   const data = {
     mixes,
     lastfm_tracks: lastfmTracks,

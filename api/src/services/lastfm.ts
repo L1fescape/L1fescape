@@ -1,9 +1,5 @@
-import { mixes } from "../data/mixes";
+import * as TrackData from "../data/track-data.json";
 
-function getMixes () {
-  return mixes
-}
-
-export default {
-  getMixes
+export function getRecentTracks () {
+  return TrackData
 }

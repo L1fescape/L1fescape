@@ -1,9 +1,5 @@
 import { mixes } from "../data/mixes";
 
-function getMixes() {
+export function getMixes() {
   return mixes;
 }
-
-export default {
-  getMixes,
-};
