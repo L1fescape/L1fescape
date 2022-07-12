@@ -10,7 +10,7 @@ ip="0.0.0.0"
 port=8787
 
 [build]
-command = "npm run build"
+command = "npm install && npm run build"
 
 [build.upload]
 format = "service-worker"
