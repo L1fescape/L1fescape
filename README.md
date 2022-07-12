@@ -1,4 +1,4 @@
-# L1fescape.com [![Netlify Status](https://api.netlify.com/api/v1/badges/5b7626ff-beca-4949-bafc-e810ed75c914/deploy-status)](https://app.netlify.com/sites/l1fescape/deploys)
+# L1fescape.com [![Deploy](https://github.com/L1fescape/L1fescape.com/actions/workflows/deploy.yml/badge.svg)](https://github.com/L1fescape/L1fescape.com/actions/workflows/deploy.yml)
 
 > internet site with cool things 🎉
 
@@ -9,46 +9,31 @@ dependencies
 - [node](https://nodejs.org/en/download/)
 
 ```
-$ npm install
+$ cd api && npm install
+$ cd app && npm install
 ```
 
 ## run
 
-start a dev server
-
 ```
-$ npm start
-```
-
-run in a docker container
-
-```
-$ docker build -f web/Dockerfile -t l1fescape.com:latest .
-$ docker run -it -p 8000:80 l1fescape.com:latest
+$ cd api && npm start
+$ cd app && npm start
 ```
 
 ## build
 
 ```
-$ npm run build
+$ cd api && npm run build
+$ cd app && npm run build
 ```
 
-re-generate lastfm/spotify data
+## deploy
 
-```
-$ LASTFM_KEY= \
-  SPOTIFY_CLIENT_ID= \
-  SPOTIFY_CLIENT_SECRET= \
-  SPOTIFY_TOKEN= \
-  npm run data
-```
+the webapp in `app` is deployed automatically via cloudflare pages
+the api in `api` is deployed automatically via cloudflare workers
 
-## test
-
-```
-$ npm test
-```
+## devcontainer
 
 ## issues?
 
-[let's solve 'em!](https://github.com/L1fescape/L1fescape/issues/new)
+[let's solve 'em!](https://github.com/L1fescape/L1fescape.com/issues/new)
