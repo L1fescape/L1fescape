@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <ThemeToggle />
     <section class="hi">
       <div class="pic">
         <img class="profile" src="profile.jpg" />
@@ -61,15 +62,17 @@
 </template>
 
 <script>
-import { ArrowSmDownIcon } from "@heroicons/vue/solid";
-import SocialMedia from "./components/SocialMedia.vue";
+import { ArrowSmDownIcon } from '@heroicons/vue/solid';
+import SocialMedia from './components/SocialMedia.vue';
+import ThemeToggle from './components/ThemeToggle.vue';
 // import SoundcloudMixes from "./components/SoundcloudMixes.vue";
 // import LastfmTracks from "./components/LastfmTracks.vue";
 // import { getData } from "./utils/api";
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
+    ThemeToggle,
     SocialMedia,
     // SoundcloudMixes,
     // LastfmTracks,
@@ -98,7 +101,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .home {
   min-height: 100vh;
   display: flex;
