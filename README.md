@@ -29,8 +29,7 @@ $ cd app && npm run build
 
 ## deploy
 
-the webapp in `app` is deployed automatically via cloudflare pages
-the api in `api` is deployed automatically via cloudflare workers
+the frontend in `app/` is deployed via vercel and the backend in `api/` is deployed via cloudflare workers. both are deployed automatically on new changes to the `main` branch.
 
 ## devcontainer
 
