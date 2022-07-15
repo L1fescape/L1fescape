@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 node:14.18
+FROM --platform=linux/amd64 node:16
 
 WORKDIR /workspace
 
@@ -7,6 +7,7 @@ RUN apt-get install -y tmux
 
 EXPOSE 8080
 EXPOSE 8787
+EXPOSE 4173
 
 ARG USER=l1fe
 ARG GROUP=l1fe

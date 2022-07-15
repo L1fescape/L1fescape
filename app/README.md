@@ -1,26 +1,33 @@
-# vue app
+# l1fescape.com
 
-the frontend is built using [vue.js](https://vuejs.org/)
+the frontend is built using [vue.js](https://vuejs.org/) and [vite](https://vitejs.dev/) and is hosted with [vercel](https://vercel.com/)
 
-## Project setup
-```
+## Project Setup
+
+```sh
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
 ```
 
-### Compiles and minifies for production
-```
+### Type-Check, Compile and Minify for Production
+
+```sh
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
+### Run Unit Tests with [Vitest](https://vitest.dev/)
+
+```sh
+npm run test:unit
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```

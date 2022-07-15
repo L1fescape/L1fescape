@@ -1,12 +1,12 @@
 <template>
-  <ul class="social-media list-none">
+  <ul class="social-media list-none flex flex-wrap">
     <li class="inline" v-for="account in accounts" :key="account.name">
       <a :href="account.url" target="_blank">{{ account.name }}</a>
     </li>
   </ul>
 </template>
 
-<script>
+<script setup lang="ts">
 const accounts = [
   {
     name: "soundcloud",
@@ -33,35 +33,22 @@ const accounts = [
     url: "https://instagram.com/L1fescape",
   },
 ];
-export default {
-  name: "SocialMedia",
-  props: {
-    hide: [String, Array],
-  },
-  data({ hide }) {
-    let filteredAccounts = accounts;
-    if (typeof hide !== "undefined") {
-      let toHide = hide;
-      if (typeof toHide === "string") {
-        toHide = [toHide];
-      }
-      filteredAccounts = accounts.filter(
-        (account) => toHide.indexOf(account.name) === -1
-      );
-    }
-    return {
-      accounts: filteredAccounts,
-    };
-  },
-};
+
+interface Props {
+  hide?: string[]
+}
+
+const props = defineProps<Props>()
+
+const filteredAccounts = accounts.filter(
+  (account) => (props.hide || []).indexOf(account.name) === -1
+);
+
 </script>
 
 <style scoped>
 .social-media li {
-  margin: 0 0.5rem;
-}
-.social-media li:first-child {
-  margin-left: 0;
+  margin: 0 1rem 0 0;
 }
 .social-media li:last-child {
   margin-right: 0;
