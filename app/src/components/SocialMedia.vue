@@ -6,7 +6,7 @@
   </ul>
 </template>
 
-<script>
+<script lang="ts">
 const accounts = [
   {
     name: "soundcloud",

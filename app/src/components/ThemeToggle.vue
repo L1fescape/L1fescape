@@ -11,8 +11,8 @@
   </button>
 </template>
 
-<script>
-import { MoonIcon, SunIcon } from '@heroicons/vue/solid';
+<script lang="ts">
+import { MoonIcon, SunIcon } from '@heroicons/vue/outline';
 
 const DARK_THEME = 'dark';
 const LIGHT_THEME = 'light';
