@@ -2,7 +2,7 @@
   <div class="home">
     <section class="hi">
       <div class="pic">
-        <img class="profile rounded-full w-12 h-23" src="@/assets/profile.jpg" />
+        <img class="profile rounded-full w-12 h-23" src="@/assets/profile.jpeg" />
       </div>
       <div class="blurb">
         <h2>hi! i'm andrew</h2>
