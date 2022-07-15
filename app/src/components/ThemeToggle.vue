@@ -50,6 +50,4 @@ const toggleTheme = () => {
     theme.value = DARK_THEME
   }
 }
-
-
 </script>
