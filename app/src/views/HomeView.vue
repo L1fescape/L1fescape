@@ -2,7 +2,7 @@
   <div class="home">
     <section class="hi">
       <div class="pic">
-        <img class="profile rounded-full" src="@/assets/profile.jpg" />
+        <img class="profile rounded-full w-12 h-23" src="@/assets/profile.jpg" />
       </div>
       <div class="blurb">
         <h2>hi! i'm andrew</h2>
@@ -37,7 +37,6 @@ import SocialMedia from '../components/SocialMedia.vue';
 
 .home section {
   display: flex;
-  width: 100%;
   flex-direction: column;
   padding: 2rem;
 }
@@ -57,13 +56,12 @@ import SocialMedia from '../components/SocialMedia.vue';
 .pic {
   display: flex;
   align-items: center;
-  width: 12rem;
-  height: 12rem;
 }
 
 .blurb {
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
 }
 
 .profile {

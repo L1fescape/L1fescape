@@ -11,8 +11,9 @@
   </button>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { MoonIcon, SunIcon } from '@heroicons/vue/outline';
+import { ref, watch } from 'vue';
 
 const DARK_THEME = 'dark';
 const LIGHT_THEME = 'light';
@@ -28,40 +29,27 @@ function prefersDarkTheme() {
   return false;
 }
 
-export default {
-  name: 'ThemeToggle',
-  components: {
-    MoonIcon,
-    SunIcon,
-  },
-  data() {
-    const theme = prefersDarkTheme() ? DARK_THEME : LIGHT_THEME;
-    // todo: should this be here?
-    if (theme === DARK_THEME) {
-      document.documentElement.classList.add(DARK_THEME);
-    }
-    return {
-      theme,
-      DARK_THEME,
-      LIGHT_THEME,
-    };
-  },
-  watch: {
-    theme(newTheme) {
-      localStorage.theme = newTheme;
-      if (newTheme === DARK_THEME) {
-        document.documentElement.classList.remove(LIGHT_THEME);
-        document.documentElement.classList.add(DARK_THEME);
-      } else {
-        document.documentElement.classList.remove(DARK_THEME);
-        document.documentElement.classList.add(LIGHT_THEME);
-      }
-    },
-  },
-  methods: {
-    toggleTheme() {
-      this.theme = this.theme === DARK_THEME ? LIGHT_THEME : DARK_THEME;
-    },
-  },
-};
+function applyTheme(theme: string) {
+  if (theme === DARK_THEME) {
+    document.documentElement.classList.remove(LIGHT_THEME);
+    document.documentElement.classList.add(DARK_THEME);
+  } else {
+    document.documentElement.classList.remove(DARK_THEME);
+    document.documentElement.classList.add(LIGHT_THEME);
+  }
+}
+
+const theme = ref(prefersDarkTheme() ? DARK_THEME : LIGHT_THEME);
+applyTheme(theme.value)
+watch(theme, applyTheme)
+
+const toggleTheme = () => {
+  if (theme.value === DARK_THEME) {
+    theme.value = LIGHT_THEME
+  } else {
+    theme.value = DARK_THEME
+  }
+}
+
+
 </script>
