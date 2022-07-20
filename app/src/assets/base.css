@@ -4,6 +4,9 @@ html,
 body {
   @apply bg-slate-100 dark:bg-slate-800 dark:text-slate-100;
 }
+html.dark {
+  @apply bg-slate-800;
+}
 h1 {
   @apply text-2xl;
 }
