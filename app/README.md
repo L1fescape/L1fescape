@@ -1,33 +1,29 @@
-# l1fescape.com
+# L1fescape.com [![Deploy](https://github.com/L1fescape/L1fescape.com/actions/workflows/deploy.yml/badge.svg)](https://github.com/L1fescape/L1fescape.com/actions/workflows/deploy.yml)
 
-the frontend is built using [vue.js](https://vuejs.org/) and [vite](https://vitejs.dev/) and is hosted with [vercel](https://vercel.com/)
+> internet site with cool things 🎉
 
-## Project Setup
+## install
 
-```sh
-npm install
+dependencies
+
+- [node](https://nodejs.org/en/download/)
+
+```
+$ npm install
 ```
 
-### Compile and Hot-Reload for Development
+## run
 
-```sh
-npm run dev
+```
+$ npm start
 ```
 
-### Type-Check, Compile and Minify for Production
+## build
 
-```sh
-npm run build
+```
+$ npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## deploy
 
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+the webapp is deployed automatically via vercel

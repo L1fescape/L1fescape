@@ -1,38 +1,16 @@
-# L1fescape.com [![Deploy](https://github.com/L1fescape/L1fescape.com/actions/workflows/deploy.yml/badge.svg)](https://github.com/L1fescape/L1fescape.com/actions/workflows/deploy.yml)
+### Hi there 👋
 
-> internet site with cool things 🎉
+<!--
+**L1fescape/L1fescape** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
-## install
+Here are some ideas to get you started:
 
-dependencies
-
-- [node](https://nodejs.org/en/download/)
-
-```
-$ cd api && npm install
-$ cd app && npm install
-```
-
-## run
-
-```
-$ cd api && npm start
-$ cd app && npm start
-```
-
-## build
-
-```
-$ cd api && npm run build
-$ cd app && npm run build
-```
-
-## deploy
-
-the frontend in `app/` is deployed via vercel and the backend in `api/` is deployed via cloudflare workers. both are deployed automatically on new changes to the `main` branch.
-
-## devcontainer
-
-## issues?
-
-[let's solve 'em!](https://github.com/L1fescape/L1fescape.com/issues/new)
+- 🔭 I’m currently working on ...
+- 🌱 I’m currently learning ...
+- 👯 I’m looking to collaborate on ...
+- 🤔 I’m looking for help with ...
+- 💬 Ask me about ...
+- 📫 How to reach me: ...
+- 😄 Pronouns: ...
+- ⚡ Fun fact: ...
+-->
