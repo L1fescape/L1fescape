@@ -1,13 +1,5 @@
-<template>
-  <ul class="social-media list-none flex flex-wrap">
-    <li class="inline" v-for="account in accounts" :key="account.name">
-      <a :href="account.url" target="_blank">{{ account.name }}</a>
-    </li>
-  </ul>
-</template>
-
-<script setup lang="ts">
-const accounts = [
+<script lang="ts">
+const accounts: {name: string, url: string}[] = [
   {
     name: "soundcloud",
     url: "https://soundcloud.com/L1fescape",
@@ -33,20 +25,9 @@ const accounts = [
     url: "https://instagram.com/L1fescape",
   },
 ];
-
-interface Props {
-  hide?: string[]
-}
-
-const props = defineProps<Props>()
-
-const filteredAccounts = accounts.filter(
-  (account) => (props.hide || []).indexOf(account.name) === -1
-);
-
 </script>
 
-<style scoped>
+<style>
 .social-media li {
   margin: 0 1rem 0 0;
 }
@@ -54,3 +35,11 @@ const filteredAccounts = accounts.filter(
   margin-right: 0;
 }
 </style>
+
+<ul class="flex flex-wrap list-none social-media">
+  {#each accounts as account}
+    <li class="inline">
+      <a href={account.url} target="_blank" rel="noreferrer">{ account.name }</a>
+    </li>
+  {/each}
+</ul>

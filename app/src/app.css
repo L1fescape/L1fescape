@@ -1,4 +1,6 @@
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
@@ -25,6 +27,3 @@ a:hover {
 p {
   @apply my-1;
 }
-
-@tailwind components;
-@tailwind utilities;
