@@ -65,7 +65,7 @@
         software.
       </p>
       <p>
-        you can find me on the internet here &#x2935;
+        you can find me here on the internet &#x2935;
       </p>
       <div class="socials">
         <Socials />
