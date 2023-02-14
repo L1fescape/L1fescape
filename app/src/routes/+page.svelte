@@ -61,11 +61,11 @@
     <div class="blurb">
       <h2>hi! i'm andrew</h2>
       <p>
-        i'm a programmer currently living in berlin. i really enjoy music and
+        i'm a programmer living in berlin. i really like music and
         software.
       </p>
       <p>
-        you can find more info about me elsewhere on the internet:
+        you can find me on the internet here &#x2935;
       </p>
       <div class="socials">
         <Socials />
