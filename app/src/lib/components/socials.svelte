@@ -2,11 +2,11 @@
 const accounts: {name: string, url: string}[] = [
   {
     name: "soundcloud",
-    url: "https://soundcloud.com/L1fescape",
+    url: "https://soundcloud.com/l1fescape",
   },
   {
     name: "last.fm",
-    url: "https://www.last.fm/user/L1fescape",
+    url: "https://www.last.fm/user/l1fescape",
   },
   {
     name: "spotify",
@@ -14,15 +14,15 @@ const accounts: {name: string, url: string}[] = [
   },
   {
     name: "github",
-    url: "https://github.com/L1fescape",
+    url: "https://github.com/l1fescape",
   },
   {
     name: "twitter",
-    url: "https://twitter.com/L1fescape",
+    url: "https://twitter.com/l1fescape",
   },
   {
     name: "instagram",
-    url: "https://instagram.com/L1fescape",
+    url: "https://instagram.com/l1fescape",
   },
 ];
 </script>
