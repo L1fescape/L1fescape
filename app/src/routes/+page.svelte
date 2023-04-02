@@ -1,25 +1,14 @@
 <style>
-.home {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.home section {
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  max-width: 60rem;
+section {
+  padding: 4rem 2rem;
 }
 
 .hi {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
+  max-width: 60rem;
   box-sizing: border-box;
-  flex-direction: row;
+  align-self: center;
   align-items: center;
   justify-content: center;
 }
@@ -35,12 +24,36 @@
   margin-top: 1rem;
 }
 
+.blurb h2 {
+  margin-bottom: 1rem;
+}
+
 .profile {
   width: 12rem;
   height: 12rem;
   object-position: 0 60%;
   object-fit: cover;
   flex-shrink: 0;
+}
+
+.track-list {
+  display: grid;
+  grid-gap: 1rem;
+  max-width: 100rem;
+  margin-top: 2rem;
+}
+
+.nfts p {
+  margin: 2rem 0;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+}
+
+.socials {
+  margin-top: 1rem;
 }
 </style>
 
@@ -49,49 +62,45 @@
 </svelte:head>
 
 <script lang="ts">
-  import { onMount } from 'svelte'
   import profilePic from '$lib/assets/me.jpg'
+  import NFTTrackList from '$lib/components/NFTTrackList.svelte'
   import SocialsList from '$lib/components/SocialsList.svelte'
   import SocialLink from '$lib/components/SocialLink.svelte'
 	import { SocialPlatform } from '$lib/data/socials'
-	import type { NFT } from '$lib/types/nft'
+  import type { PageData } from './$types'
 
-  let myNFTs: NFT[] = []
-
-  onMount(async () => {
-    const nftResp = await fetch('/api/music-nfts')
-    const nftData = await nftResp.json()
-    myNFTs = nftData.nfts
-  })
+  export let data: PageData 
 </script>
 
-<div class="home">
-  <section class="hi">
-    <div class="pic">
-      <img class="w-12 rounded-full profile h-23" src={profilePic} alt="L1fescape doing a kickflip" />
-    </div>
-    <div class="blurb">
-      <h2>hi! i'm andrew</h2>
-      <p>
-        i'm a programmer living in berlin, and currently
-        <SocialLink platform={SocialPlatform.Linkedin}>looking for a job</SocialLink>!
-      </p>
-      <p>
-        i really like music, software, and skateboarding.
-      </p>
-    </div>
-  </section>
-  <section class="nfts">
-    <p>Here are the music nfts I currently own:</p>
-
-    {#each myNFTs as nft}
-      <p>{nft.title}</p>
-    {/each}
-  </section>
-  <section class="links">
+<section class="hi">
+  <div class="pic">
+    <img class="w-12 rounded-full profile h-23" src={profilePic} alt="L1fescape doing a kickflip" />
+  </div>
+  <div class="blurb">
+    <h2>hi! i'm andrew</h2>
     <p>
-      here are a few other places you can find me on the internet &#x2935;
+      i'm a programmer living in berlin, and currently
+      <SocialLink platform={SocialPlatform.Linkedin}>looking for a job</SocialLink>!
     </p>
+    <p>
+      i really like music, software, and skateboarding
+    </p>
+  </div>
+</section>
+
+<section class="nfts bg-slate-900">
+  <p>i've been exploring more and more of the music nft scene over the past few months. what's really drawn me in are all the different the communities and projects forming around the artists, the music, and the tech. there's so much passion and there are so many amazing people building really cool things or getting involved in different ways - it's really contagious!</p>
+  <p>i've picked up a few music nfts from my favorite artists over the past few months - please have a listen and check out their stuff!</p>
+  <div class="track-list sm:grid-cols-2 md:grid-cols-3">
+    <NFTTrackList tracks={data.tracks} />
+  </div>
+</section>
+
+<section class="links bg-neutral-900">
+  <p>
+    here are a few other places you can find me on the internet &#x2935;
+  </p>
+  <div class="socials">
     <SocialsList />
-  </section>
-</div>
+  </div>
+</section>

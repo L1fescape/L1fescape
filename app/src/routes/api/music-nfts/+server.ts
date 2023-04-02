@@ -1,19 +1,39 @@
-import { error } from '@sveltejs/kit'
-import type { NFT } from '$lib/types/nft'
+import { json, error } from '@sveltejs/kit'
+import { collectNFTTracksFromNFTs, uniqueNFTs, tracksResponseFromNFTTracks } from '$lib/utils/tracks'
 
-const WALLET_ADDRESS=process.env.WALLET_ADDRESS
+const WALLET_ADDRESS = process.env.WALLET_ADDRESS
+const SPINDEX_API_BASE_URL = 'https://spindex-api.spinamp.xyz/v3'
 
-interface NFTResponse {
-  nfts: NFT[]
-}
-
-const getNFTsQuery = `
-  query GetNFTs($walletAddress: String!) {
+// todo: investigate best way to get artist name
+// (currently using nftByNftId.metadata.artist) 
+const getTrackNFTsQuery = `
+  query GetTrackNFTs($walletAddress: String!) {
     collectorById(id: $walletAddress) {
       nftsByOwner {
-        nodes {
-          nodeId
-          metadata
+        edges {
+          node {
+            id
+            nftsProcessedTracksByNftId {
+              edges {
+                node {
+                  lossyArtworkUrl
+                  lossyArtworkMimeType
+                  lossyAudioUrl
+                  description
+                  artistId
+                  title
+                  websiteUrl
+                  lossyAudioIpfsHash
+                  lossyArtworkIpfsHash
+                  lossyAudioMimeType
+                  nftId
+                  nftByNftId {
+                    metadata
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -28,31 +48,26 @@ export async function GET() {
     })
   }
 
-  const nftsRequest = await fetch("https://spindex-api.spinamp.xyz/v1/graphql", {
+  const nftsRequest = await fetch(`${SPINDEX_API_BASE_URL}/graphql`, {
     headers: {
       "accept": "application/json",
       "accept-language": "en-US,en;q=0.9",
       "content-type": "application/json",
-      "Referer": "https://spindex-api.spinamp.xyz/v1/graphiql",
+      "Referer": SPINDEX_API_BASE_URL,
       "Referrer-Policy": "strict-origin-when-cross-origin"
     },
     method: 'POST',
     body: JSON.stringify({
-      query: getNFTsQuery,
+      query: getTrackNFTsQuery,
       variables: {
         walletAddress: WALLET_ADDRESS,
       },
-      operationName: 'GetNFTs',
+      operationName: 'GetTrackNFTs',
     })
   })
 
   const data = await nftsRequest.json()
-  const nfts = data?.data.collectorById.nftsByOwner
-  console.log(nfts)
-
-  const resp: NFTResponse = {
-    nfts,
-  }
- 
-  return new Response(JSON.stringify(resp))
+  const nftNodes = data.data.collectorById.nftsByOwner.edges
+  const trackNFTs = collectNFTTracksFromNFTs(uniqueNFTs(nftNodes))
+  return json({ tracks: tracksResponseFromNFTTracks(trackNFTs) })
 }
