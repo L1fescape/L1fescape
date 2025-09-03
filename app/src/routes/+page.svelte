@@ -90,10 +90,6 @@ section p:last-child {
   <div class="blurb">
     <h2>hi! i'm andrew</h2>
     <p>
-      i'm a programmer living in berlin, and currently
-      <SocialLink platform={SocialPlatform.Linkedin}>looking for a job</SocialLink>!
-    </p>
-    <p>
       i'm really passionate about music and software and i enjoy discovering new ways to bridge them together.
     <p>
       here are a few other places you can find me on the <span class="whitespace-nowrap">internet &#x2935;</span>
